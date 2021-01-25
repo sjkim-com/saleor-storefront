@@ -15,7 +15,7 @@ import { CollectionProducts_collection_products } from "./gqlTypes/CollectionPro
 import "../Category/scss/index.scss";
 
 interface SortItem {
-  label: string;
+  label: string | JSX.Element;
   value?: string;
 }
 
