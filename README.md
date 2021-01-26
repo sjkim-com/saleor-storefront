@@ -184,3 +184,17 @@ This project is licensed under the BSD-3-Clause License - see the [LICENSE](http
 #### Crafted with ❤️ by [Mirumee Software](http://mirumee.com)
 
 hello@mirumee.com
+
+
+-----
+npm install > 12.20.x
+npm run start で実行。
+--host front.localhost.com
+
+touch .env
+vi .env
+API_URI=http://frontdemo12.herokuapp.com/graphql/
+
+call : org core front
+
+
