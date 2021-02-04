@@ -3,7 +3,7 @@ module.exports = {
     excludes: ["**/__tests__/**/*", "**/@sdk/**/*"],
     service: {
       name: "saleor",
-      url: "http://localhost:8000/graphql/",
+      url: "https://cmgt-graphql-engine.herokuapp.com/v1beta1/relay",
     },
   },
 };

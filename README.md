@@ -185,16 +185,38 @@ This project is licensed under the BSD-3-Clause License - see the [LICENSE](http
 
 hello@mirumee.com
 
+---
 
------
-npm install > 12.20.x
-npm run start で実行。
---host front.localhost.com
+## Hasura バーション
 
-touch .env
-vi .env
-API_URI=http://frontdemo12.herokuapp.com/graphql/
+### Node バージョン
 
-call : org core front
+- node > 12.20.x
 
+### Packge インストール
 
+```
+$ npm install
+```
+
+### 実行
+
+```
+$ npm run start
+```
+
+### .env ファイル作成
+
+```
+$ touch .env
+```
+
+### .env に API 情報入力
+
+```
+$ vi .env
+
+API_URI=https://cmgt-graphql-engine.herokuapp.com/v1beta1/relay
+```
+
+call : hasura front
