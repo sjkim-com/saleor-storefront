@@ -15,7 +15,7 @@
 dist
 node_modules
 src/locales/_build
-
+package-lock.json
 cypress/videos
 cypress/screenshots
 cypress/fixtures/example.json
