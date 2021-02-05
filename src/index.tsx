@@ -12,7 +12,7 @@ import { QueryParamProvider } from "use-query-params";
 import { NotificationTemplate } from "@components/atoms";
 import { ServiceWorkerProvider } from "@components/containers";
 import { SaleorProvider } from "@saleor/sdk";
-import { ConfigInput } from "@saleor/sdk/lib/types";
+import { ConfigInput } from "@saleor/sdk/types";
 import { defaultTheme, GlobalStyle } from "@styles";
 
 import { App } from "./app";

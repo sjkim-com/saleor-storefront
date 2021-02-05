@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { useIntl } from "react-intl";
 
 import { commonMessages } from "@temp/intl";
-import { ICheckoutModelLine } from "@saleor/sdk/lib/helpers";
+import { ICheckoutModelLine } from "@saleor/sdk/helpers";
 import {
   ProductDetails_product_pricing,
   ProductDetails_product_variants,
   ProductDetails_product_variants_pricing,
-} from "@saleor/sdk/lib/queries/gqlTypes/ProductDetails";
+} from "@saleor/sdk/queries/gqlTypes/ProductDetails";
 
 import { IProductVariantsAttributesSelectedValues } from "@types";
 import QuantityInput from "../../molecules/QuantityInput";

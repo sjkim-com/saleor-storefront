@@ -1,4 +1,4 @@
-import { ICheckoutModelLine } from "@saleor/sdk/lib/helpers";
+import { ICheckoutModelLine } from "@saleor/sdk/helpers";
 import * as React from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";

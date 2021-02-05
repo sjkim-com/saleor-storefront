@@ -8,9 +8,9 @@ import { useDefaultUserAddress, useDeleteUserAddresss } from "@saleor/sdk";
 import {
   AddressTypeEnum,
   AccountErrorCode,
-} from "@saleor/sdk/lib/gqlTypes/globalTypes";
-import { getUserDetailsQuery } from "@saleor/sdk/lib/queries/user";
-import { User } from "@saleor/sdk/lib/fragments/gqlTypes/User";
+} from "@saleor/sdk/gqlTypes/globalTypes";
+import { getUserDetailsQuery } from "@saleor/sdk/queries/user";
+import { User } from "@saleor/sdk/fragments/gqlTypes/User";
 import { ShopContext } from "../../components/ShopProvider/context";
 
 const AddressBook: React.FC<{

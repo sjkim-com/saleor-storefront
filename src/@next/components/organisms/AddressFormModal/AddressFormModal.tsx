@@ -2,7 +2,7 @@ import React from "react";
 
 import { useCreateUserAddress, useUpdateUserAddress } from "@saleor/sdk";
 
-import { CountryCode } from "@saleor/sdk/lib/gqlTypes/globalTypes";
+import { CountryCode } from "@saleor/sdk/gqlTypes/globalTypes";
 import { AddressForm } from "../AddressForm";
 import { Modal } from "../Modal";
 

@@ -1,7 +1,7 @@
 import {
   ProductDetails_product_thumbnail,
   ProductDetails_product_thumbnail2x,
-} from "@saleor/sdk/lib/queries/gqlTypes/ProductDetails";
+} from "@saleor/sdk/queries/gqlTypes/ProductDetails";
 
 interface ISource {
   thumbnail?: ProductDetails_product_thumbnail | null;

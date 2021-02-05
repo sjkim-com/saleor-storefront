@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { defineMessages, IntlShape, useIntl } from "react-intl";
 
 import { IFormError, IPaymentGatewayConfig } from "@types";
-import { CompleteCheckout_checkoutComplete_order } from "@saleor/sdk/lib/mutations/gqlTypes/CompleteCheckout";
+import { CompleteCheckout_checkoutComplete_order } from "@saleor/sdk/mutations/gqlTypes/CompleteCheckout";
 import { ErrorMessage } from "@components/atoms";
 
 export const adyenNotNegativeConfirmationStatusCodes = [
