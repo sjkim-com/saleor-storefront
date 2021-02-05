@@ -20,7 +20,8 @@ import {
 import * as appPaths from "../../app/routes";
 import { maybe } from "../../core/utils";
 import NavDropdown from "./NavDropdown";
-import { TypedMainMenuQuery } from "./queries";
+// import { TypedMainMenuQuery } from "./queries";
+import { TypedMainMenuQuery, TypedSubMenuQuery } from "./queries";
 
 import cartImg from "../../images/cart.svg";
 import hamburgerHoverImg from "../../images/hamburger-hover.svg";
@@ -84,9 +85,15 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
       {demoMode && <DemoBanner />}
       <nav className="main-menu" id="header">
         <div className="main-menu__left">
-          <TypedMainMenuQuery renderOnError displayLoader={false}>
+          {/* <TypedMainMenuQuery renderOnError displayLoader={false}> */}
+          <TypedMainMenuQuery>
             {({ data }) => {
-              const items = maybe(() => data.shop.navigation.main.items, []);
+              // const items = maybe(() => data.shop.navigation.main.items, []);
+              const items = maybe(() => data.dms_displaycategory_connection.edges, []);
+
+              const itemsMobile = items.map(edge => {
+                return { ...edge.node };
+              });
 
               return (
                 <ul>
@@ -100,7 +107,8 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                           overlayContext.show(
                             OverlayType.sideNav,
                             OverlayTheme.left,
-                            { data: items }
+                            // { data: items }
+                            { data: itemsMobile }
                           )
                         }
                       >
@@ -124,9 +132,10 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                           <li
                             data-test="mainMenuItem"
                             className="main-menu__item"
-                            key={item.id}
+                            // key={item.id}
+                            key={item.node.display_category_id}
                           >
-                            <NavDropdown
+                            {/* <NavDropdown
                               overlay={overlayContext}
                               showDropdown={
                                 activeDropdown === item.id && hasSubNavigation
@@ -136,7 +145,42 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                               }
                               onHideDropdown={hideDropdownHandler}
                               {...item}
-                            />
+                            /> */}
+                            <TypedSubMenuQuery
+                              variables={{
+                                upperDisplayCategoryId:
+                                  item.node.display_category_id,
+                              }}
+                            >
+                              {({ data }) => {
+                                const subItems = maybe(
+                                  () =>
+                                    data.dms_displaycategory_connection.edges,
+                                  []
+                                );
+
+                                const hasSubNavigation = !!subItems?.length;
+                                return (
+                                  <NavDropdown
+                                    overlay={overlayContext}
+                                    showDropdown={
+                                      activeDropdown ===
+                                        item.node.display_category_id &&
+                                      hasSubNavigation
+                                    }
+                                    onShowDropdown={() =>
+                                      showDropdownHandler(
+                                        item.node.display_category_id,
+                                        hasSubNavigation
+                                      )
+                                    }
+                                    onHideDropdown={hideDropdownHandler}
+                                    subMenu={subItems}
+                                    {...item.node}
+                                  />
+                                );
+                              }}
+                            </TypedSubMenuQuery>
                           </li>
                         );
                       })

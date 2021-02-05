@@ -1,9 +1,11 @@
 import * as React from "react";
 
 import { NavLink } from "..";
-import { MainMenuSubItem } from "./gqlTypes/MainMenuSubItem";
+// import { MainMenuSubItem } from "./gqlTypes/MainMenuSubItem";
+import { SubMenu_dms_displaycategory } from "./gqlTypes/SubMenu";
 
-interface NavNestedItemProps extends MainMenuSubItem {
+interface NavNestedItemProps extends SubMenu_dms_displaycategory {
+// interface NavNestedItemProps extends MainMenuSubItem {
   children?: NavNestedItemProps[];
   hideOverlay?(): void;
 }

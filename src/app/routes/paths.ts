@@ -1,4 +1,5 @@
-const slugUrl = ":slug([a-z-0-9]+)/:id([0-9]+)/";
+// const slugUrl = ":slug([a-z-0-9]+)/:id([0-9]+)/";
+const slugUrl = ":slug/:id/";
 export const baseUrl = "/";
 export const searchUrl = `${baseUrl}search/`;
 export const categoryUrl = `${baseUrl}category/${slugUrl}`;

@@ -3,9 +3,15 @@ interface SortOptions {
   label: string;
 }
 
+// interface ActiveFiltersAttribute {
+//   attributeSlug: string;
+//   valueSlug: string;
+//   valueName: string;
+// }
+
 interface ActiveFiltersAttribute {
-  attributeSlug: string;
-  valueSlug: string;
+  attributeId: string;
+  attributeValue: string;
   valueName: string;
 }
 

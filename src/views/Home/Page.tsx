@@ -9,9 +9,11 @@ import { Button, Loader, ProductsFeatured } from "../../components";
 import { generateCategoryUrl } from "../../core/utils";
 
 import {
-  ProductsList_categories,
-  ProductsList_shop,
-  ProductsList_shop_homepageCollection_backgroundImage,
+  // ProductsList_categories,
+  // ProductsList_shop,
+  // ProductsList_shop_homepageCollection_backgroundImage,
+  ProductsList_product_category_connection,
+  ProductsList_site_sitesettings_connection_edges_node,
 } from "./gqlTypes/ProductsList";
 
 import { structuredData } from "../../core/SEO/Homepage/structuredData";
@@ -20,15 +22,20 @@ import noPhotoImg from "../../images/no-photo.svg";
 
 const Page: React.FC<{
   loading: boolean;
-  categories: ProductsList_categories;
-  backgroundImage: ProductsList_shop_homepageCollection_backgroundImage;
-  shop: ProductsList_shop;
-}> = ({ loading, categories, backgroundImage, shop }) => {
+  // categories: ProductsList_categories;
+  categories: ProductsList_product_category_connection;
+  // backgroundImage: ProductsList_shop_homepageCollection_backgroundImage;
+  shop: ProductsList_site_sitesettings_connection_edges_node;
+  // shop: ProductsList_shop;
+// }> = ({ loading, categories, backgroundImage, shop }) => {
+}> = ({ loading, categories, shop }) => {
   const categoriesExist = () => {
     return categories && categories.edges && categories.edges.length > 0;
   };
   const intl = useIntl();
+  const collection = shop?.product_collection;
 
+  console.log(collection)
   return (
     <>
       <script className="structured-data-list" type="application/ld+json">
@@ -36,9 +43,14 @@ const Page: React.FC<{
       </script>
       <div
         className="home-page__hero"
+        // style={
+        //   backgroundImage
+        //     ? { backgroundImage: `url(${backgroundImage.url})` }
+        //     : null
+        // }
         style={
-          backgroundImage
-            ? { backgroundImage: `url(${backgroundImage.url})` }
+          collection.background_image
+            ? { backgroundImage: `url(${collection.background_image})` }
             : null
         }
       >

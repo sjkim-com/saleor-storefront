@@ -15,8 +15,12 @@ const ProductsFeatured: React.FC<ProductsFeaturedProps> = ({ title }) => {
   return (
     <TypedFeaturedProductsQuery displayError={false}>
       {({ data }) => {
+        // const products = maybe(
+        //   () => data.shop.homepageCollection.products.edges,
+        //   []
+        // );
         const products = maybe(
-          () => data.shop.homepageCollection.products.edges,
+          () => data.site_sitesettings_connection.edges[0].node.product_collection.product_collectionproducts,
           []
         );
 
@@ -26,12 +30,23 @@ const ProductsFeatured: React.FC<ProductsFeaturedProps> = ({ title }) => {
               <div className="container">
                 <h3>{title}</h3>
                 <Carousel>
-                  {products.map(({ node: product }) => (
+                  {/* {products.map(({ node: product }) => (
                     <Link
                       to={generateProductUrl(product.id, product.name)}
                       key={product.id}
                     >
                       <ProductListItem product={product} />
+                    </Link>
+                  ))} */}
+                  {products.map(product => (
+                    <Link
+                      to={generateProductUrl(
+                        product.product_product.id.toString(),
+                        product.product_product.name
+                      )}
+                      key={product.product_product.id}
+                    >
+                      <ProductListItem product={product.product_product} />
                     </Link>
                   ))}
                 </Carousel>

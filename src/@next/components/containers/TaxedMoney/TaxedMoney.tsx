@@ -10,12 +10,13 @@ export const TaxedMoney: React.FC<IProps> = ({
   defaultValue,
   ...props
 }: IProps) => {
-  const { displayGrossPrices } = React.useContext(ShopContext);
-  const money = taxedMoney
-    ? displayGrossPrices
-      ? taxedMoney.gross
-      : taxedMoney.net
-    : undefined;
+  // const { displayGrossPrices } = React.useContext(ShopContext);
+  // const money = taxedMoney
+  //   ? displayGrossPrices
+  //     ? taxedMoney.gross
+  //     : taxedMoney.net
+  //   : undefined;
+  const money = taxedMoney;
   return <Money {...props} money={money} defaultValue={defaultValue} />;
 };
 

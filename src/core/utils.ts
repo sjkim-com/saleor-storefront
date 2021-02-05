@@ -22,18 +22,35 @@ export const slugify = (text: string | number): string =>
     .replace(/[^\w\-]+/g, "") // Remove all non-word chars
     .replace(/\-\-+/g, "-"); // Replace multiple - with single -
 
+export const isBase64 = encodedString => {
+  const regexBase64 = /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
+  return regexBase64.test(encodedString); // return TRUE if its base64 string.
+};
+
 export const getDBIdFromGraphqlId = (
   graphqlId: string,
   schema?: string
 ): number => {
   // This is temporary solution, we will use slugs in the future
-  const rawId = Base64.decode(graphqlId);
-  const regexp = /(\w+):(\d+)/;
-  const arr = regexp.exec(rawId);
-  if (schema && schema !== arr![1]) {
-    throw new Error("Schema is not correct");
+  // const rawId = Base64.decode(graphqlId);
+  // const regexp = /(\w+):(\d+)/;
+  // const arr = regexp.exec(rawId);
+  // if (schema && schema !== arr![1]) {
+  //   throw new Error("Schema is not correct");
+  // }
+  // return parseInt(arr![2], 10);
+
+  if (isBase64(graphqlId)) {
+    let rawId = Base64.decode(graphqlId);
+    rawId = rawId.replace(/[\[\]\"]/gi, "");
+    const arr = rawId.split(", ");
+    if (schema && schema !== arr![2]) {
+      throw new Error("Schema is not correct");
+    }
+    return parseInt(arr![3], 10);
   }
-  return parseInt(arr![2], 10);
+
+  return parseInt(graphqlId, 10);
 };
 
 export const getGraphqlIdFromDBId = (id: string, schema: string): string =>
@@ -55,10 +72,12 @@ export const priceToString = (
 };
 
 export const generateProductUrl = (id: string, name: string) =>
-  `/product/${slugify(name)}/${getDBIdFromGraphqlId(id, "Product")}/`;
+  // `/product/${slugify(name)}/${getDBIdFromGraphqlId(id, "Product")}/`;
+  `/product/${slugify(name)}/${getDBIdFromGraphqlId(id, "product_product")}/`;
 
 export const generateCategoryUrl = (id: string, name: string) =>
-  `/category/${slugify(name)}/${getDBIdFromGraphqlId(id, "Category")}/`;
+  // `/category/${slugify(name)}/${getDBIdFromGraphqlId(id, "Category")}/`;
+  `/category/${slugify(name)}/${getDBIdFromGraphqlId(id, "product_category")}/`;
 
 export const generateCollectionUrl = (id: string, name: string) =>
   `/collection/${slugify(name)}/${getDBIdFromGraphqlId(id, "Collection")}/`;
@@ -93,32 +112,68 @@ export const getAttributesFromQs = (qs: QueryString) =>
 export const getValueOrEmpty = <T>(value: T): T | string =>
   value === undefined || value === null ? "" : value;
 
+// export const convertSortByFromString = (sortBy: string) => {
+//   if (!sortBy) {
+//     return null;
+//   }
+//   const direction = sortBy.startsWith("-")
+//     ? OrderDirection.DESC
+//     : OrderDirection.ASC;
+
+//   let field;
+//   switch (sortBy.replace(/^-/, "")) {
+//     case "name":
+//       field = ProductOrderField.NAME;
+//       break;
+
+//     case "price":
+//       field = ProductOrderField.MINIMAL_PRICE;
+//       break;
+
+//     case "updated_at":
+//       field = ProductOrderField.DATE;
+//       break;
+
+//     default:
+//       return null;
+//   }
+//   return { field, direction };
+// };
+
 export const convertSortByFromString = (sortBy: string) => {
   if (!sortBy) {
     return null;
   }
   const direction = sortBy.startsWith("-")
-    ? OrderDirection.DESC
-    : OrderDirection.ASC;
+    ? // ? OrderDirection.DESC
+      // : OrderDirection.ASC;
+      "desc"
+    : "asc";
 
-  let field;
+  const field = {};
+  let fieldId = null;
+
   switch (sortBy.replace(/^-/, "")) {
     case "name":
-      field = ProductOrderField.NAME;
+      // field = ProductOrderField.NAME;
+      fieldId = "name";
       break;
 
     case "price":
-      field = ProductOrderField.MINIMAL_PRICE;
+      // field = ProductOrderField.MINIMAL_PRICE;
+      fieldId = "sale_price";
       break;
 
     case "updated_at":
-      field = ProductOrderField.DATE;
+      fieldId = "upd_dt";
       break;
 
     default:
       return null;
   }
-  return { field, direction };
+
+  field[fieldId] = direction;
+  return field;
 };
 
 export const maybe = <T>(exp: () => T, d?: T) => {

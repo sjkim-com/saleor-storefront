@@ -13,11 +13,19 @@ import { IProps } from "./types";
 
 const checkIfAttributeIsChecked = (
   filters: IFilters,
-  value: ISingleFilterAttribute,
-  slug: string
+  // value: ISingleFilterAttribute,
+  // slug: string
+  attributeId: ISingleFilterAttribute,
+  slattributeValue: string
 ) => {
-  if (filters!.attributes && filters.attributes.hasOwnProperty(slug)) {
-    if (filters.attributes[slug].find(filter => filter === value.slug)) {
+  // if (filters!.attributes && filters.attributes.hasOwnProperty(slug)) {
+  //   if (filters.attributes[slug].find(filter => filter === value.slug)) {
+  //     return true;
+  //   }
+  //   return false;
+  // }
+  if (filters!.attributes && filters.attributes.hasOwnProperty(attributeId)) {
+    if (filters.attributes[attributeId].find(filter => filter === slattributeValue)) {
       return true;
     }
     return false;
@@ -58,7 +66,7 @@ export const FilterSidebar: React.FC<IProps> = ({
             color="000"
           />
         </S.Header>
-        {attributes.map(({ id, name, slug, values }) => {
+        {/* {attributes.map(({ id, name, slug, values }) => {
           return (
             <AttributeValuesChecklist
               key={id}
@@ -70,6 +78,27 @@ export const FilterSidebar: React.FC<IProps> = ({
               }))}
               valuesShowLimit
               onValueClick={value => onAttributeFiltersChange(slug, value.slug)}
+            />
+          );
+        })} */}
+        {attributes.map(({ attribute_id, name, pms_attributevalues }) => {
+          return (
+            <AttributeValuesChecklist
+              key={attribute_id}
+              title={name}
+              name={name}
+              values={pms_attributevalues.map(value => ({
+                ...value,
+                selected: checkIfAttributeIsChecked(
+                  filters,
+                  value.attribute_id,
+                  value.attribute_value
+                ),
+              }))}
+              valuesShowLimit
+              onValueClick={value => {
+                onAttributeFiltersChange(attribute_id, value.attribute_value);
+              }}
             />
           );
         })}

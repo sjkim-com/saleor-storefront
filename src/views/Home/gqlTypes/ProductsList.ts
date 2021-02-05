@@ -6,78 +6,71 @@
 // GraphQL query operation: ProductsList
 // ====================================================
 
-export interface ProductsList_shop_homepageCollection_backgroundImage {
-  __typename: "Image";
-  /**
-   * The URL of the image.
-   */
-  url: string;
-}
-
-export interface ProductsList_shop_homepageCollection {
-  __typename: "Collection";
-  /**
-   * The ID of the object.
-   */
-  id: string;
-  backgroundImage: ProductsList_shop_homepageCollection_backgroundImage | null;
-  name: string;
-}
-
-export interface ProductsList_shop {
-  __typename: "Shop";
-  /**
-   * Shop's description.
-   */
-  description: string | null;
-  /**
-   * Shop's name.
-   */
-  name: string;
-  /**
-   * Collection displayed on homepage.
-   */
-  homepageCollection: ProductsList_shop_homepageCollection | null;
-}
-
-export interface ProductsList_categories_edges_node_backgroundImage {
-  __typename: "Image";
-  /**
-   * The URL of the image.
-   */
-  url: string;
-}
-
-export interface ProductsList_categories_edges_node {
-  __typename: "Category";
-  /**
-   * The ID of the object.
-   */
+export interface ProductsList_site_sitesettings_connection_edges_node_django_site {
+  __typename: "django_site";
   id: string;
   name: string;
-  backgroundImage: ProductsList_categories_edges_node_backgroundImage | null;
 }
 
-export interface ProductsList_categories_edges {
-  __typename: "CategoryCountableEdge";
+export interface ProductsList_site_sitesettings_connection_edges_node_product_collection {
+  __typename: "product_collection";
+  id: string;
+  name: string;
+  background_image: string | null;
+  background_image_alt: string;
+  description: string;
+}
+
+export interface ProductsList_site_sitesettings_connection_edges_node {
+  __typename: "site_sitesettings";
+  site_id: number;
+  description: string;
+  homepage_collection_id: number | null;
   /**
-   * The item at the end of the edge.
+   * An object relationship
    */
-  node: ProductsList_categories_edges_node;
+  django_site: ProductsList_site_sitesettings_connection_edges_node_django_site;
+  /**
+   * An object relationship
+   */
+  product_collection: ProductsList_site_sitesettings_connection_edges_node_product_collection | null;
 }
 
-export interface ProductsList_categories {
-  __typename: "CategoryCountableConnection";
-  edges: ProductsList_categories_edges[];
+export interface ProductsList_site_sitesettings_connection_edges {
+  __typename: "site_sitesettingsEdge";
+  node: ProductsList_site_sitesettings_connection_edges_node;
+}
+
+export interface ProductsList_site_sitesettings_connection {
+  __typename: "site_sitesettingsConnection";
+  edges: ProductsList_site_sitesettings_connection_edges[];
+}
+
+export interface ProductsList_product_category_connection_edges_node {
+  __typename: "product_category";
+  id: string;
+  name: string;
+  background_image: string | null;
+  background_image_alt: string;
+}
+
+export interface ProductsList_product_category_connection_edges {
+  __typename: "product_categoryEdge";
+  node: ProductsList_product_category_connection_edges_node;
+}
+
+export interface ProductsList_product_category_connection {
+  __typename: "product_categoryConnection";
+  edges: ProductsList_product_category_connection_edges[];
 }
 
 export interface ProductsList {
   /**
-   * Return information about the shop.
+   * fetch data from the table: "site_sitesettings"
    */
-  shop: ProductsList_shop;
+  site_sitesettings_connection: ProductsList_site_sitesettings_connection;
   /**
-   * List of the shop's categories.
+   * fetch data from the table: "product_category"
    */
-  categories: ProductsList_categories | null;
+  product_category_connection: ProductsList_product_category_connection;
 }

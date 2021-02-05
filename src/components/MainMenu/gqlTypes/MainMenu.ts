@@ -6,180 +6,177 @@
 // GraphQL query operation: MainMenu
 // ====================================================
 
-export interface MainMenu_shop_navigation_main_items_category {
-  __typename: "Category";
+export interface MainMenu_dms_displaycategory_connection_edges_node_dms_displaycategorylangs {
+  __typename: "dms_displaycategorylang";
   /**
-   * The ID of the object.
+   * 展示カテゴリ名
    */
-  id: string;
-  name: string;
+  name: string | null;
+  note: string | null;
+  /**
+   * 展示会カテゴリーID
+   */
+  display_category_id: string;
+  /**
+   * 言語ID
+   */
+  lang_id: string;
 }
 
-export interface MainMenu_shop_navigation_main_items_collection {
-  __typename: "Collection";
+export interface MainMenu_dms_displaycategory_connection_edges_node_dms_displaycategories_dms_displaycategorylangs {
+  __typename: "dms_displaycategorylang";
   /**
-   * The ID of the object.
+   * 展示カテゴリ名
    */
-  id: string;
-  name: string;
+  name: string | null;
+  note: string | null;
+  /**
+   * 展示会カテゴリーID
+   */
+  display_category_id: string;
+  /**
+   * 言語ID
+   */
+  lang_id: string;
 }
 
-export interface MainMenu_shop_navigation_main_items_page {
-  __typename: "Page";
-  slug: string;
+export interface MainMenu_dms_displaycategory_connection_edges_node_dms_displaycategories {
+  __typename: "dms_displaycategory";
+  /**
+   * 展示カテゴリ名
+   */
+  name: string | null;
+  /**
+   * トップ展示カテゴリーID
+   */
+  upper_display_category_id: string | null;
+  /**
+   * 展示可否
+   */
+  display_yn: string | null;
+  /**
+   * リーフ可否
+   */
+  leaf_yn: string | null;
+  /**
+   * 説明
+   */
+  note: string | null;
+  /**
+   * ソート順
+   */
+  sort_no: any | null;
+  /**
+   * 店舗ID
+   */
+  store_id: string | null;
+  /**
+   * テンプレートID
+   */
+  template_id: string | null;
+  /**
+   * 更新日
+   */
+  upd_dt: any | null;
+  /**
+   * 更新者
+   */
+  upd_id: string | null;
+  /**
+   * 作成者
+   */
+  ins_id: string | null;
+  /**
+   * 作成日
+   */
+  ins_dt: any | null;
+  /**
+   * 展示会カテゴリーID
+   */
+  display_category_id: string;
+  /**
+   * An array relationship
+   */
+  dms_displaycategorylangs: MainMenu_dms_displaycategory_connection_edges_node_dms_displaycategories_dms_displaycategorylangs[];
 }
 
-export interface MainMenu_shop_navigation_main_items_parent {
-  __typename: "MenuItem";
+export interface MainMenu_dms_displaycategory_connection_edges_node {
+  __typename: "dms_displaycategory";
   /**
-   * The ID of the object.
+   * 展示カテゴリ名
    */
-  id: string;
+  name: string | null;
+  /**
+   * トップ展示カテゴリーID
+   */
+  upper_display_category_id: string | null;
+  /**
+   * 展示可否
+   */
+  display_yn: string | null;
+  /**
+   * リーフ可否
+   */
+  leaf_yn: string | null;
+  /**
+   * 説明
+   */
+  note: string | null;
+  /**
+   * ソート順
+   */
+  sort_no: any | null;
+  /**
+   * 店舗ID
+   */
+  store_id: string | null;
+  /**
+   * テンプレートID
+   */
+  template_id: string | null;
+  /**
+   * 更新日
+   */
+  upd_dt: any | null;
+  /**
+   * 更新者
+   */
+  upd_id: string | null;
+  /**
+   * 作成者
+   */
+  ins_id: string | null;
+  /**
+   * 作成日
+   */
+  ins_dt: any | null;
+  /**
+   * 展示会カテゴリーID
+   */
+  display_category_id: string;
+  /**
+   * An array relationship
+   */
+  dms_displaycategorylangs: MainMenu_dms_displaycategory_connection_edges_node_dms_displaycategorylangs[];
+  /**
+   * An array relationship
+   */
+  dms_displaycategories: MainMenu_dms_displaycategory_connection_edges_node_dms_displaycategories[];
 }
 
-export interface MainMenu_shop_navigation_main_items_children_category {
-  __typename: "Category";
-  /**
-   * The ID of the object.
-   */
-  id: string;
-  name: string;
+export interface MainMenu_dms_displaycategory_connection_edges {
+  __typename: "dms_displaycategoryEdge";
+  node: MainMenu_dms_displaycategory_connection_edges_node;
 }
 
-export interface MainMenu_shop_navigation_main_items_children_collection {
-  __typename: "Collection";
-  /**
-   * The ID of the object.
-   */
-  id: string;
-  name: string;
-}
-
-export interface MainMenu_shop_navigation_main_items_children_page {
-  __typename: "Page";
-  slug: string;
-}
-
-export interface MainMenu_shop_navigation_main_items_children_parent {
-  __typename: "MenuItem";
-  /**
-   * The ID of the object.
-   */
-  id: string;
-}
-
-export interface MainMenu_shop_navigation_main_items_children_children_category {
-  __typename: "Category";
-  /**
-   * The ID of the object.
-   */
-  id: string;
-  name: string;
-}
-
-export interface MainMenu_shop_navigation_main_items_children_children_collection {
-  __typename: "Collection";
-  /**
-   * The ID of the object.
-   */
-  id: string;
-  name: string;
-}
-
-export interface MainMenu_shop_navigation_main_items_children_children_page {
-  __typename: "Page";
-  slug: string;
-}
-
-export interface MainMenu_shop_navigation_main_items_children_children_parent {
-  __typename: "MenuItem";
-  /**
-   * The ID of the object.
-   */
-  id: string;
-}
-
-export interface MainMenu_shop_navigation_main_items_children_children {
-  __typename: "MenuItem";
-  /**
-   * The ID of the object.
-   */
-  id: string;
-  name: string;
-  category: MainMenu_shop_navigation_main_items_children_children_category | null;
-  /**
-   * URL to the menu item.
-   */
-  url: string | null;
-  collection: MainMenu_shop_navigation_main_items_children_children_collection | null;
-  page: MainMenu_shop_navigation_main_items_children_children_page | null;
-  parent: MainMenu_shop_navigation_main_items_children_children_parent | null;
-}
-
-export interface MainMenu_shop_navigation_main_items_children {
-  __typename: "MenuItem";
-  /**
-   * The ID of the object.
-   */
-  id: string;
-  name: string;
-  category: MainMenu_shop_navigation_main_items_children_category | null;
-  /**
-   * URL to the menu item.
-   */
-  url: string | null;
-  collection: MainMenu_shop_navigation_main_items_children_collection | null;
-  page: MainMenu_shop_navigation_main_items_children_page | null;
-  parent: MainMenu_shop_navigation_main_items_children_parent | null;
-  children: (MainMenu_shop_navigation_main_items_children_children | null)[] | null;
-}
-
-export interface MainMenu_shop_navigation_main_items {
-  __typename: "MenuItem";
-  /**
-   * The ID of the object.
-   */
-  id: string;
-  name: string;
-  category: MainMenu_shop_navigation_main_items_category | null;
-  /**
-   * URL to the menu item.
-   */
-  url: string | null;
-  collection: MainMenu_shop_navigation_main_items_collection | null;
-  page: MainMenu_shop_navigation_main_items_page | null;
-  parent: MainMenu_shop_navigation_main_items_parent | null;
-  children: (MainMenu_shop_navigation_main_items_children | null)[] | null;
-}
-
-export interface MainMenu_shop_navigation_main {
-  __typename: "Menu";
-  /**
-   * The ID of the object.
-   */
-  id: string;
-  items: (MainMenu_shop_navigation_main_items | null)[] | null;
-}
-
-export interface MainMenu_shop_navigation {
-  __typename: "Navigation";
-  /**
-   * Main navigation bar.
-   */
-  main: MainMenu_shop_navigation_main | null;
-}
-
-export interface MainMenu_shop {
-  __typename: "Shop";
-  /**
-   * Shop's navigation.
-   */
-  navigation: MainMenu_shop_navigation | null;
+export interface MainMenu_dms_displaycategory_connection {
+  __typename: "dms_displaycategoryConnection";
+  edges: MainMenu_dms_displaycategory_connection_edges[];
 }
 
 export interface MainMenu {
   /**
-   * Return information about the shop.
+   * fetch data from the table: "dms_displaycategory"
    */
-  shop: MainMenu_shop;
+  dms_displaycategory_connection: MainMenu_dms_displaycategory_connection;
 }

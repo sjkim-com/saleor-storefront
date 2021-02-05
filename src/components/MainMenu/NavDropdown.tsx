@@ -4,13 +4,15 @@ import classNames from "classnames";
 import * as React from "react";
 
 import { NavLink, OverlayContextInterface } from "..";
-import { MainMenu_shop_navigation_main_items } from "./gqlTypes/MainMenu";
+// import { MainMenu_shop_navigation_main_items } from "./gqlTypes/MainMenu";
+import { SubMenu_dms_displaycategory_connection } from "./gqlTypes/SubMenu";
 import NavItem from "./NavItem";
 
 import "./scss/index.scss";
 
 class NavDropdown extends React.PureComponent<
-  MainMenu_shop_navigation_main_items & {
+  // MainMenu_shop_navigation_main_items & {
+    SubMenu_dms_displaycategory_connection & {
     overlay: OverlayContextInterface;
     showDropdown: boolean;
     onShowDropdown: () => void;
@@ -23,6 +25,7 @@ class NavDropdown extends React.PureComponent<
       showDropdown,
       onShowDropdown,
       onHideDropdown,
+      subMenu,
     } = this.props;
 
     return (
@@ -44,8 +47,11 @@ class NavDropdown extends React.PureComponent<
           })}
         >
           <ul>
-            {children.map((subItem, i) => (
+            {/* {children.map((subItem, i) => (
               <NavItem key={i} hideOverlay={onHideDropdown} {...subItem} />
+            ))} */}
+            {subMenu.map((subItem, i) => (
+              <NavItem key={i} hideOverlay={onHideDropdown} {...subItem.node} />
             ))}
           </ul>
         </li>

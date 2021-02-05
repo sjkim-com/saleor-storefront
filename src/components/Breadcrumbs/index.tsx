@@ -7,7 +7,8 @@ import { commonMessages } from "@temp/intl";
 
 import { baseUrl } from "../../app/routes";
 import { getDBIdFromGraphqlId, slugify } from "../../core/utils";
-import { Category_category } from "../../views/Category/gqlTypes/Category";
+// import { Category_category } from "../../views/Category/gqlTypes/Category";
+import { Category_dms_displaycategory_connection_edges_node } from "../../views/Category/gqlTypes/Category";
 
 import { smallScreen } from "../../globalStyles/scss/variables.scss";
 import "./scss/index.scss";
@@ -17,23 +18,32 @@ export interface Breadcrumb {
   link: string;
 }
 
-export const extractBreadcrumbs = (category: Category_category) => {
+// export const extractBreadcrumbs = (category: Category_category) => {
+export const extractBreadcrumbs = (category: Category_dms_displaycategory_connection_edges_node) => {
   const constructLink = item => ({
-    link: [
-      `/category`,
-      `/${slugify(item.name)}`,
-      `/${getDBIdFromGraphqlId(item.id, "Category")}/`,
-    ].join(""),
+    // link: [
+    //   `/category`,
+    //   `/${slugify(item.name)}`,
+    //   `/${getDBIdFromGraphqlId(item.id, "Category")}/`,
+    // ].join(""),
+    link: [`/category`, `/${item.name}`, `/${item.display_category_id}/`].join(""),
     value: item.name,
   });
 
   let breadcrumbs = [constructLink(category)];
 
-  if (category.ancestors.edges.length) {
-    const ancestorsList = category.ancestors.edges.map(edge =>
-      constructLink(edge.node)
-    );
-    breadcrumbs = ancestorsList.concat(breadcrumbs);
+  // if (category.ancestors.edges.length) {
+  //   const ancestorsList = category.ancestors.edges.map(edge =>
+  //     constructLink(edge.node)
+  //   );
+  //   breadcrumbs = ancestorsList.concat(breadcrumbs);
+  // }
+
+  if (category.dms_displaycategory) {
+    if (category.dms_displaycategory.name !== "navbar") {
+      const ancestorsList = [constructLink(category.dms_displaycategory)];
+      breadcrumbs = ancestorsList.concat(breadcrumbs);
+    }
   }
   return breadcrumbs;
 };

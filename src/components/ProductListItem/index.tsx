@@ -13,9 +13,13 @@ interface ProductListItemProps {
 }
 
 const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
-  const { category } = product;
-  const price = product.pricing?.priceRange?.start;
-  const priceUndiscounted = product.pricing?.priceRangeUndiscounted?.start;
+  // const { category } = product;
+  // const price = product.pricing?.priceRange?.start;
+  // const priceUndiscounted = product.pricing?.priceRangeUndiscounted?.start;
+  const category = product.product_category;
+  const price = product?.product_productvariant;
+  const priceUndiscounted = product?.product_productvariant;
+  
 
   const getProductPrice = () => {
     if (isEqual(price, priceUndiscounted)) {

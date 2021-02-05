@@ -21,12 +21,21 @@ export const ProductList: React.FC<IProps> = ({
     <>
       <S.List data-test="productList" data-test-id={testingContextId}>
         {products.map(product => {
-          const { id, name } = product;
+          // const { id, name } = product;
+          // return (
+          //   id &&
+          //   name && (
+          //     <Link to={generateProductUrl(id, name)} key={id}>
+          //       <ProductTile product={product} />
+          //     </Link>
+          //   )
+          // );
+          const { product_id, name } = product.pms_product;
           return (
-            id &&
+            product_id &&
             name && (
-              <Link to={generateProductUrl(id, name)} key={id}>
-                <ProductTile product={product} />
+              <Link to={generateProductUrl(product_id, name)} key={product_id}>
+                <ProductTile product={product.pms_product} />
               </Link>
             )
           );
