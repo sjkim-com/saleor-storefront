@@ -4,6 +4,9 @@ module.exports = {
     service: {
       name: "saleor",
       url: "https://cmgt-graphql-engine.herokuapp.com/v1beta1/relay",
+      headers: {
+        "x-hasura-admin-secret": "ui21234",
+      },
     },
   },
 };
