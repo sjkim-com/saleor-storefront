@@ -45,23 +45,24 @@
 
 // export const TypedMainMenuQuery = TypedQuery<MainMenu, {}>(mainMenu);
 
-
 import gql from "graphql-tag";
 import { TypedQuery } from "../../core/queries";
 import { MainMenu } from "./gqlTypes/MainMenu";
 import { SubMenu } from "./gqlTypes/SubMenu";
 
 export const mainMenu = gql`
-  query MainMenu {
+  query MainMenu($storeId: String!) {
     dms_displaycategory_connection(
       where: {
         display_yn: { _eq: "Y" }
         upper_display_category_id: { _eq: "navbar" }
+        store_id: { _eq: $storeId }
       }
       order_by: { sort_no: asc }
     ) {
       edges {
         node {
+          id
           name
           upper_display_category_id
           display_yn
@@ -82,6 +83,7 @@ export const mainMenu = gql`
             lang_id
           }
           dms_displaycategories {
+            id
             name
             upper_display_category_id
             display_yn
@@ -96,6 +98,7 @@ export const mainMenu = gql`
             ins_dt
             display_category_id
             dms_displaycategorylangs {
+              id
               name
               note
               display_category_id
@@ -119,6 +122,7 @@ export const subMenu = gql`
     ) {
       edges {
         node {
+          id
           name
           upper_display_category_id
           display_yn
@@ -133,6 +137,7 @@ export const subMenu = gql`
           ins_dt
           display_category_id
           dms_displaycategorylangs {
+            id
             name
             note
             display_category_id

@@ -1,5 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -8,6 +9,7 @@
 
 export interface SubMenu_dms_displaycategory_connection_edges_node_dms_displaycategorylangs {
   __typename: "dms_displaycategorylang";
+  id: string;
   /**
    * 展示カテゴリ名
    */
@@ -25,6 +27,7 @@ export interface SubMenu_dms_displaycategory_connection_edges_node_dms_displayca
 
 export interface SubMenu_dms_displaycategory_connection_edges_node {
   __typename: "dms_displaycategory";
+  id: string;
   /**
    * 展示カテゴリ名
    */

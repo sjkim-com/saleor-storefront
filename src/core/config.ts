@@ -119,3 +119,5 @@ export const CHECKOUT_STEPS = [
     withoutOwnView: true,
   },
 ];
+
+export const CMGT_SITE_ID = "00D2w000003Nwc9EAC";

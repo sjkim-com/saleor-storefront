@@ -9,6 +9,7 @@ import ReactSVG from "react-svg";
 
 import { DemoBanner } from "@components/atoms";
 import classNames from "classnames";
+import { CMGT_SITE_ID } from "@temp/core/config";
 import {
   MenuDropdown,
   Offline,
@@ -85,11 +86,17 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
       {demoMode && <DemoBanner />}
       <nav className="main-menu" id="header">
         <div className="main-menu__left">
-          {/* <TypedMainMenuQuery renderOnError displayLoader={false}> */}
-          <TypedMainMenuQuery>
+          <TypedMainMenuQuery
+            renderOnError
+            displayLoader={false}
+            variables={{ storeId: CMGT_SITE_ID }}
+          >
             {({ data }) => {
               // const items = maybe(() => data.shop.navigation.main.items, []);
-              const items = maybe(() => data.dms_displaycategory_connection.edges, []);
+              const items = maybe(
+                () => data.dms_displaycategory_connection.edges,
+                []
+              );
 
               const itemsMobile = items.map(edge => {
                 return { ...edge.node };
@@ -127,7 +134,8 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                     query={{ minWidth: mediumScreen }}
                     render={() =>
                       items.map(item => {
-                        const hasSubNavigation = !!item?.children?.length;
+                        // const hasSubNavigation = !!item?.dms_displaycategories
+                        //   ?.length;
                         return (
                           <li
                             data-test="mainMenuItem"

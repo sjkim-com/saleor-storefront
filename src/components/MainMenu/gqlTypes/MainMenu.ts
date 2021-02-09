@@ -1,5 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -25,6 +26,7 @@ export interface MainMenu_dms_displaycategory_connection_edges_node_dms_displayc
 
 export interface MainMenu_dms_displaycategory_connection_edges_node_dms_displaycategories_dms_displaycategorylangs {
   __typename: "dms_displaycategorylang";
+  id: string;
   /**
    * 展示カテゴリ名
    */
@@ -42,6 +44,7 @@ export interface MainMenu_dms_displaycategory_connection_edges_node_dms_displayc
 
 export interface MainMenu_dms_displaycategory_connection_edges_node_dms_displaycategories {
   __typename: "dms_displaycategory";
+  id: string;
   /**
    * 展示カテゴリ名
    */
@@ -102,6 +105,7 @@ export interface MainMenu_dms_displaycategory_connection_edges_node_dms_displayc
 
 export interface MainMenu_dms_displaycategory_connection_edges_node {
   __typename: "dms_displaycategory";
+  id: string;
   /**
    * 展示カテゴリ名
    */
@@ -179,4 +183,8 @@ export interface MainMenu {
    * fetch data from the table: "dms_displaycategory"
    */
   dms_displaycategory_connection: MainMenu_dms_displaycategory_connection;
+}
+
+export interface MainMenuVariables {
+  storeId: string;
 }
