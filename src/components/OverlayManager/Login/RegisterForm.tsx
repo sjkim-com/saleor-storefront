@@ -29,7 +29,7 @@ const showSuccessNotification = (
               defaultMessage:
                 "Please check your e-mail for further instructions",
             })
-          : intl.formatMessage({ defaultMessage: "New user has been created" }),
+          : intl.formatMessage({ defaultMessage: "新規会員を登録しました。" }),
       },
       { type: "success", timeout: 5000 }
     );
@@ -76,7 +76,7 @@ const RegisterForm: React.FC<{ hide: () => void }> = ({ hide }) => {
               >
                 {loading
                   ? intl.formatMessage(commonMessages.loading)
-                  : intl.formatMessage({ defaultMessage: "Register" })}
+                  : intl.formatMessage({ defaultMessage: "登録" })}
               </Button>
             </div>
           </Form>
