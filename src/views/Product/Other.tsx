@@ -11,7 +11,7 @@ const OtherProducts: React.FC<{
   <div className="product-page__other-products">
     <div className="container">
       <h4 className="product-page__other-products__title">
-        <FormattedMessage defaultMessage="Other products in this category" />
+        <FormattedMessage defaultMessage="このカテゴリーと同じ商品" />
       </h4>
       <ProductList products={products.map(({ node }) => node)} />
     </div>

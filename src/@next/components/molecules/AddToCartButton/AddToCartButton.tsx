@@ -19,7 +19,7 @@ export const AddToCartButton: React.FC<IAddToCartButton> = ({
       color="primary"
       disabled={disabled}
     >
-      <FormattedMessage defaultMessage="カートに入れる" />
+      <FormattedMessage defaultMessage="バッグに入れる" />
     </Button>
   );
 };

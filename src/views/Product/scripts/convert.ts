@@ -77,6 +77,10 @@ export const createProductDetailsResponse = (
       cmgtProductDetails.pms_product_connection.edges.length > 0
         ? cmgtProductDetails.pms_product_connection.edges[0].node
         : null;
+  const displayCategoryProduct =
+    pmsProduct.dms_displaycategoryproducts_connection.edges.length > 0
+      ? pmsProduct.dms_displaycategoryproducts_connection.edges[0].node.dms_displaycategory
+      : null;
   const pmsSaleProducts =
     cmgtProductDetails.pms_saleproduct_connection.edges;
   const pmsProductImages =
@@ -366,12 +370,12 @@ export const createProductDetailsResponse = (
     __typename: "ProductCountableConnection",
     edges: categoryProductsEdges,
   };
-  
+
   const category:
     ProductDetails_product_category = {
     __typename: "Category",
-    id: "dummy: category id",
-    name: "dummy: category name",
+    id: displayCategoryProduct?.display_category_id,
+    name: displayCategoryProduct?.name,
     products: categoryProducts,
   };
   

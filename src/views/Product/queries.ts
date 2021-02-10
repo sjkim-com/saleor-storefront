@@ -176,7 +176,20 @@ export const CmgtProductDetailsQuery = gql`
           sale_price
           selling_point
           pms_category {
+            category_id
             name
+          }
+          dms_displaycategoryproducts_connection {
+            edges {
+              node {
+                dms_displaycategory {
+                  id
+                  display_category_id
+                  upper_display_category_id
+                  name
+                }
+              }
+            }
           }
         }
       }
@@ -223,6 +236,17 @@ export const CmgtProductDetailsQuery = gql`
           id
           img
           text
+        }
+      }
+    }
+    dms_displaycategory_connection {
+      edges {
+        node {
+          id
+          display_category_id
+          upper_display_category_id
+          display_yn
+          name
         }
       }
     }
