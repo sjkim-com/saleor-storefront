@@ -2,13 +2,16 @@ import { defineMessages, IntlShape } from "react-intl";
 
 export const commonMessages = defineMessages({
   search: {
-    defaultMessage: "search",
+    // defaultMessage: "search",
+    defaultMessage: "検索",
   },
   outOfStock: {
-    defaultMessage: "Out of stock",
+    // defaultMessage: "Out of stock",
+    defaultMessage: "在庫切れ",
   },
   lowStock: {
-    defaultMessage: "Low stock",
+    // defaultMessage: "Low stock",
+    defaultMessage: "残り僅か",
   },
   noItemsAvailable: {
     defaultMessage: "No items available",
@@ -23,71 +26,91 @@ export const commonMessages = defineMessages({
     defaultMessage: "You might like",
   },
   choosePaymentMethod: {
-    defaultMessage: "Please choose payment method.",
+    // defaultMessage: "Please choose payment method.",
+    defaultMessage: "支払い方法を選択してください。",
   },
   provideEmailAddress: {
-    defaultMessage: "Please provide email address.",
+    // defaultMessage: "Please provide email address.",
+    defaultMessage: "メールアドレスを入力してください。",
   },
   account: {
-    defaultMessage: "Account",
+    // defaultMessage: "Account",
+    defaultMessage: "会員",
   },
   myAccount: {
-    defaultMessage: "My Account",
+    // defaultMessage: "My Account",
+    defaultMessage: "会員情報",
   },
   orderHistory: {
-    defaultMessage: "Order history",
+    // defaultMessage: "Order history",
+    defaultMessage: "注文履歴",
   },
   addressBook: {
-    defaultMessage: "Address book",
+    // defaultMessage: "Address book",
+    defaultMessage: "アドレス帳",
   },
   logOut: {
-    defaultMessage: "Log Out",
+    // defaultMessage: "Log Out",
+    defaultMessage: "ログアウト",
   },
   firstName: {
-    defaultMessage: "First Name",
+    // defaultMessage: "First Name",
+    defaultMessage: "名前(名)",
   },
   lastName: {
-    defaultMessage: "Last Name",
+    // defaultMessage: "Last Name",
+    defaultMessage: "苗字(姓)",
   },
   password: {
-    defaultMessage: "Password",
+    // defaultMessage: "Password",
+    defaultMessage: "パスワード",
   },
   quantity: {
-//    defaultMessage: "Quantity",
+    // defaultMessage: "Quantity",
     defaultMessage: "数量",
   },
   sku: {
     defaultMessage: "SKU",
   },
   maxQtyIs: {
-    defaultMessage: "Maximum quantity is {maxQuantity}",
+    // defaultMessage: "Maximum quantity is {maxQuantity}",
+    defaultMessage: "数量の最大値は {maxQuantity} です。",
   },
   qty: {
-    defaultMessage: "Quantity",
+    // defaultMessage: "Quantity",
+    defaultMessage: "数量",
   },
   subtotal: {
-    defaultMessage: "Subtotal",
+    // defaultMessage: "Subtotal",
+    defaultMessage: "小計",
   },
   shipping: {
-    defaultMessage: "Shipping",
+    // defaultMessage: "Shipping",
+    defaultMessage: "配送",
   },
   promoCode: {
-    defaultMessage: "Promo code",
+    // defaultMessage: "Promo code",
+    defaultMessage: "プロモーション コード",
   },
   total: {
-    defaultMessage: "Total",
+    // defaultMessage: "Total",
+    defaultMessage: "合計",
   },
   totalPrice: {
-    defaultMessage: "Total Price",
+    // defaultMessage: "Total Price",
+    defaultMessage: "合計金額",
   },
   checkout: {
-    defaultMessage: "Checkout",
+    // defaultMessage: "Checkout",
+    defaultMessage: "チェックアウト",
   },
   eMail: {
-    defaultMessage: "Email Address",
+    // defaultMessage: "Email Address",
+    defaultMessage: "メールアドレス",
   },
   shortEmail: {
-    defaultMessage: "Email",
+    // defaultMessage: "Email",
+    defaultMessage: "メール",
   },
   loading: {
     defaultMessage: "Loading",
@@ -96,55 +119,70 @@ export const commonMessages = defineMessages({
     defaultMessage: "Products",
   },
   price: {
-    defaultMessage: "Price",
+    // defaultMessage: "Price",
+    defaultMessage: "金額",
   },
   variant: {
     defaultMessage: "Variant",
   },
   phone: {
-    defaultMessage: "Phone",
+    // defaultMessage: "Phone",
+    defaultMessage: "電話",
   },
   phoneNumber: {
-    defaultMessage: "Phone number: {phone}",
+    // defaultMessage: "Phone number: {phone}",
+    defaultMessage: "電話番号 : {phone}",
   },
   showEmail: {
-    defaultMessage: "Email: {email}",
+    // defaultMessage: "Email: {email}",
+    defaultMessage: "メール : {email}",
   },
   save: {
-    defaultMessage: "Save",
+    // defaultMessage: "Save",
+    defaultMessage: "保存",
   },
   add: {
-    defaultMessage: "Add",
+    // defaultMessage: "Add",
+    defaultMessage: "追加",
   },
   filterHeader: {
-    defaultMessage: "FILTERS",
+    // defaultMessage: "FILTERS",
+    defaultMessage: "フィルター",
   },
   clearFilterHeader: {
-    defaultMessage: "CLEAR FILTERS",
+    // defaultMessage: "CLEAR FILTERS",
+    defaultMessage: "フィルターをクリア",
   },
   status: {
-    defaultMessage: "Status",
+    // defaultMessage: "Status",
+    defaultMessage: "ステータス",
   },
   cancel: {
-    defaultMessage: "Cancel",
+    // defaultMessage: "Cancel",
+    defaultMessage: "キャンセル",
   },
   home: {
-    defaultMessage: "Home",
+    // defaultMessage: "Home",
+    defaultMessage: "ホーム",
   },
 });
 
 export const checkoutMessages = defineMessages({
   stepNameAddress: {
-    defaultMessage: "Address",
+    // defaultMessage: "Address",
+    defaultMessage: "住所",
   },
   stepNameShipping: {
-    defaultMessage: "Shipping",
+    // defaultMessage: "Shipping",
+    defaultMessage: "配送",
   },
   stepNamePayment: {
-    defaultMessage: "Payment",
+    // defaultMessage: "Payment",
+    defaultMessage: "支払い",
   },
   stepNameReview: {
-    defaultMessage: "Review",
+    // defaultMessage: "Review",
+    defaultMessage: "レビュー",
   },
   addressNextActionName: {
     defaultMessage: "Continue to Shipping",
@@ -162,19 +200,24 @@ export const checkoutMessages = defineMessages({
     defaultMessage: "Add new address",
   },
   shippingMethod: {
-    defaultMessage: "SHIPPING METHOD",
+    // defaultMessage: "SHIPPING METHOD",
+    defaultMessage: "配送方法",
   },
   billingAddress: {
-    defaultMessage: "BILLING ADDRESS",
+    // defaultMessage: "BILLING ADDRESS",
+    defaultMessage: "請求先住所",
   },
   paymentMethod: {
-    defaultMessage: "PAYMENT METHOD",
+    // defaultMessage: "PAYMENT METHOD",
+    defaultMessage: "支払い方法",
   },
   reviewOrder: {
-    defaultMessage: "REVIEW ORDER",
+    // defaultMessage: "REVIEW ORDER",
+    defaultMessage: "注文確認",
   },
   shippingAddress: {
-    defaultMessage: "Shipping Address",
+    // defaultMessage: "Shipping Address",
+    defaultMessage: "配送先住所",
   },
   continueShopping: {
     defaultMessage: "CONTINUE SHOPPING",
@@ -183,25 +226,32 @@ export const checkoutMessages = defineMessages({
 
 export const prodListHeaderCommonMsg = defineMessages({
   sortOptionsClear: {
-    defaultMessage: "Clear...",
+    // defaultMessage: "Clear...",
+    defaultMessage: "指定しない",
   },
   sortOptionsPrice: {
-    defaultMessage: "Price Low-High",
+    // defaultMessage: "Price Low-High",
+    defaultMessage: "価格 : 安い",
   },
   sortOptionsPriceDsc: {
-    defaultMessage: "Price High-Low",
+    // defaultMessage: "Price High-Low",
+    defaultMessage: "価格 : 高い",
   },
   sortOptionsName: {
-    defaultMessage: "Name Increasing",
+    // defaultMessage: "Name Increasing",
+    defaultMessage: "商品名 : 昇順",
   },
   sortOptionsNameDsc: {
-    defaultMessage: "Name Decreasing",
+    // defaultMessage: "Name Decreasing",
+    defaultMessage: "商品名 : 降順",
   },
   sortOptionsUpdatedAt: {
-    defaultMessage: "Last updated Ascending",
+    // defaultMessage: "Last updated Ascending",
+    defaultMessage: "最終更新日 : 昇順",
   },
   sortOptionsUpdatedAtDsc: {
-    defaultMessage: "Last updated Descending",
+    // defaultMessage: "Last updated Descending",
+    defaultMessage: "最終更新日 : 降順",
   },
 });
 
