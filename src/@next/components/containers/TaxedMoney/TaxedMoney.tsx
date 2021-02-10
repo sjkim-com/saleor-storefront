@@ -3,7 +3,7 @@ import React from "react";
 import { Money } from "../Money";
 import { IProps } from "./types";
 
-import { ShopContext } from "../../../../components/ShopProvider/context";
+// import { ShopContext } from "../../../../components/ShopProvider/context";
 
 export const TaxedMoney: React.FC<IProps> = ({
   taxedMoney,
@@ -16,8 +16,18 @@ export const TaxedMoney: React.FC<IProps> = ({
   //     ? taxedMoney.gross
   //     : taxedMoney.net
   //   : undefined;
-  const money = taxedMoney;
-  return <Money {...props} money={money} defaultValue={defaultValue} />;
+
+  // true : 税込み価格、false : 税抜き価格
+  const isGross = false;
+
+  return (
+    <Money
+      {...props}
+      isGross={isGross}
+      money={taxedMoney}
+      defaultValue={defaultValue}
+    />
+  );
 };
 
 TaxedMoney.displayName = "TaxedMoney";

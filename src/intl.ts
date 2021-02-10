@@ -53,7 +53,8 @@ export const commonMessages = defineMessages({
     defaultMessage: "Password",
   },
   quantity: {
-    defaultMessage: "Quantity",
+//    defaultMessage: "Quantity",
+    defaultMessage: "数量",
   },
   sku: {
     defaultMessage: "SKU",

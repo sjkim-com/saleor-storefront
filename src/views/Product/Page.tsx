@@ -57,6 +57,10 @@ const Page: React.FC<
   };
 
   const handleAddToCart = (variantId, quantity) => {
+    console.log("<Product : Page.tsx> handleAddToCart");
+    console.log(`variantId : '${variantId}'`);
+    console.log(`quantity : '${quantity}'`);
+
     add(variantId, quantity);
     overlayContext.show(OverlayType.cart, OverlayTheme.right);
   };

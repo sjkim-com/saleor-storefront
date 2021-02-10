@@ -1,9 +1,9 @@
 import * as React from "react";
-import { ICheckoutModelLine } from "@saleor/sdk/helpers";
+import { ICheckoutModelLine } from "@saleor/sdk/lib/helpers";
 import {
   ProductDetails_product_variants_pricing,
   ProductDetails_product_pricing,
-} from "@saleor/sdk/queries/gqlTypes/ProductDetails";
+} from "@saleor/sdk/lib/queries/gqlTypes/ProductDetails";
 import { isEqual } from "lodash";
 import { TaxedMoney } from "../../containers";
 
@@ -21,6 +21,7 @@ export const getProductPrice = (
     if (isEqual(variantPricing.priceUndiscounted, variantPricing.price)) {
       return <TaxedMoney taxedMoney={variantPricing.price} />;
     }
+
     return (
       <>
         <S.UndiscountedPrice>
@@ -40,6 +41,7 @@ export const getProductPrice = (
   if (isEqual(start, stop)) {
     return <TaxedMoney taxedMoney={start} />;
   }
+
   return (
     <>
       <TaxedMoney taxedMoney={start} /> - <TaxedMoney taxedMoney={stop} />

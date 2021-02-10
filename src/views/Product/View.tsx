@@ -1,7 +1,7 @@
 import "./scss/index.scss";
 
 import { useCart } from "@saleor/sdk";
-import { isEmpty } from "lodash";
+import { isEmpty, isInteger } from "lodash";
 import queryString from "query-string";
 import React, { useEffect, useState } from "react";
 import { RouteComponentProps } from "react-router";
@@ -16,13 +16,18 @@ import Page from "./Page";
 import { TypedProductDetailsQuery } from "./queries";
 import { IProps } from "./types";
 
+import { createProductDetailsResponse } from "./scripts/convert";
+
 const canDisplay = (product: ProductDetails_product) =>
   maybe(
     () =>
+      /*
       !!product.descriptionJson &&
       !!product.name &&
       !!product.pricing &&
       !!product.variants
+      */
+      !!product.name
   );
 const extractMeta = (product: ProductDetails_product) => ({
   custom: [
@@ -35,7 +40,7 @@ const extractMeta = (product: ProductDetails_product) => ({
       property: "product:price:currency",
     },
     {
-      content: product.isAvailable ? "in stock" : "out off stock",
+      content: product.isAvailable ? "在庫あり" : "在庫なし",
       property: "product:isAvailable",
     },
     {
@@ -111,11 +116,17 @@ const PageWithQueryAttributes: React.FC<IProps> = props => {
 const View: React.FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
   const { addItem, items } = useCart();
 
+  console.log("<Product : View.tsx>");
+  console.log("----- match -----");
+  console.log(JSON.stringify(match));
+
   return (
     <TypedProductDetailsQuery
       loaderFull
       variables={{
-        id: getGraphqlIdFromDBId(match.params.id, "Product"),
+        // id: getGraphqlIdFromDBId(match.params.id, "Product"),
+        storeId: "00D2w000003Nwc9EAC",
+        productId: match.params.id,
       }}
       errorPolicy="all"
       key={match.params.id}
@@ -123,7 +134,8 @@ const View: React.FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
       {({ data, loading }) => (
         <NetworkStatus>
           {isOnline => {
-            const { product } = data;
+            // const { product } = data;
+            const product = createProductDetailsResponse(data);
             if (canDisplay(product)) {
               return (
                 <MetaWrapper meta={extractMeta(product)}>
@@ -147,6 +159,8 @@ const View: React.FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
             if (!isOnline) {
               return <OfflinePlaceholder />;
             }
+
+            return <NotFound />;
           }}
         </NetworkStatus>
       )}

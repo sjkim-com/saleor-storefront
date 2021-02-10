@@ -1,11 +1,14 @@
+/* eslint-disable prettier/prettier */
+
 import gql from "graphql-tag";
+
 import { TypedQuery } from "../../core/queries";
 import {
-  ProductDetails,
-  ProductDetailsVariables,
-} from "./gqlTypes/ProductDetails";
-import { VariantList, VariantListVariables } from "./gqlTypes/VariantList";
+  CmgtProductDetails,
+  CmgtProductDetailsVariables,
+} from "./gqlTypes/CmgtProductDetails";
 
+// <----- 削除予定
 export const priceFragment = gql`
   fragment Price on TaxedMoney {
     gross {
@@ -109,60 +112,117 @@ export const productVariantFragment = gql`
 `;
 
 export const productDetailsQuery = gql`
-  ${basicProductFragment}
-  ${selectedAttributeFragment}
-  ${productVariantFragment}
-  ${productPricingFragment}
-  query ProductDetails($id: ID!, $countryCode: CountryCode) {
-    product(id: $id) {
-      ...BasicProductFields
-      ...ProductPricingField
-      descriptionJson
-      category {
+  query ProductDetails($id: Int!) {
+    product_product(where: {id: {_eq: $id}}) {
+      id
+      name
+      is_published
+      available_for_purchase
+      description_json
+      product_category {
         id
         name
-        products(first: 3) {
-          edges {
-            node {
-              ...BasicProductFields
-              ...ProductPricingField
+      }
+      product_producttype {
+        id
+        name
+      }
+      product_productimages {
+        id
+        alt
+        image
+      }
+      product_productvariants {
+        product_assignedvariantattributes {
+          product_attributevariant {
+            product_attribute {
+              id
+              name
+            }
+          }
+          id
+          product_productvariant {
+            id
+            name
+            price_amount
+            currency
+          }
+        }
+      }
+    }
+  }
+`;
+// -----> 削除予定
+
+export const CmgtProductDetailsQuery = gql`
+  query CmgtProductDetails(
+    $storeId: String,
+    $productId: String
+  ) {
+    pms_product_connection(
+      where: {
+        product_id: { _eq: $productId },
+        store_id: { _eq: $storeId },
+        use_yn: { _eq: "Y" }
+      }
+    ) {
+      edges {
+        node {
+          id
+          store_id
+          product_id
+          category_id
+          name
+          sale_price
+          selling_point
+          pms_category {
+            name
+          }
+        }
+      }
+    }
+    pms_saleproduct_connection(
+      where: {
+        product_id: { _eq: $productId },
+        store_id: { _eq: $storeId }
+      },
+      order_by: { saleproduct_id: asc }
+    ) {
+      edges {
+        node {
+          id
+          store_id
+          product_id
+          saleproduct_id
+          name
+          safe_stock_qty
+          stock_qty
+          saleproduct_state_cd
+          pms_warehousestocks_connection {
+            edges {
+              node {
+                id
+                location_id
+                safe_stock_qty
+                stock_qty
+                warehouse_id
+              }
             }
           }
         }
       }
-      images {
-        id
-        alt
-        url
-      }
-      attributes {
-        ...SelectedAttributeFields
-      }
-      variants {
-        ...ProductVariantFields
-      }
-      seoDescription
-      seoTitle
-      isAvailable
-      isAvailableForPurchase
-      availableForPurchase
     }
-  }
-`;
-
-// FIXME: Check how to handle pagination of `productVariants` in the UI.
-// We need allow the user view  all cart items regardless of pagination.
-export const productVariantsQuery = gql`
-  ${basicProductFragment}
-  ${productVariantFragment}
-  query VariantList($ids: [ID!], $countryCode: CountryCode) {
-    productVariants(ids: $ids, first: 100) {
+    pms_productimg_connection(
+      where: {
+        product_id: { _eq: $productId },
+        use_yn: { _eq: "Y" }
+      }
+    ) {
       edges {
         node {
-          ...ProductVariantFields
-          product {
-            ...BasicProductFields
-          }
+          id
+          img
+          text
         }
       }
     }
@@ -170,11 +230,6 @@ export const productVariantsQuery = gql`
 `;
 
 export const TypedProductDetailsQuery = TypedQuery<
-  ProductDetails,
-  ProductDetailsVariables
->(productDetailsQuery);
-
-export const TypedProductVariantsQuery = TypedQuery<
-  VariantList,
-  VariantListVariables
->(productVariantsQuery);
+  CmgtProductDetails,
+  CmgtProductDetailsVariables
+>(CmgtProductDetailsQuery);
