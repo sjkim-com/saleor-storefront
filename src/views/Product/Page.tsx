@@ -12,7 +12,10 @@ import {
   OverlayTheme,
   OverlayType,
 } from "../../components";
-import { generateCategoryUrl, generateProductUrl } from "../../core/utils";
+import {
+  cmgtGenerateCategoryUrl,
+  cmgtGenerateProductUrl,
+} from "../../core/utils";
 import GalleryCarousel from "./GalleryCarousel";
 import OtherProducts from "./Other";
 
@@ -21,11 +24,11 @@ import { IProps } from "./types";
 
 const populateBreadcrumbs = product => [
   {
-    link: generateCategoryUrl(product.category.id, product.category.name),
+    link: cmgtGenerateCategoryUrl(product.category.id, product.category.name),
     value: product.category.name,
   },
   {
-    link: generateProductUrl(product.id, product.name),
+    link: cmgtGenerateProductUrl(product.id, product.name),
     value: product.name,
   },
 ];

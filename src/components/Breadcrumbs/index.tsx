@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { commonMessages } from "@temp/intl";
 
 import { baseUrl } from "../../app/routes";
-import { getDBIdFromGraphqlId, slugify } from "../../core/utils";
+import { cmgtGetDBIdFromGraphqlId, slugify } from "../../core/utils";
 // import { Category_category } from "../../views/Category/gqlTypes/Category";
 import { Category_dms_displaycategory_connection_edges_node } from "../../views/Category/gqlTypes/Category";
 
@@ -19,14 +19,15 @@ export interface Breadcrumb {
 }
 
 // export const extractBreadcrumbs = (category: Category_category) => {
-export const extractBreadcrumbs = (category: Category_dms_displaycategory_connection_edges_node) => {
+export const extractBreadcrumbs = (
+  category: Category_dms_displaycategory_connection_edges_node
+) => {
   const constructLink = item => ({
-    // link: [
-    //   `/category`,
-    //   `/${slugify(item.name)}`,
-    //   `/${getDBIdFromGraphqlId(item.id, "Category")}/`,
-    // ].join(""),
-    link: [`/category`, `/${item.name}`, `/${item.display_category_id}/`].join(""),
+    link: [
+      `/category`,
+      `/${slugify(item.name)}`,
+      `/${cmgtGetDBIdFromGraphqlId(item.id, "dms_displaycategory")}/`,
+    ].join(""),
     value: item.name,
   });
 

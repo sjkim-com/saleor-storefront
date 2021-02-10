@@ -4,11 +4,12 @@ import ReactSVG from "react-svg";
 
 import { NavLink } from "..";
 // import { MainMenuSubItem } from "../MainMenu/gqlTypes/MainMenuSubItem";
-import { MainMenu_menu_menu_menu_menuitems_aggregate_nodes } from "../MainMenu/gqlTypes/MainMenu";
+import { MainMenu_dms_displaycategory_connection_edges_node } from "../MainMenu/gqlTypes/MainMenu";
 import subcategoriesImg from "../../images/subcategories.svg";
 
 // export interface INavItem extends MainMenuSubItem {
-  export interface INavItem extends MainMenu_menu_menu_menu_menuitems_aggregate_nodes {
+export interface INavItem
+  extends MainMenu_dms_displaycategory_connection_edges_node {
   children?: INavItem[];
 }
 
@@ -23,7 +24,8 @@ const NavItem: React.FC<NavItemProps> = ({
   ...item
 }) => {
   // const hasSubNavigation = item.children && !!item.children.length;
-  const hasSubNavigation = item.dms_displaycategories && !!item.dms_displaycategories.length;
+  const hasSubNavigation =
+    item.dms_displaycategories && !!item.dms_displaycategories.length;
 
   return (
     <li

@@ -27,7 +27,7 @@ const Page: React.FC<{
   // backgroundImage: ProductsList_shop_homepageCollection_backgroundImage;
   shop: ProductsList_site_sitesettings_connection_edges_node;
   // shop: ProductsList_shop;
-// }> = ({ loading, categories, backgroundImage, shop }) => {
+  // }> = ({ loading, categories, backgroundImage, shop }) => {
 }> = ({ loading, categories, shop }) => {
   const categoriesExist = () => {
     return categories && categories.edges && categories.edges.length > 0;
@@ -35,7 +35,6 @@ const Page: React.FC<{
   const intl = useIntl();
   const collection = shop?.product_collection;
 
-  console.log(collection)
   return (
     <>
       <script className="structured-data-list" type="application/ld+json">

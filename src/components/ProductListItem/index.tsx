@@ -9,10 +9,10 @@ import { IMoney, ITaxedMoney } from "@types";
 
 import { TaxedMoney } from "../../@next/components/containers";
 
-import { FeaturedProducts_shop_homepageCollection_products_edges_node } from "../ProductsFeatured/gqlTypes/FeaturedProducts";
+import { FeaturedProducts_site_sitesettings_connection_edges_node_product_collection_product_collectionproducts_product_product } from "../ProductsFeatured/gqlTypes/FeaturedProducts";
 
 interface ProductListItemProps {
-  product: FeaturedProducts_shop_homepageCollection_products_edges_node;
+  product: FeaturedProducts_site_sitesettings_connection_edges_node_product_collection_product_collectionproducts_product_product;
 }
 
 const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {

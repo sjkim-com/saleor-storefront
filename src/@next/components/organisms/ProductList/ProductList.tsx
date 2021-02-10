@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Button, Loader } from "@components/atoms";
 import { ProductTile } from "@components/molecules";
 
-import { generateProductUrl } from "../../../../core/utils";
+import { cmgtGenerateProductUrl } from "../../../../core/utils";
 
 import * as S from "./styles";
 import { IProps } from "./types";
@@ -30,11 +30,12 @@ export const ProductList: React.FC<IProps> = ({
           //     </Link>
           //   )
           // );
-          const { product_id, name } = product.pms_product;
+          const { id, product_id, name } = product.pms_product;
           return (
+            id &&
             product_id &&
             name && (
-              <Link to={generateProductUrl(product_id, name)} key={product_id}>
+              <Link to={cmgtGenerateProductUrl(id, name)} key={product_id}>
                 <ProductTile product={product.pms_product} />
               </Link>
             )

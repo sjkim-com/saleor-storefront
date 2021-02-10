@@ -123,6 +123,7 @@ export const categoryProductsDataQuery = gql`
     ) {
       edges {
         node {
+          id
           display_category_id
           name
           dms_displaycategoryproducts_aggregate {
@@ -164,6 +165,7 @@ export const categoryProductsDataQuery = gql`
             }
           }
           dms_displaycategory {
+            id
             display_category_id
             name
             dms_displaycategoryproducts_aggregate {

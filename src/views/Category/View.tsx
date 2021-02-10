@@ -193,7 +193,10 @@ export const View: React.FC<ViewProps> = ({ match }) => {
             }
 
             // if (categoryData.data && categoryData.data.category === null) {
-            if (categoryData.data && categoryData.data.dms_displaycategory_connection.edges.length < 0) {
+            if (
+              categoryData.data &&
+              categoryData.data.dms_displaycategory_connection.edges.length < 0
+            ) {
               return <NotFound />;
             }
 
@@ -248,7 +251,6 @@ export const View: React.FC<ViewProps> = ({ match }) => {
             });
 
             attributes.edges = uniqBy(attributes.edges, "attribute_id");
-    
 
             // return (
             //   <TypedCategoryProductsQuery variables={variables}>

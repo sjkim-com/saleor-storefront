@@ -1,5 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -280,6 +281,7 @@ export interface Category_dms_displaycategory_connection_edges_node_dms_displayc
 
 export interface Category_dms_displaycategory_connection_edges_node_dms_displaycategory {
   __typename: "dms_displaycategory";
+  id: string;
   /**
    * 展示会カテゴリーID
    */
@@ -448,6 +450,7 @@ export interface Category_dms_displaycategory_connection_edges_node_dms_displayc
 
 export interface Category_dms_displaycategory_connection_edges_node {
   __typename: "dms_displaycategory";
+  id: string;
   /**
    * 展示会カテゴリーID
    */

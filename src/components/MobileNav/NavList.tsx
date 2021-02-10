@@ -29,7 +29,7 @@ class NavList extends React.PureComponent<NavListProps, NavListState> {
   };
 
   handleShowSubItems = (item: INavItem) => {
-    this.setState({ parent: item, displayedItems: item.children });
+    this.setState({ parent: item, displayedItems: item.dms_displaycategories });
   };
 
   handleGoBack = () => {

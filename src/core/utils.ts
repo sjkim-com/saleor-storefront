@@ -39,7 +39,6 @@ export const getDBIdFromGraphqlId = (
   //   throw new Error("Schema is not correct");
   // }
   // return parseInt(arr![2], 10);
-
   if (isBase64(graphqlId)) {
     let rawId = Base64.decode(graphqlId);
     rawId = rawId.replace(/[\[\]\"]/gi, "");
@@ -51,6 +50,22 @@ export const getDBIdFromGraphqlId = (
   }
 
   return parseInt(graphqlId, 10);
+};
+
+export const cmgtGetDBIdFromGraphqlId = (
+  graphqlId: string,
+  schema?: string
+): string => {
+  if (isBase64(graphqlId)) {
+    let rawId = Base64.decode(graphqlId);
+    rawId = rawId.replace(/[\[\]\"]/gi, "");
+    const arr = rawId.split(", ");
+    if (schema && schema !== arr![2]) {
+      throw new Error("Schema is not correct");
+    }
+    return arr![3];
+  }
+  return graphqlId;
 };
 
 export const getGraphqlIdFromDBId = (id: string, schema: string): string =>
@@ -70,6 +85,12 @@ export const priceToString = (
   }
   return `${price.currency} ${amount.toFixed(2)}`;
 };
+
+export const cmgtGenerateProductUrl = (id: string, name: string) =>
+  `/product/${name}/${cmgtGetDBIdFromGraphqlId(id, "pms_product")}/`;
+
+export const cmgtGenerateCategoryUrl = (id: string, name: string) =>
+  `/category/${name}/${cmgtGetDBIdFromGraphqlId(id, "dms_displaycategory")}/`;
 
 export const generateProductUrl = (id: string, name: string) =>
   // `/product/${slugify(name)}/${getDBIdFromGraphqlId(id, "Product")}/`;
