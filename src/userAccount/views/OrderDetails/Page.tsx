@@ -8,10 +8,10 @@ import {
   translatePaymentStatus,
   translateOrderStatus,
 } from "@temp/intl";
-import { OrderDetail_lines } from "@saleor/sdk/fragments/gqlTypes/OrderDetail";
+import { OrderDetail_lines } from "@saleor/sdk/lib/fragments/gqlTypes/OrderDetail";
 import { DropdownMenu, IconButton } from "@components/atoms";
-import { OrderByToken_orderByToken } from "@saleor/sdk/queries/gqlTypes/OrderByToken";
-import { UserOrderByToken_orderByToken } from "@saleor/sdk/queries/gqlTypes/UserOrderByToken";
+import { OrderByToken_orderByToken } from "@saleor/sdk/lib/queries/gqlTypes/OrderByToken";
+import { UserOrderByToken_orderByToken } from "@saleor/sdk/lib/queries/gqlTypes/UserOrderByToken";
 
 import { AddressSummary, CartTable, NotFound } from "../../../components";
 import { ILine } from "../../../components/CartTable/ProductRow";
