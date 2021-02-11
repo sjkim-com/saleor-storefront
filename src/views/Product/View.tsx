@@ -114,7 +114,7 @@ const PageWithQueryAttributes: React.FC<IProps> = props => {
 };
 
 const View: React.FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
-  const { addItem, items } = useCart();
+  const { cmgtAddItem, items } = useCart();
 
   console.log("<Product : View.tsx>");
   console.log("----- match -----");
@@ -141,7 +141,7 @@ const View: React.FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
                 <MetaWrapper meta={extractMeta(product)}>
                   <PageWithQueryAttributes
                     product={product}
-                    add={addItem}
+                    add={cmgtAddItem}
                     items={items}
                   />
                 </MetaWrapper>

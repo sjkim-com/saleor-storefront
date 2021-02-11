@@ -1,4 +1,4 @@
-import { ICheckoutModelLine } from "@saleor/sdk/helpers";
+import { ICheckoutModelLine } from "@saleor/sdk/lib/helpers";
 import * as React from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
@@ -7,7 +7,7 @@ import ReactSVG from "react-svg";
 import { TaxedMoney } from "@components/containers";
 import { Thumbnail } from "@components/molecules";
 
-import { generateProductUrl } from "../../../core/utils";
+import { cmgtGenerateProductUrl } from "../../../core/utils";
 import removeImg from "../../../images/garbage.svg";
 
 const ProductList: React.SFC<{
@@ -16,7 +16,7 @@ const ProductList: React.SFC<{
 }> = ({ lines, remove }) => (
   <ul className="cart__list">
     {lines.map((line, index) => {
-      const productUrl = generateProductUrl(
+      const productUrl = cmgtGenerateProductUrl(
         line.variant.product.id,
         line.variant.product.name
       );
