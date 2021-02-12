@@ -15,7 +15,7 @@
     "string": "ダッシュボード"
   },
   "@next_dot_components_dot_atoms_dot_DropdownSelect_dot_DropdownSelect_dot_3280510613": {
-    "string": "Sort by:"
+    "string": "並び替え :"
   },
   "@next_dot_components_dot_molecules_dot_AccountMenuMobile_dot_AccountMenuMobile_dot_2132071990": {
     "string": "Go to"
@@ -27,40 +27,40 @@
     "string": "MY DATA"
   },
   "@next_dot_components_dot_molecules_dot_AccountTabTiles_dot_PasswordChangeForm_dot_1254879564": {
-    "string": "New Password"
+    "string": "新しいパスワード"
   },
   "@next_dot_components_dot_molecules_dot_AccountTabTiles_dot_PasswordChangeForm_dot_2218114941": {
-    "string": "Old Password"
+    "string": "古いパスワード"
   },
   "@next_dot_components_dot_molecules_dot_AccountTabTiles_dot_PasswordChangeForm_dot_2369435044": {
-    "string": "Required field"
+    "string": "必須入力"
   },
   "@next_dot_components_dot_molecules_dot_AccountTabTiles_dot_PasswordChangeForm_dot_2799926859": {
-    "string": "Confirm Password"
+    "string": "パスワードを確定"
   },
   "@next_dot_components_dot_molecules_dot_AccountTabTiles_dot_PasswordChangeForm_dot_4253911811": {
-    "string": "Passwords do not match"
+    "string": "パスワードが一致しません"
   },
   "@next_dot_components_dot_molecules_dot_AccountTabTiles_dot_PasswordTile_dot_3445609170": {
     "string": "MY PASSWORD"
   },
   "@next_dot_components_dot_molecules_dot_AddToCartButton_dot_AddToCartButton_dot_81047562": {
-    "string": "Add to basket"
+    "string": "バッグに入れる"
   },
   "@next_dot_components_dot_molecules_dot_AddressTile_dot_AddressTile_dot_1224809208": {
-    "string": "Default Address"
+    "string": "デフォルトの住所"
   },
   "@next_dot_components_dot_molecules_dot_AddressTile_dot_AddressTile_dot_1578192486": {
-    "string": "Default Billing Address"
+    "string": "デフォルトの請求先住所"
   },
   "@next_dot_components_dot_molecules_dot_AddressTile_dot_AddressTile_dot_2131178753": {
-    "string": "Set as default shipping address"
+    "string": "デフォルトのお届け先住所を設定"
   },
   "@next_dot_components_dot_molecules_dot_AddressTile_dot_AddressTile_dot_3096438859": {
-    "string": "Set as default billing address"
+    "string": "デフォルトの請求先住所を設定"
   },
   "@next_dot_components_dot_molecules_dot_AddressTile_dot_AddressTile_dot_4109348993": {
-    "string": "Default Shipping Address"
+    "string": "デフォルトのお届け先住所"
   },
   "@next_dot_components_dot_molecules_dot_AttributeValuesChecklist_dot_AttributeValuesChecklist_dot_2029012727": {
     "string": "VIEW ALL OPTIONS"
@@ -69,7 +69,7 @@
     "string": "値"
   },
   "@next_dot_components_dot_molecules_dot_OrderTabel_dot_OrderTabel_dot_1633831221": {
-    "string": "Date of Order"
+    "string": "注文日"
   },
   "@next_dot_components_dot_molecules_dot_OrderTabel_dot_OrderTabel_dot_2387666633": {
     "string": "Index Number"
@@ -78,49 +78,49 @@
     "string": "Products Ordered"
   },
   "@next_dot_components_dot_molecules_dot_ProductDescription_dot_ProductDescription_dot_2623707255": {
-    "string": "DESCRIPTION"
+    "string": "商品詳細"
   },
   "@next_dot_components_dot_molecules_dot_ProductDescription_dot_ProductDescription_dot_308156425": {
-    "string": "ATTRIBUTES"
+    "string": "商品属性"
   },
   "@next_dot_components_dot_molecules_dot_ProductListHeader_dot_ProductListHeader_dot_3317426832": {
-    "string": "Products found:"
+    "string": "検索結果 : "
   },
   "@next_dot_components_dot_molecules_dot_ResetPasswordForm_dot_ResetPasswordForm_dot_1865992141": {
-    "string": "Please provide new password"
+    "string": "新しいパスワードを登録してください"
   },
   "@next_dot_components_dot_molecules_dot_ResetPasswordForm_dot_ResetPasswordForm_dot_2266763214": {
-    "string": "Retype password"
+    "string": "パスワードをリセット"
   },
   "@next_dot_components_dot_molecules_dot_ResetPasswordForm_dot_ResetPasswordForm_dot_2746979176": {
     "string": "It seems that token for password reset is not valid anymore."
   },
   "@next_dot_components_dot_molecules_dot_ResetPasswordForm_dot_ResetPasswordForm_dot_3951836694": {
-    "string": "SET NEW PASSWORD"
+    "string": "新しいパスワードを設定"
   },
   "@next_dot_components_dot_molecules_dot_ResetPasswordForm_dot_ResetPasswordForm_dot_4028609483": {
-    "string": "Reset your password"
+    "string": "パスワードをリセット"
   },
   "@next_dot_components_dot_organisms_dot_AddressForm_dot_AddressFormContent_dot_1139500589": {
     "string": "国"
   },
   "@next_dot_components_dot_organisms_dot_AddressForm_dot_AddressFormContent_dot_1363074570": {
-    "string": "Address line 1"
+    "string": "住所 1"
   },
   "@next_dot_components_dot_organisms_dot_AddressForm_dot_AddressFormContent_dot_253031977": {
     "string": "区市町村"
   },
   "@next_dot_components_dot_organisms_dot_AddressForm_dot_AddressFormContent_dot_2796540622": {
-    "string": "ZIP/Postal Code"
+    "string": "郵便番号"
   },
   "@next_dot_components_dot_organisms_dot_AddressForm_dot_AddressFormContent_dot_2950411968": {
-    "string": "Company Name (Optional)"
+    "string": "会社名 (オプション)"
   },
   "@next_dot_components_dot_organisms_dot_AddressForm_dot_AddressFormContent_dot_3121963259": {
-    "string": "Address line 2"
+    "string": "住所 2"
   },
   "@next_dot_components_dot_organisms_dot_AddressForm_dot_AddressFormContent_dot_404705399": {
-    "string": "State/province"
+    "string": "都道府県"
   },
   "@next_dot_components_dot_organisms_dot_AddressGridSelector_dot_AddressGridSelector_dot_2132027491": {
     "string": "住所"
@@ -171,16 +171,16 @@
     "string": "Do you have a gift card voucher or discount code?"
   },
   "@next_dot_components_dot_organisms_dot_CheckoutReview_dot_CheckoutReview_dot_348821000": {
-    "string": "Payment Method"
+    "string": "支払い方法"
   },
   "@next_dot_components_dot_organisms_dot_CheckoutReview_dot_CheckoutReview_dot_3577164776": {
-    "string": "Shipping Method"
+    "string": "配送方法"
   },
   "@next_dot_components_dot_organisms_dot_CheckoutReview_dot_CheckoutReview_dot_4282475982": {
-    "string": "Billing Address"
+    "string": "請求先住所"
   },
   "@next_dot_components_dot_organisms_dot_DiscountForm_dot_DiscountForm_dot_3476123": {
-    "string": "Apply"
+    "string": "適用"
   },
   "@next_dot_components_dot_organisms_dot_ProductList_dot_ProductList_dot_2783099424": {
     "string": "More +"
@@ -201,7 +201,7 @@
     "string": "We’ve emailed you an order confirmation, and we’ll notify you when the order has been shipped."
   },
   "@next_dot_components_dot_organisms_dot_ThankYou_dot_ThankYou_dot_3752098833": {
-    "string": "ORDER DETAILS"
+    "string": "注文詳細"
   },
   "@next_dot_components_dot_templates_dot_CartEmpty_dot_CartEmpty_dot_2488840083": {
     "string": "looks empty"
@@ -210,13 +210,13 @@
     "string": "Maybe you haven’t made your choices yet"
   },
   "@next_dot_components_dot_templates_dot_CartEmpty_dot_CartEmpty_dot_3578601618": {
-    "string": "カート"
+    "string": "バッグ"
   },
   "@next_dot_pages_dot_CartPage_dot_CartPage_dot_1304869656": {
     "string": "PROCEED TO CHECKOUT"
   },
   "@next_dot_pages_dot_CartPage_dot_CartPage_dot_3173718889": {
-    "string": "My Cart"
+    "string": "マイ バッグ"
   },
   "@next_dot_pages_dot_CheckoutPage_dot_subpages_dot_CheckoutAddressSubpage_dot_2558335134": {
     "string": "Please provide billing address."
@@ -237,19 +237,19 @@
     "string": "Refresh"
   },
   "app_dot_Notifications_dot_1917823234": {
-    "string": "You are now logged in"
+    "string": "ログインしました"
   },
   "app_dot_Notifications_dot_2378877294": {
-    "string": "You are now logged out"
+    "string": "ログアウトしました"
   },
   "app_dot_Notifications_dot_795565": {
     "string": "New version is available!"
   },
   "components_dot_Breadcrumbs_dot_index_dot_1347475195": {
-    "string": "Back"
+    "string": "戻る"
   },
   "components_dot_CartTable_dot_Table_dot_1603950169": {
-    "string": "Delivery Cost"
+    "string": "送料"
   },
   "components_dot_CartTable_dot_Table_dot_2179891060": {
     "string": "Total Cost"
@@ -258,10 +258,10 @@
     "string": "Discount: {discountName}"
   },
   "components_dot_CheckoutLogin_dot_CheckoutAsGuest_dot_1006283488": {
-    "string": "Continue as a guest"
+    "string": "ゲストで続ける"
   },
   "components_dot_CheckoutLogin_dot_CheckoutAsGuest_dot_2132450234": {
-    "string": "create an account"
+    "string": "新規会員の登録"
   },
   "components_dot_CheckoutLogin_dot_CheckoutAsGuest_dot_3896074202": {
     "string": "or you can"
@@ -273,13 +273,13 @@
     "string": "Registered user"
   },
   "components_dot_LoginForm_dot_index_dot_1405865627": {
-    "string": "Sign in"
+    "string": "ログイン"
   },
   "components_dot_MainMenu_dot_MainMenu_dot_4144939532": {
-    "string": "Offline"
+    "string": "オフライン"
   },
   "components_dot_NotFound_dot_index_dot_1723676032": {
-    "string": "Back to home"
+    "string": "ホームに戻る"
   },
   "components_dot_NotFound_dot_index_dot_1782529840": {
     "string": "You may have mistyped the address or the page may have moved."
@@ -294,32 +294,32 @@
     "string": "We can’t seem to find a page you are looking for!"
   },
   "components_dot_OverlayManager_dot_Cart_dot_Cart_dot_1316031908": {
-    "string": "My bag,"
+    "string": "マイ バッグ : "
   },
   "components_dot_OverlayManager_dot_Cart_dot_Cart_dot_1397761112": {
     "context": "items quantity in cart",
-    "string": "{itemsQuantity,plural,one {{itemsQuantity} item} other {{itemsQuantity} items}}"
+    "string": "{itemsQuantity,plural,one {{itemsQuantity} 個} other {{itemsQuantity} 個}}"
   },
   "components_dot_OverlayManager_dot_Cart_dot_Cart_dot_2426849470": {
-    "string": "Go to my bag"
+    "string": "マイ バッグを見る"
   },
   "components_dot_OverlayManager_dot_Cart_dot_Empty_dot_3515754810": {
-    "string": "Continue Shopping"
+    "string": "買い物を続ける"
   },
   "components_dot_OverlayManager_dot_Cart_dot_Empty_dot_4121934554": {
     "string": "You haven’t added anything to your bag. We’re sure you’ll find something in our store"
   },
   "components_dot_OverlayManager_dot_Cart_dot_Empty_dot_966560142": {
-    "string": "Your bag is empty"
+    "string": "バッグ内に商品がありません"
   },
   "components_dot_OverlayManager_dot_Cart_dot_ProductList_dot_3897981513": {
-    "string": "Qty: {quantity}"
+    "string": "数量 : {quantity}"
   },
   "components_dot_OverlayManager_dot_Login_dot_ForgottenPassword_dot_1214263298": {
-    "string": "Have you forgotten your password?"
+    "string": "パスワードを忘れた方はこちら"
   },
   "components_dot_OverlayManager_dot_Login_dot_ForgottenPassword_dot_1781368875": {
-    "string": "Click Here"
+    "string": "ここをクリック"
   },
   "components_dot_OverlayManager_dot_Login_dot_RegisterForm_dot_2556234295": {
     "string": "登録"
@@ -328,19 +328,19 @@
     "string": "Please check your e-mail for further instructions"
   },
   "components_dot_OverlayManager_dot_Login_dot_RegisterForm_dot_590842025": {
-    "string": "New user has been created"
+    "string": "新規会員を登録しました"
   },
   "components_dot_OverlayManager_dot_Login_dot_index_dot_282922692": {
-    "string": "Saleor account"
+    "string": "会員"
   },
   "components_dot_OverlayManager_dot_Login_dot_index_dot_3254057623": {
-    "string": "Register new account"
+    "string": "新規会員を登録"
   },
   "components_dot_OverlayManager_dot_Login_dot_index_dot_3293735236": {
     "string": "Sign in to account"
   },
   "components_dot_OverlayManager_dot_Password_dot_index_dot_4028609483": {
-    "string": "Reset your password"
+    "string": "パスワードをリセット"
   },
   "components_dot_OverlayManager_dot_Search_dot_NothingFound_dot_1777769494": {
     "string": "Don’t give up - check the spelling, think of something less specific and then use the search bar above."
@@ -349,13 +349,13 @@
     "string": "Sorry, but we couldn’t match any search results for: {search}"
   },
   "components_dot_OverlayManager_dot_Search_dot_Search_dot_4112727608": {
-    "string": "Show all results"
+    "string": "全てを見る"
   },
   "components_dot_PasswordResetRequestForm_dot_index_dot_1587628595": {
     "string": "Check your inbox"
   },
   "components_dot_PasswordResetRequestForm_dot_index_dot_2925394684": {
-    "string": "Reset password"
+    "string": "パスワードをリセット"
   },
   "components_dot_PasswordResetRequestForm_dot_index_dot_805890313": {
     "string": "Please provide us your email address so we can share you a link to reset your password"
@@ -364,37 +364,37 @@
     "string": "No Options"
   },
   "intl_dot_checkoutMessages_dot_addNewAddress": {
-    "string": "Add new address"
+    "string": "新しい住所を追加"
   },
   "intl_dot_checkoutMessages_dot_addressNextActionName": {
-    "string": "Continue to Shipping"
+    "string": "配送を続ける"
   },
   "intl_dot_checkoutMessages_dot_billingAddress": {
-    "string": "BILLING ADDRESS"
+    "string": "請求先住所"
   },
   "intl_dot_checkoutMessages_dot_continueShopping": {
-    "string": "CONTINUE SHOPPING"
+    "string": "買い物を続ける"
   },
   "intl_dot_checkoutMessages_dot_paymentMethod": {
-    "string": "PAYMENT METHOD"
+    "string": "支払い方法"
   },
   "intl_dot_checkoutMessages_dot_paymentNextActionName": {
-    "string": "Continue to Review"
+    "string": "レビューを続ける"
   },
   "intl_dot_checkoutMessages_dot_reviewNextActionName": {
     "string": "Place order"
   },
   "intl_dot_checkoutMessages_dot_reviewOrder": {
-    "string": "REVIEW ORDER"
+    "string": "注文確認"
   },
   "intl_dot_checkoutMessages_dot_shippingAddress": {
-    "string": "Shipping Address"
+    "string": "お届け先住所"
   },
   "intl_dot_checkoutMessages_dot_shippingMethod": {
-    "string": "SHIPPING METHOD"
+    "string": "配送方法"
   },
   "intl_dot_checkoutMessages_dot_shippingNextActionName": {
-    "string": "Continue to Payment"
+    "string": "支払いを続ける"
   },
   "intl_dot_checkoutMessages_dot_stepNameAddress": {
     "string": "住所"
@@ -403,19 +403,19 @@
     "string": "支払い"
   },
   "intl_dot_checkoutMessages_dot_stepNameReview": {
-    "string": "Review"
+    "string": "レビュー"
   },
   "intl_dot_checkoutMessages_dot_stepNameShipping": {
     "string": "お届け先住所"
   },
   "intl_dot_commonMessages_dot_account": {
-    "string": "Account"
+    "string": "会員"
   },
   "intl_dot_commonMessages_dot_add": {
     "string": "追加"
   },
   "intl_dot_commonMessages_dot_addressBook": {
-    "string": "Address book"
+    "string": "住所録"
   },
   "intl_dot_commonMessages_dot_cancel": {
     "string": "キャンセル"
@@ -424,40 +424,40 @@
     "string": "支払い手続き"
   },
   "intl_dot_commonMessages_dot_choosePaymentMethod": {
-    "string": "Please choose payment method."
+    "string": "支払い方法を選択してください。"
   },
   "intl_dot_commonMessages_dot_clearFilterHeader": {
     "string": "CLEAR FILTERS"
   },
   "intl_dot_commonMessages_dot_eMail": {
-    "string": "Email Address"
+    "string": "メールアドレス"
   },
   "intl_dot_commonMessages_dot_filterHeader": {
-    "string": "FILTERS"
+    "string": "フィルター"
   },
   "intl_dot_commonMessages_dot_firstName": {
-    "string": "First Name"
+    "string": "名前 (名)"
   },
   "intl_dot_commonMessages_dot_home": {
     "string": "ホーム"
   },
   "intl_dot_commonMessages_dot_lastName": {
-    "string": "Last Name"
+    "string": "苗字 (姓)"
   },
   "intl_dot_commonMessages_dot_loading": {
     "string": "Loading"
   },
   "intl_dot_commonMessages_dot_logOut": {
-    "string": "Log Out"
+    "string": "ログアウト"
   },
   "intl_dot_commonMessages_dot_lowStock": {
-    "string": "Low stock"
+    "string": "残り僅か"
   },
   "intl_dot_commonMessages_dot_maxQtyIs": {
-    "string": "Maximum quantity is {maxQuantity}"
+    "string": "数量の最大値は {maxQuantity} です"
   },
   "intl_dot_commonMessages_dot_myAccount": {
-    "string": "My Account"
+    "string": "会員情報"
   },
   "intl_dot_commonMessages_dot_noItemsAvailable": {
     "string": "No items available"
@@ -466,19 +466,19 @@
     "string": "Not available for purchase"
   },
   "intl_dot_commonMessages_dot_orderHistory": {
-    "string": "Order history"
+    "string": "注文履歴"
   },
   "intl_dot_commonMessages_dot_outOfStock": {
-    "string": "Out of stock"
+    "string": "在庫切れ"
   },
   "intl_dot_commonMessages_dot_password": {
     "string": "パスワード"
   },
   "intl_dot_commonMessages_dot_phone": {
-    "string": "Phone"
+    "string": "電話"
   },
   "intl_dot_commonMessages_dot_phoneNumber": {
-    "string": "Phone number: {phone}"
+    "string": "電話番号 : {phone}"
   },
   "intl_dot_commonMessages_dot_price": {
     "string": "価格"
@@ -487,10 +487,10 @@
     "string": "商品"
   },
   "intl_dot_commonMessages_dot_promoCode": {
-    "string": "Promo code"
+    "string": "プロモーション コード"
   },
   "intl_dot_commonMessages_dot_provideEmailAddress": {
-    "string": "Please provide email address."
+    "string": "メールアドレスを入力してください。"
   },
   "intl_dot_commonMessages_dot_purchaseAvailableOn": {
     "string": "Will become available for purchase on {date} at {time}"
@@ -505,7 +505,7 @@
     "string": "保存"
   },
   "intl_dot_commonMessages_dot_search": {
-    "string": "search"
+    "string": "検索"
   },
   "intl_dot_commonMessages_dot_shipping": {
     "string": "お届け先住所"
@@ -514,13 +514,13 @@
     "string": "メールアドレス"
   },
   "intl_dot_commonMessages_dot_showEmail": {
-    "string": "Email: {email}"
+    "string": "メールアドレス : {email}"
   },
   "intl_dot_commonMessages_dot_sku": {
     "string": "SKU"
   },
   "intl_dot_commonMessages_dot_status": {
-    "string": "状態"
+    "string": "ステータス"
   },
   "intl_dot_commonMessages_dot_subtotal": {
     "string": "小計"
@@ -529,7 +529,7 @@
     "string": "合計"
   },
   "intl_dot_commonMessages_dot_totalPrice": {
-    "string": "Total Price"
+    "string": "合計金額"
   },
   "intl_dot_commonMessages_dot_variant": {
     "string": "Variant"
@@ -538,7 +538,7 @@
     "string": "You might like"
   },
   "intl_dot_orderStatusMessages_dot_canceled": {
-    "string": "Canceled"
+    "string": "キャンセルしました"
   },
   "intl_dot_orderStatusMessages_dot_draft": {
     "string": "Draft"
@@ -568,35 +568,35 @@
     "string": "Partially refunded"
   },
   "intl_dot_prodListHeaderCommonMsg_dot_sortOptionsClear": {
-    "string": "Clear..."
+    "string": "指定しない"
   },
   "intl_dot_prodListHeaderCommonMsg_dot_sortOptionsName": {
-    "string": "Name Increasing"
+    "string": "商品名 : 昇順"
   },
   "intl_dot_prodListHeaderCommonMsg_dot_sortOptionsNameDsc": {
-    "string": "Name Decreasing"
+    "string": "商品名 : 降順"
   },
   "intl_dot_prodListHeaderCommonMsg_dot_sortOptionsPrice": {
-    "string": "Price Low-High"
+    "string": "商品価格 : 安い"
   },
   "intl_dot_prodListHeaderCommonMsg_dot_sortOptionsPriceDsc": {
-    "string": "Price High-Low"
+    "string": "商品価格 : 高い"
   },
   "intl_dot_prodListHeaderCommonMsg_dot_sortOptionsUpdatedAt": {
-    "string": "Last updated Ascending"
+    "string": "最終更新日 : 昇順"
   },
   "intl_dot_prodListHeaderCommonMsg_dot_sortOptionsUpdatedAtDsc": {
-    "string": "Last updated Descending"
+    "string": "最終更新日 : 降順"
   },
   "userAccount_dot_views_dot_OrderDetails_dot_Page_dot_1857586798": {
-    "string": "Your order no.: {orderNum}"
+    "string": "注文番号 : {orderNum}"
   },
   "userAccount_dot_views_dot_OrderDetails_dot_Page_dot_2670827143": {
     "context": "action in popup menu in order view",
     "string": "Download invoice"
   },
   "userAccount_dot_views_dot_OrderDetails_dot_Page_dot_624688748": {
-    "string": "Go back to Order History"
+    "string": "注文履歴に戻る"
   },
   "views_dot_Home_dot_Page_dot_2366307429": {
     "string": "Final reduction"
@@ -614,9 +614,9 @@
     "string": "Up to 70% off sale"
   },
   "views_dot_Product_dot_Other_dot_3212906417": {
-    "string": "Other products in this category"
+    "string": "同じカテゴリーにある商品"
   },
   "views_dot_Search_dot_Page_dot_2865432515": {
-    "string": "Search term:"
+    "string": "検索ワード : "
   }
 }
