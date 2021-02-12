@@ -6,7 +6,7 @@ import { Button } from "../..";
 const Empty: React.FC<{ overlayHide(): void }> = ({ overlayHide }) => (
   <div className="cart__empty">
     <h4>
-      <FormattedMessage defaultMessage="バッグ内に商品がありません。" />
+      <FormattedMessage defaultMessage="Your bag is empty" />
     </h4>
     {/*
     <p>
@@ -19,7 +19,7 @@ const Empty: React.FC<{ overlayHide(): void }> = ({ overlayHide }) => (
         secondary
         onClick={overlayHide}
       >
-        <FormattedMessage defaultMessage="買い物を続ける" />
+        <FormattedMessage defaultMessage="Continute Shopping" />
       </Button>
     </div>
   </div>

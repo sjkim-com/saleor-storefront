@@ -65,7 +65,7 @@ const LoginForm: React.FC<ILoginForm> = ({ hide }) => {
           >
             {loading
               ? intl.formatMessage(commonMessages.loading)
-              : intl.formatMessage({ defaultMessage: "ログイン" })}
+              : intl.formatMessage({ defaultMessage: "Sign in" })}
           </Button>
         </div>
       </Form>

@@ -43,12 +43,9 @@ export const ProductListHeader: React.FC<IProps> = ({
         <S.RightSide>
           <S.Element data-test="productsFoundCounter">
             <S.Label>
-              <FormattedMessage defaultMessage="検索結果 " />{" "}
+              <FormattedMessage defaultMessage="Products found:" />{" "}
             </S.Label>
             {numberOfProducts}
-            <S.Label>
-              <FormattedMessage defaultMessage=" 件" />{" "}
-            </S.Label>
           </S.Element>
           <S.Element>
             <S.Sort>

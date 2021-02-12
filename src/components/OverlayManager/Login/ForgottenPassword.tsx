@@ -15,7 +15,7 @@ const ForgottenPassword: React.FC<{
           onClick={onClick}
           data-test="accountOverlayForgottenPasswordLink"
         >
-          <FormattedMessage defaultMessage="パスワードを忘れた方はこちら" />
+          <FormattedMessage defaultMessage="Click Here" />
         </span>
       </p>
     </div>
