@@ -12,7 +12,6 @@
 // the project's config changing)
 
 module.exports = (on, config) => {
-  config.env.API_URI = process.env.API_URI;
-
+  config.env.API_URI = process.env.CORE_API_URI;
   return config;
 };

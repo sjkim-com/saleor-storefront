@@ -1,7 +1,7 @@
 import "./scss/index.scss";
 
 import { useCart } from "@saleor/sdk";
-import { isEmpty, isInteger } from "lodash";
+import { isEmpty } from "lodash";
 import queryString from "query-string";
 import React, { useEffect, useState } from "react";
 import { RouteComponentProps } from "react-router";
@@ -10,7 +10,7 @@ import { useHistory } from "react-router-dom";
 import { Loader } from "@components/atoms";
 import { MetaWrapper, NotFound, OfflinePlaceholder } from "../../components";
 import NetworkStatus from "../../components/NetworkStatus";
-import { getGraphqlIdFromDBId, maybe } from "../../core/utils";
+import { maybe } from "../../core/utils";
 import { ProductDetails_product } from "./gqlTypes/ProductDetails";
 import Page from "./Page";
 import { TypedProductDetailsQuery } from "./queries";
