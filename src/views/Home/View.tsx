@@ -11,35 +11,35 @@ const View: React.FC = () => (
     <TypedHomePageQuery alwaysRender displayLoader={false} errorPolicy="all">
       {({ data, loading }) => {
         const shop =
-        Object.keys(data).length > 0
-          ? data?.site_sitesettings_connection.edges[0].node
-          : null;
+          !!data && Object.keys(data).length > 0
+            ? data?.site_sitesettings_connection.edges[0].node
+            : null;
 
         return (
           <>
-          {shop ? (
-          <MetaWrapper
-            meta={{
-              description: data.shop ? data.shop.description : "",
-              title: data.shop ? data.shop.name : "",
-            }}
-          >
-            <Page
-              loading={loading}
-              // backgroundImage={
-              //   data.shop &&
-              //   data.shop.homepageCollection &&
-              //   data.shop.homepageCollection.backgroundImage
-              // }
-              // categories={data.categories}
-              // shop={data.shop}
-              categories={data?.product_category_connection}
-              shop={shop}
-            />
-          </MetaWrapper>
-          ) : (
-            <Loader />
-          )}
+            {shop ? (
+              <MetaWrapper
+                meta={{
+                  description: data.shop ? data.shop.description : "",
+                  title: data.shop ? data.shop.name : "",
+                }}
+              >
+                <Page
+                  loading={loading}
+                  // backgroundImage={
+                  //   data.shop &&
+                  //   data.shop.homepageCollection &&
+                  //   data.shop.homepageCollection.backgroundImage
+                  // }
+                  // categories={data.categories}
+                  // shop={data.shop}
+                  categories={data?.product_category_connection}
+                  shop={shop}
+                />
+              </MetaWrapper>
+            ) : (
+              <Loader />
+            )}
           </>
         );
       }}
