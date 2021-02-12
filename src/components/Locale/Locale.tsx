@@ -205,11 +205,11 @@ function getKeyValueJson(messages: LocaleMessages): Record<string, string> {
   }
 }
 
-const defaultLocale = Locale.EN;
+const defaultLocale = Locale.JA;
 
 const LocaleProvider: React.FC = ({ children }) => {
   // For now locale can be set here
-  const locale = Locale.EN;
+  const locale = Locale.JA;
 
   return (
     <IntlProvider
