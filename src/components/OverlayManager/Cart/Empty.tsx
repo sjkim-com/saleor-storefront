@@ -19,7 +19,7 @@ const Empty: React.FC<{ overlayHide(): void }> = ({ overlayHide }) => (
         secondary
         onClick={overlayHide}
       >
-        <FormattedMessage defaultMessage="Continute Shopping" />
+        <FormattedMessage defaultMessage="Continue Shopping" />
       </Button>
     </div>
   </div>
