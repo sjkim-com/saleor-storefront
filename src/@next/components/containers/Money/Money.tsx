@@ -19,10 +19,6 @@ export const Money: React.FC<IProps> = ({
   let currency = DEFAULT_CURRENCY;
   const style = "currency";
 
-  console.log("<Money : Money.tsx>");
-  console.log("----- money -----");
-  console.log(JSON.stringify(money));
-
   if (!money) {
     if (!defaultValue) {
       defaultValue = "0";
