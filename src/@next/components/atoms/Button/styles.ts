@@ -2,7 +2,8 @@ import { media, styled } from "@styles";
 import { Size } from "./types";
 
 const padding = {
-  md: "0.9rem 3.7rem",
+  // md: "0.9rem 3.7rem",
+  md: "0.9rem",
   sm: "0.1rem 2rem",
 };
 

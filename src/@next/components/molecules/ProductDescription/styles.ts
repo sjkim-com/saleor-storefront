@@ -46,7 +46,7 @@ export const TabTitle = styled.div<{ active?: boolean }>`
   border-bottom-style: solid;
   border-bottom-color: ${props =>
     props.active ? props.theme.colors.tabTitle : "transparent"};
-  padding-bottom: 25px;
+  padding: 10px;
   margin-right: 60px;
 
   ${media.smallScreen`
