@@ -21,9 +21,10 @@ import { maybe } from "../../core/utils";
 // import { CategoryProducts_products } from "./gqlTypes/CategoryProducts";
 import { Category_dms_displaycategory_connection_edges_node } from "./gqlTypes/Category";
 import { CategoryProducts_dms_displaycategoryproduct_connection_edges } from "./gqlTypes/CategoryProducts";
+
 interface CategoryProducts_products {
-  totalCount: number,
-  edges: CategoryProducts_dms_displaycategoryproduct_connection_edges[]
+  totalCount: number;
+  edges: CategoryProducts_dms_displaycategoryproduct_connection_edges[];
 }
 
 interface SortItem {
@@ -47,7 +48,10 @@ interface PageProps {
   clearFilters: () => void;
   onLoadMore: () => void;
   // onAttributeFiltersChange: (attributeSlug: string, value: string) => void;
-  onAttributeFiltersChange: (attributeId: string, attributeValue: string) => void;
+  onAttributeFiltersChange: (
+    attributeId: string,
+    attributeValue: string
+  ) => void;
   onOrder: (order: { value?: string; label: string }) => void;
 }
 
@@ -107,7 +111,9 @@ const Page: React.FC<PageProps> = ({
       (acc, key) =>
         acc.concat(
           // filters.attributes[key].map(valueSlug => getAttribute(key, valueSlug))
-          filters.attributes[key].map(attributeValue => getAttribute(key, attributeValue))
+          filters.attributes[key].map(attributeValue =>
+            getAttribute(key, attributeValue)
+          )
         ),
       []
     );

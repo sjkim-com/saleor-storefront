@@ -1,5 +1,6 @@
-import { IProduct } from "@types";
+// import { IProduct } from "@types";
 
 export interface IProps {
-  product: IProduct;
+  // product: IProduct;
+  product: any;
 }

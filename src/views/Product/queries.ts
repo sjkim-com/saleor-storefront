@@ -3,10 +3,16 @@
 import gql from "graphql-tag";
 
 import { TypedQuery } from "../../core/queries";
+
 import {
   CmgtProductDetails,
   CmgtProductDetailsVariables,
 } from "./gqlTypes/CmgtProductDetails";
+
+import {
+  CmgtDisplayCategoryProductDetails,
+  CmgtDisplayCategoryProductDetailsVariables,
+} from "./gqlTypes/CmgtDisplayCategoryProductDetails";
 
 // <----- 削除予定
 export const priceFragment = gql`
@@ -208,8 +214,6 @@ export const CmgtProductDetailsQuery = gql`
           product_id
           saleproduct_id
           name
-          safe_stock_qty
-          stock_qty
           saleproduct_state_cd
           pms_warehousestocks_connection {
             edges {
@@ -239,14 +243,38 @@ export const CmgtProductDetailsQuery = gql`
         }
       }
     }
-    dms_displaycategory_connection {
+  }
+`;
+
+export const CmgtDisplayCategoryProductDetailsQuery = gql`
+  query CmgtDisplayCategoryProductDetails(
+    $displayCategoryId: String
+  ) {
+    dms_displaycategoryproduct_connection(
+      where: {
+        display_category_id: { _eq: $displayCategoryId },
+        display_yn: { _eq: "Y" }
+      },
+      order_by: {
+        pms_product: { sale_price: asc }
+      }
+    ) {
       edges {
         node {
-          id
-          display_category_id
-          upper_display_category_id
-          display_yn
-          name
+          pms_product {
+            id
+            product_id
+            name
+            sale_price
+            pms_productimgs_connection {
+              edges {
+                node {
+                  img
+                  text
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -257,3 +285,8 @@ export const TypedProductDetailsQuery = TypedQuery<
   CmgtProductDetails,
   CmgtProductDetailsVariables
 >(CmgtProductDetailsQuery);
+
+export const TypedDisplayCategoryProductDetailsQuery = TypedQuery<
+  CmgtDisplayCategoryProductDetails,
+  CmgtDisplayCategoryProductDetailsVariables
+>(CmgtDisplayCategoryProductDetailsQuery);

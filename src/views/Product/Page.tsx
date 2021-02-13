@@ -40,9 +40,7 @@ const Page: React.FC<
   }
 > = ({ add, product, items, queryAttributes, onAttributeChangeHandler }) => {
   const overlayContext = React.useContext(OverlayContext);
-
   const productGallery: React.RefObject<HTMLDivElement> = React.useRef();
-
   const [variantId, setVariantId] = React.useState("");
 
   const getImages = () => {
@@ -61,8 +59,8 @@ const Page: React.FC<
 
   const handleAddToCart = (variantId, quantity) => {
     console.log("<Product : Page.tsx> handleAddToCart");
-    console.log(`variantId : '${variantId}'`);
-    console.log(`quantity : '${quantity}'`);
+    console.log(`  variantId : '${variantId}'`);
+    console.log(`  quantity : '${quantity}'`);
 
     add(variantId, quantity);
     overlayContext.show(OverlayType.cart, OverlayTheme.right);

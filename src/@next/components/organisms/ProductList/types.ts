@@ -1,7 +1,8 @@
-import { IProduct } from "@types";
+// import { IProduct } from "@types";
 
 export interface IProps {
-  products: IProduct[];
+  // products: IProduct[];
+  products: any[];
   canLoadMore?: boolean;
   loading?: boolean;
   onLoadMore?: () => void;

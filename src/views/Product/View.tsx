@@ -11,12 +11,21 @@ import { Loader } from "@components/atoms";
 import { MetaWrapper, NotFound, OfflinePlaceholder } from "../../components";
 import NetworkStatus from "../../components/NetworkStatus";
 import { maybe } from "../../core/utils";
-import { ProductDetails_product } from "./gqlTypes/ProductDetails";
-import Page from "./Page";
-import { TypedProductDetailsQuery } from "./queries";
-import { IProps } from "./types";
 
-import { createProductDetailsResponse } from "./scripts/convert";
+import {
+  ProductDetails_product,
+  ProductDetails_product_category_products,
+} from "./gqlTypes/ProductDetails";
+import { createDisplayCategoryProductDetailsResponse } from "./scripts/cmgtDisplayCategroyProductDetailsConverter";
+import { createProductDetailsResponse } from "./scripts/cmgtProductDetailsConverter";
+
+import {
+  TypedDisplayCategoryProductDetailsQuery,
+  TypedProductDetailsQuery,
+} from "./queries";
+
+import Page from "./Page";
+import { IProps } from "./types";
 
 const canDisplay = (product: ProductDetails_product) =>
   maybe(
@@ -27,7 +36,7 @@ const canDisplay = (product: ProductDetails_product) =>
       !!product.pricing &&
       !!product.variants
       */
-      !!product.name
+      !!product.name && !!product.pricing
   );
 const extractMeta = (product: ProductDetails_product) => ({
   custom: [
@@ -116,10 +125,6 @@ const PageWithQueryAttributes: React.FC<IProps> = props => {
 const View: React.FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
   const { cmgtAddItem, items } = useCart();
 
-  console.log("<Product : View.tsx>");
-  console.log("----- match -----");
-  console.log(JSON.stringify(match));
-
   return (
     <TypedProductDetailsQuery
       loaderFull
@@ -134,17 +139,41 @@ const View: React.FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
       {({ data, loading }) => (
         <NetworkStatus>
           {isOnline => {
-            // const { product } = data;
+            // CMGTのレスポンスデータからProductDetails_product型のデータを生成
             const product = createProductDetailsResponse(data);
             if (canDisplay(product)) {
+              const displayCategoryId =
+                data.pms_product_connection.edges[0]?.node
+                  ?.dms_displaycategoryproducts_connection?.edges[0]?.node
+                  ?.dms_displaycategory?.display_category_id;
+
               return (
-                <MetaWrapper meta={extractMeta(product)}>
-                  <PageWithQueryAttributes
-                    product={product}
-                    add={cmgtAddItem}
-                    items={items}
-                  />
-                </MetaWrapper>
+                <TypedDisplayCategoryProductDetailsQuery
+                  loaderFull
+                  variables={{
+                    displayCategoryId,
+                  }}
+                  errorPolicy="all"
+                >
+                  {({ data, loading }) => {
+                    // CMGTのレスポンスデータからProductDetails_product_category型のデータを生成
+                    const productCategory: ProductDetails_product_category_products = createDisplayCategoryProductDetailsResponse(
+                      product.id,
+                      data
+                    );
+                    product.category.products = productCategory;
+
+                    return (
+                      <MetaWrapper meta={extractMeta(product)}>
+                        <PageWithQueryAttributes
+                          product={product}
+                          add={cmgtAddItem}
+                          items={items}
+                        />
+                      </MetaWrapper>
+                    );
+                  }}
+                </TypedDisplayCategoryProductDetailsQuery>
               );
             }
 

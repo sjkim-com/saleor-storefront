@@ -140,11 +140,6 @@ export interface CmgtProductDetails_pms_saleproduct_connection_edges_node {
    */
   name: string | null;
   /**
-   * 安全在庫数量
-   */
-  safe_stock_qty: any;
-  stock_qty: any;
-  /**
    * 単品の状態コード
    */
   saleproduct_state_cd: string | null;
@@ -187,37 +182,6 @@ export interface CmgtProductDetails_pms_productimg_connection {
   edges: CmgtProductDetails_pms_productimg_connection_edges[];
 }
 
-export interface CmgtProductDetails_dms_displaycategory_connection_edges_node {
-  __typename: "dms_displaycategory";
-  id: string;
-  /**
-   * 展示会カテゴリーID
-   */
-  display_category_id: string;
-  /**
-   * トップ展示カテゴリーID
-   */
-  upper_display_category_id: string | null;
-  /**
-   * 展示可否
-   */
-  display_yn: string | null;
-  /**
-   * 展示カテゴリ名
-   */
-  name: string | null;
-}
-
-export interface CmgtProductDetails_dms_displaycategory_connection_edges {
-  __typename: "dms_displaycategoryEdge";
-  node: CmgtProductDetails_dms_displaycategory_connection_edges_node;
-}
-
-export interface CmgtProductDetails_dms_displaycategory_connection {
-  __typename: "dms_displaycategoryConnection";
-  edges: CmgtProductDetails_dms_displaycategory_connection_edges[];
-}
-
 export interface CmgtProductDetails {
   /**
    * fetch data from the table: "pms_product"
@@ -231,10 +195,6 @@ export interface CmgtProductDetails {
    * fetch data from the table: "pms_productimg"
    */
   pms_productimg_connection: CmgtProductDetails_pms_productimg_connection;
-  /**
-   * fetch data from the table: "dms_displaycategory"
-   */
-  dms_displaycategory_connection: CmgtProductDetails_dms_displaycategory_connection;
 }
 
 export interface CmgtProductDetailsVariables {
