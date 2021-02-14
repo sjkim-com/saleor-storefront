@@ -36,7 +36,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
   }: IProps,
   ref
 ) => {
-  const { promoCodeDiscount, addPromoCode, removePromoCode } = useCheckout();
+  const { promoCodeDiscount, cmgtAddPromoCode, removePromoCode } = useCheckout();
 
   const [promoCodeErrors, setPromoCodeErrors] = useState<IFormError[]>([]);
 
@@ -64,7 +64,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
   }));
 
   const handleAddPromoCode = async (promoCode: string) => {
-    const { dataError } = await addPromoCode(promoCode);
+    const { dataError } = await cmgtAddPromoCode(promoCode);
     const errors = dataError?.error;
     if (errors) {
       changeSubmitProgress(false);

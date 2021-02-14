@@ -52,6 +52,21 @@ const CheckoutShipping: React.FC<IProps> = ({
               onSubmit={handleSubmit}
             >
               {shippingMethods.map(({ id, name, price }, index) => {
+                let resultPrice;
+                if(price?.net == undefined) {
+                  resultPrice = {
+                    gross:{
+                      amount: price?.amount,
+                      currency: price?.currency 
+                    },
+                    net:{
+                      amount: price?.amount,
+                      currency: price?.currency 
+                    }
+                  }
+                }else{
+                  resultPrice = price
+                }
                 const checked =
                   !!values.shippingMethod && values.shippingMethod === id;
 
@@ -78,7 +93,7 @@ const CheckoutShipping: React.FC<IProps> = ({
                           | +
                           <Money
                             data-test="checkoutShippingMethodOptionPrice"
-                            money={price}
+                            money={resultPrice}
                           />
                         </S.Price>
                       </S.TileTitle>

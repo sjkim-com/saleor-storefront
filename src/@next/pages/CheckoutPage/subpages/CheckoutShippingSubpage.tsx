@@ -32,7 +32,8 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
   const {
     checkout,
     availableShippingMethods,
-    setShippingMethod,
+    // setShippingMethod,
+    cmgtSetShippingMethod,
   } = useCheckout();
 
   const shippingMethods = availableShippingMethods || [];
@@ -47,7 +48,7 @@ const CheckoutShippingSubpageWithRef: RefForwardingComponent<
 
   const handleSetShippingMethod = async (shippingMethodId: string) => {
     changeSubmitProgress(true);
-    const { dataError } = await setShippingMethod(shippingMethodId);
+    const { dataError } = await cmgtSetShippingMethod(shippingMethodId);
     const errors = dataError?.error;
     changeSubmitProgress(false);
     if (errors) {

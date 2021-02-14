@@ -41,7 +41,7 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
   }: IProps,
   ref
 ) => {
-  const { checkout, payment, completeCheckout } = useCheckout();
+  const { checkout, payment, cmgtCompleteCheckout } = useCheckout();
 
   const [errors, setErrors] = useState<IFormError[]>([]);
 
@@ -86,7 +86,7 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
           new Event("submitComplete", { cancelable: true })
         );
       } else {
-        const response = await completeCheckout();
+        const response = await cmgtCompleteCheckout();
         data = response.data;
         dataError = response.dataError;
         changeSubmitProgress(false);

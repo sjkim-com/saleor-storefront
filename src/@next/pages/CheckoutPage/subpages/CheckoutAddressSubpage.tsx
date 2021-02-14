@@ -42,9 +42,12 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     selectedShippingAddressId,
     selectedBillingAddressId,
     billingAsShipping,
-    setShippingAddress,
-    setBillingAddress,
-    setBillingAsShippingAddress,
+    // setShippingAddress,
+    // setBillingAddress,
+    // setBillingAsShippingAddress,
+    cmgtSetShippingAddress,
+    cmgtSetBillingAddress,
+    cmgtSetBillingAsShippingAddress,
   } = useCheckout();
   const { items } = useCart();
   const { countries } = useContext(ShopContext);
@@ -122,7 +125,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     }
 
     changeSubmitProgress(true);
-    const { dataError } = await setShippingAddress(
+    const { dataError } = await cmgtSetShippingAddress(
       {
         ...address,
         id: userAddressId,
@@ -180,10 +183,10 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     let errors;
     changeSubmitProgress(true);
     if (billingAsShippingState && isShippingRequiredForProducts) {
-      const { dataError } = await setBillingAsShippingAddress();
+      const { dataError } = await cmgtSetBillingAsShippingAddress();
       errors = dataError?.error;
     } else {
-      const { dataError } = await setBillingAddress(
+      const { dataError } = await cmgtSetBillingAddress(
         {
           ...address,
           id: userAddressId,

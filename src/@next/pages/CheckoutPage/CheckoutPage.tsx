@@ -110,14 +110,20 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     items,
   } = useCart();
   const {
-    loaded: checkoutLoaded,
+    // loaded: checkoutLoaded,
     checkout,
     payment,
     availablePaymentGateways,
-    createPayment,
-    completeCheckout,
+    cmgtCreatePayment,
+    cmgtCompleteCheckout,
   } = useCheckout();
   const intl = useIntl();
+  
+  let checkoutLoaded = false;
+  
+  if(items){
+    checkoutLoaded = true;
+  }
 
   if (cartLoaded && (!items || !items?.length)) {
     return <Redirect to="/cart/" />;
@@ -299,7 +305,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     const paymentConfirmStepLink = CHECKOUT_STEPS.find(
       step => step.step === CheckoutStep.PaymentConfirm
     )?.link;
-    const { dataError } = await createPayment({
+    const { dataError } = await cmgtCreatePayment({
       gateway,
       token,
       creditCard: cardData,
@@ -315,7 +321,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     }
   };
   const handleSubmitPayment = async (paymentData?: object) => {
-    const response = await completeCheckout({ paymentData });
+    const response = await cmgtCompleteCheckout({ paymentData });
     return {
       confirmationData: response.data?.confirmationData,
       confirmationNeeded: response.data?.confirmationNeeded,
@@ -418,7 +424,12 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
         querystring.resultCode as string
       )
     ) {
-      const { data, dataError } = await completeCheckout();
+      const { data, dataError } = await cmgtCompleteCheckout({paymentData: {
+        id: payment?.id!,
+        gateway: payment?.gateway!,
+        token: payment?.token!,
+        total: payment?.total!
+      }});
       const errors = dataError?.error;
       setSubmitInProgress(false);
       if (errors) {
