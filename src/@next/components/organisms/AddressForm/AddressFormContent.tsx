@@ -46,7 +46,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
       <S.Wrapper>
         <S.RowWithTwoCells>
           <TextField
-            name="first_name"
+            name="firstName"
             label={intl.formatMessage(commonMessages.firstName)}
             value={values!.firstName}
             autoComplete="given-name"
@@ -54,7 +54,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
             {...basicInputProps()}
           />
           <TextField
-            name="last_name"
+            name="lastName"
             label={intl.formatMessage(commonMessages.lastName)}
             value={values!.lastName}
             autoComplete="family-name"
@@ -64,7 +64,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
         </S.RowWithTwoCells>
         <S.RowWithTwoCells>
           <TextField
-            name="company_name"
+            name="companyName"
             label={intl.formatMessage({
               defaultMessage: "Company Name (Optional)",
             })}
@@ -84,7 +84,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
         </S.RowWithTwoCells>
         <S.RowWithOneCell>
           <TextField
-            name="street_address_1"
+            name="streetAddress1"
             label={intl.formatMessage({ defaultMessage: "Address line 1" })}
             value={values!.streetAddress1}
             autoComplete="address-line1"
@@ -94,7 +94,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
         </S.RowWithOneCell>
         <S.RowWithOneCell>
           <TextField
-            name="street_address_2"
+            name="streetAddress2"
             label={intl.formatMessage({ defaultMessage: "Address line 2" })}
             value={values!.streetAddress2}
             autoComplete="address-line2"
@@ -112,7 +112,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
             {...basicInputProps()}
           />
           <TextField
-            name="postal_code"
+            name="postalCode"
             label={intl.formatMessage({ defaultMessage: "ZIP/Postal Code" })}
             value={values!.postalCode}
             autoComplete="postal-code"
@@ -140,7 +140,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
             autoComplete="country"
           />
           <TextField
-            name="country_area"
+            name="countryArea"
             label={intl.formatMessage({ defaultMessage: "State/province" })}
             value={values!.countryArea}
             autoComplete="address-level1"

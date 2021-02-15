@@ -6,30 +6,17 @@ import { IAddress } from "@types";
 import { AddressFormContent } from "./AddressFormContent";
 import { IProps } from "./types";
 
-// const ADDRESS_FIELDS = [
-//   "city",
-//   "companyName",
-//   "countryArea",
-//   "firstName",
-//   "lastName",
-//   "country",
-//   "phone",
-//   "postalCode",
-//   "streetAddress1",
-//   "streetAddress2",
-//   "email",
-// ];
-const ADDRESS_FIELDS_CMGT = [
+const ADDRESS_FIELDS = [
   "city",
-  "company_name",
-  "country_area",
-  "first_name",
-  "last_name",
+  "companyName",
+  "countryArea",
+  "firstName",
+  "lastName",
   "country",
   "phone",
-  "postal_code",
-  "street_address_1",
-  "street_address_2",
+  "postalCode",
+  "streetAddress1",
+  "streetAddress2",
   "email",
 ];
 
@@ -43,7 +30,7 @@ export const AddressForm: React.FC<IProps> = ({
 }: IProps) => {
   let addressWithPickedFields: Partial<IAddress> = {};
   if (address) {
-    addressWithPickedFields = pick(address, ADDRESS_FIELDS_CMGT);
+    addressWithPickedFields = pick(address, ADDRESS_FIELDS);
   }
   if (defaultValue) {
     addressWithPickedFields.country = defaultValue;
