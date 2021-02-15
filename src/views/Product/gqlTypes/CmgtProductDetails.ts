@@ -54,6 +54,46 @@ export interface CmgtProductDetails_pms_product_connection_edges_node_dms_displa
   edges: CmgtProductDetails_pms_product_connection_edges_node_dms_displaycategoryproducts_connection_edges[];
 }
 
+export interface CmgtProductDetails_pms_product_connection_edges_node_pms_productoptions_connection_edges_node_pms_productoptionvalues_connection_edges_node {
+  __typename: "pms_productoptionvalue";
+  option_no: number;
+  option_value: string | null;
+  option_value_no: number;
+}
+
+export interface CmgtProductDetails_pms_product_connection_edges_node_pms_productoptions_connection_edges_node_pms_productoptionvalues_connection_edges {
+  __typename: "pms_productoptionvalueEdge";
+  node: CmgtProductDetails_pms_product_connection_edges_node_pms_productoptions_connection_edges_node_pms_productoptionvalues_connection_edges_node;
+}
+
+export interface CmgtProductDetails_pms_product_connection_edges_node_pms_productoptions_connection_edges_node_pms_productoptionvalues_connection {
+  __typename: "pms_productoptionvalueConnection";
+  edges: CmgtProductDetails_pms_product_connection_edges_node_pms_productoptions_connection_edges_node_pms_productoptionvalues_connection_edges[];
+}
+
+export interface CmgtProductDetails_pms_product_connection_edges_node_pms_productoptions_connection_edges_node {
+  __typename: "pms_productoption";
+  option_no: number;
+  /**
+   * オプション名
+   */
+  option_name: string | null;
+  /**
+   * An array relationship connection
+   */
+  pms_productoptionvalues_connection: CmgtProductDetails_pms_product_connection_edges_node_pms_productoptions_connection_edges_node_pms_productoptionvalues_connection;
+}
+
+export interface CmgtProductDetails_pms_product_connection_edges_node_pms_productoptions_connection_edges {
+  __typename: "pms_productoptionEdge";
+  node: CmgtProductDetails_pms_product_connection_edges_node_pms_productoptions_connection_edges_node;
+}
+
+export interface CmgtProductDetails_pms_product_connection_edges_node_pms_productoptions_connection {
+  __typename: "pms_productoptionConnection";
+  edges: CmgtProductDetails_pms_product_connection_edges_node_pms_productoptions_connection_edges[];
+}
+
 export interface CmgtProductDetails_pms_product_connection_edges_node {
   __typename: "pms_product";
   id: string;
@@ -89,6 +129,10 @@ export interface CmgtProductDetails_pms_product_connection_edges_node {
    * An array relationship connection
    */
   dms_displaycategoryproducts_connection: CmgtProductDetails_pms_product_connection_edges_node_dms_displaycategoryproducts_connection;
+  /**
+   * An array relationship connection
+   */
+  pms_productoptions_connection: CmgtProductDetails_pms_product_connection_edges_node_pms_productoptions_connection;
 }
 
 export interface CmgtProductDetails_pms_product_connection_edges {
@@ -120,6 +164,15 @@ export interface CmgtProductDetails_pms_saleproduct_connection_edges_node_pms_wa
   edges: CmgtProductDetails_pms_saleproduct_connection_edges_node_pms_warehousestocks_connection_edges[];
 }
 
+export interface CmgtProductDetails_pms_saleproduct_connection_edges_node_pms_saleproductoptionvalues {
+  __typename: "pms_saleproductoptionvalue";
+  /**
+   * オプション番号
+   */
+  option_no: number | null;
+  option_value_no: number | null;
+}
+
 export interface CmgtProductDetails_pms_saleproduct_connection_edges_node {
   __typename: "pms_saleproduct";
   id: string;
@@ -147,6 +200,10 @@ export interface CmgtProductDetails_pms_saleproduct_connection_edges_node {
    * An array relationship connection
    */
   pms_warehousestocks_connection: CmgtProductDetails_pms_saleproduct_connection_edges_node_pms_warehousestocks_connection;
+  /**
+   * An array relationship
+   */
+  pms_saleproductoptionvalues: CmgtProductDetails_pms_saleproduct_connection_edges_node_pms_saleproductoptionvalues[];
 }
 
 export interface CmgtProductDetails_pms_saleproduct_connection_edges {

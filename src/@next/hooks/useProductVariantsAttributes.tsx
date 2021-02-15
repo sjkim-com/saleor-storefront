@@ -43,5 +43,14 @@ export const useProductVariantsAttributes = (
     setProductVariantsAttributes(variantsAttributes);
   }, [productVariants]);
 
+  // Delete duplicate object data.
+  Object.keys(productVariantsAttributes).forEach(key => {
+    const rootData = productVariantsAttributes[key];
+    rootData.values = rootData.values.filter(
+      (value, index, self) =>
+        self.findIndex(selfValue => value.id === selfValue.id) === index
+    );
+  });
+
   return productVariantsAttributes;
 };

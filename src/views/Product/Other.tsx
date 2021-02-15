@@ -14,6 +14,9 @@ const OtherProducts: React.FC<{
   // CategoryProducts_dms_displaycategoryproduct_connection_edges_node型の
   // 配列データを生成。
   const categoryProducts = createCategoryProducts(products);
+  if (categoryProducts.length < 1) {
+    return <></>;
+  }
 
   return (
     <div className="product-page__other-products">

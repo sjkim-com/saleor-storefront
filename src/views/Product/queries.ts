@@ -14,7 +14,7 @@ import {
   CmgtDisplayCategoryProductDetailsVariables,
 } from "./gqlTypes/CmgtDisplayCategoryProductDetails";
 
-// <----- 削除予定
+// -----> 削除予定
 export const priceFragment = gql`
   fragment Price on TaxedMoney {
     gross {
@@ -119,7 +119,11 @@ export const productVariantFragment = gql`
 
 export const productDetailsQuery = gql`
   query ProductDetails($id: Int!) {
-    product_product(where: {id: {_eq: $id}}) {
+    product_product(
+      where: {
+        id: {_eq: $id}
+      }
+    ) {
       id
       name
       is_published
@@ -158,7 +162,7 @@ export const productDetailsQuery = gql`
     }
   }
 `;
-// -----> 削除予定
+// <----- 削除予定
 
 export const CmgtProductDetailsQuery = gql`
   query CmgtProductDetails(
@@ -197,6 +201,23 @@ export const CmgtProductDetailsQuery = gql`
               }
             }
           }
+          pms_productoptions_connection {
+            edges {
+              node {
+                option_no
+                option_name
+                pms_productoptionvalues_connection {
+                  edges {
+                    node {
+                      option_no
+                      option_value
+                      option_value_no
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -225,6 +246,12 @@ export const CmgtProductDetailsQuery = gql`
                 warehouse_id
               }
             }
+          }
+          pms_saleproductoptionvalues(
+            order_by: { option_no: asc }
+          ) {
+            option_no
+            option_value_no
           }
         }
       }

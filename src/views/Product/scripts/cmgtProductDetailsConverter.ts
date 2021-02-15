@@ -54,10 +54,8 @@ export const createProductDetailsResponse = (
       cmgtProductDetails.pms_product_connection.edges.length > 0
         ? cmgtProductDetails.pms_product_connection.edges[0].node
         : null;
-  const displayCategoryProduct =
-    pmsProduct.dms_displaycategoryproducts_connection.edges.length > 0
-      ? pmsProduct.dms_displaycategoryproducts_connection.edges[0].node.dms_displaycategory
-      : null;
+  const pmsProductOptions =
+    pmsProduct.pms_productoptions_connection.edges;
   const pmsSaleProducts =
     cmgtProductDetails.pms_saleproduct_connection.edges;
   const pmsProductImages =
@@ -66,7 +64,11 @@ export const createProductDetailsResponse = (
     pmsSaleProducts.length > 0
       ? pmsSaleProducts[0].node.pms_warehousestocks_connection.edges
       : null;
-
+  const displayCategoryProduct =
+    pmsProduct.dms_displaycategoryproducts_connection.edges.length > 0
+      ? pmsProduct.dms_displaycategoryproducts_connection.edges[0].node.dms_displaycategory
+      : null;
+  
   const currencyCode = "JPY";
   const productPriceGross = pmsProduct.sale_price;
   const productPriceNet = pmsProduct.sale_price;
@@ -214,8 +216,17 @@ export const createProductDetailsResponse = (
       products: categoryProducts,
     };
   
-  const images:
-    ProductDetails_product_images[] = [];
+  const images: ProductDetails_product_images[] = [];
+  pmsProductImages.forEach(image => {
+    const { node } = image;
+
+    images.push({
+      __typename: "ProductImage",
+      id: node.id,
+      url: node.img,
+      alt: node.text,
+    });
+  });
   
   const attributesAttribute:
     ProductDetails_product_attributes_attribute = {
@@ -227,12 +238,30 @@ export const createProductDetailsResponse = (
   const attributesValues:
     ProductDetails_product_attributes_values[] = [];
 
+  attributesValues.push({
+    __typename: "AttributeValue",
+    id: "dummy : attributesValues id",
+    name: "dummy : attributesValues name",
+  });
+
   const attributes:
     ProductDetails_product_attributes[] = [];
+
+  attributes.push({
+    __typename: "SelectedAttribute",
+    attribute: attributesAttribute,
+    values: attributesValues,  
+  });
   
   const variantsImages:
     ProductDetails_product_variants_images[] = [];
-  
+      variantsImages.push({
+        __typename: "ProductImage",
+        id: pmsProduct.product_id,
+        url: "",
+        alt: "",
+    });
+
   const variantsPricingPriceUndiscountedGross:
     ProductDetails_product_variants_pricing_priceUndiscounted_gross = {
       __typename: "Money",
@@ -288,41 +317,112 @@ export const createProductDetailsResponse = (
       // The price, with any discount subtracted.
       price: variantsPricingPrice,
     };
-  
+
+  const optionValues = {};
+  pmsProductOptions.forEach(option => {
+    const { node } = option;
+
+    if (
+      node.option_no === null ||
+      node.option_no === undefined ||
+      node.option_name === null ||
+      node.option_name === undefined
+    ) {
+      console.error("***** Data error : Product option *****");
+      console.error(`  product_id : '${pmsProduct.product_id}'`);
+      console.error(`  option_no : '${node.option_no}'`);
+      console.error(`  option_name : '${node.option_name}'`);
+      return;
+    }
+
+    let optionValue = optionValues[node.option_no];
+    if (optionValue === undefined) {
+      optionValue = {
+        id: node.option_no,
+        name: node.option_name,
+        details: {},
+      };
+      optionValues[node.option_no] = optionValue;
+    }
+
+    node.pms_productoptionvalues_connection.edges.forEach(values => {
+      const { node } = values;
+
+      if (
+        node.option_value_no === null ||
+        node.option_value_no === undefined ||
+        node.option_value === null ||
+        node.option_value === undefined
+      ) {
+        console.error("***** Data error : Product option value *****");
+        console.error(`  product_id : '${pmsProduct.product_id}'`);
+        console.error(`  option_value_no : '${node.option_value_no}'`);
+        console.error(`  option_value : '${node.option_value}'`);
+        return;
+      }
+
+      let optionDetails = optionValue.details[node.option_value_no];
+      if (optionDetails === undefined) {
+        optionDetails = {
+          id: node.option_value_no,
+          name: node.option_value,
+        };
+        optionValue.details[node.option_value_no] = optionDetails;
+      }
+    });
+  });
+
   const variants:
     ProductDetails_product_variants[] = [];
 
   pmsSaleProducts.forEach(product => {
     const { node } = product;
-
-    // 設定する id が異なる毎にセレクトボックスが追加表示される
-    const variantsAttributesAttribute:
-      ProductDetails_product_variants_attributes_attribute = {
-        __typename: "Attribute",
-        id: `Attribute@${node.product_id}`,
-        name: "選択してください",
-        slug: "option-value",   // URLのクエリーパラメーターに設定される名称
-      };
-  
-    const variantsAttributesValues:
-      ProductDetails_product_variants_attributes_values[] = [];
-
-    variantsAttributesValues.push({
-      __typename: "AttributeValue",
-      id: `AttributeValue@${node.saleproduct_id}`,
-      name: node.name,
-      value: node.name,   // URLのクエリーパラメーターに設定される値
-    });
-
     const variantsAttributes:
       ProductDetails_product_variants_attributes[] = [];
 
-    variantsAttributes.push({
-      __typename: "SelectedAttribute",
-      // Name of an attribute displayed in the interface.
-      attribute: variantsAttributesAttribute,
-      // Values of an attribute.
-      values: variantsAttributesValues,
+    node.pms_saleproductoptionvalues.forEach(productValue => {
+      if (
+        productValue.option_no === null ||
+        productValue.option_no === undefined ||
+        productValue.option_value_no === null ||
+        productValue.option_value_no === undefined
+      ) {
+        console.error("***** Data error : Sale product *****");
+        console.error(`  saleproduct_id : '${node.saleproduct_id}'`);
+        console.error(`  option_no : ${productValue.option_no}.`);
+        console.error(`  option_value_no : ${productValue.option_value_no}.`);
+        return;
+      }
+
+      const value = optionValues[productValue.option_no];
+      const valueDetails = value.details[productValue.option_value_no];
+      const variantsAttributesValues:
+        ProductDetails_product_variants_attributes_values[] = [];
+
+      // 設定する id が異なる毎にセレクトボックスが追加表示される
+      const variantsAttributesAttribute:
+        ProductDetails_product_variants_attributes_attribute = {
+          __typename: "Attribute",
+          id: value.id,
+          name: value.name,
+          // URLのクエリーパラメーターに設定される名称
+          slug: `option-value-${value.id}`,
+        };
+
+      // セレクトボックス一覧に表示するデータを設定
+      variantsAttributesValues.push({
+        __typename: "AttributeValue",
+        id: valueDetails.id,
+        name: valueDetails.name,
+        // URLのクエリーパラメーターに設定される値
+        value: valueDetails.name,
+      });
+
+      variantsAttributes.push({
+        __typename: "SelectedAttribute",
+        attribute: variantsAttributesAttribute,
+        values: variantsAttributesValues,
+      });
     });
 
     const stockQuantity =
@@ -373,7 +473,7 @@ export const createProductDetailsResponse = (
     attributes,
     variants,
     seoDescription: "dummy: SEO Description",
-    seoTitle: "dummy: SEO Title",
+    seoTitle: pmsProduct.name,
     isAvailable: true,
     isAvailableForPurchase: true,
     availableForPurchase: null,
