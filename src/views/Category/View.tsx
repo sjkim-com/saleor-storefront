@@ -6,7 +6,7 @@ import { prodListHeaderCommonMsg } from "@temp/intl";
 import { IFilters } from "@types";
 import { StringParam, useQueryParam } from "use-query-params";
 import { Loader } from "@components/atoms";
-import { uniqBy } from "lodash";
+import { uniqBy, sortBy } from "lodash";
 import { MetaWrapper, NotFound, OfflinePlaceholder } from "../../components";
 import NetworkStatus from "../../components/NetworkStatus";
 import { PRODUCTS_PER_PAGE } from "../../core/config";
@@ -250,7 +250,10 @@ export const View: React.FC<ViewProps> = ({ match }) => {
               return edge.pms_attribute;
             });
 
-            attributes.edges = uniqBy(attributes.edges, "attribute_id");
+            attributes.edges = sortBy(
+              uniqBy(attributes.edges, "attribute_id"),
+              "sort_no"
+            );
 
             // return (
             //   <TypedCategoryProductsQuery variables={variables}>

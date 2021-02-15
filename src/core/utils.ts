@@ -52,13 +52,11 @@ export const getDBIdFromGraphqlId = (
   return parseInt(graphqlId, 10);
 };
 
-export const cmgtGetUserIdFromGraphqlId = (
-  graphqlId: string
-): number => {
+export const cmgtGetUserIdFromGraphqlId = (graphqlId: string): number => {
   if (isBase64(graphqlId)) {
     let rawId = Base64.decode(graphqlId);
     rawId = rawId.replace(/[^0-9]/g, "");
-    return parseInt(rawId,10);
+    return parseInt(rawId, 10);
   }
 };
 
@@ -68,7 +66,7 @@ export const cmgtGetDBIdFromGraphqlId = (
 ): string => {
   if (isBase64(graphqlId)) {
     let rawId = Base64.decode(graphqlId);
-    
+
     rawId = rawId.replace(/[\[\]\"]/gi, "");
     const arr = rawId.split(", ");
     if (schema && schema !== arr![2]) {
@@ -263,3 +261,11 @@ export const findFormErrors = (result: void | FetchResult): FormError[] => {
 };
 
 export const removeEmptySpaces = (text: string) => text.replace(/\s+/g, "");
+
+export const getDBIdFromGraphqlIdConverter = (graphqlId: string): number => {
+  // This is temporary solution, we will use slugs in the future
+  const rawId = Base64.decode(graphqlId);
+  const regexp = /(\w+):(\d+)/;
+  const arr = regexp.exec(rawId);
+  return parseInt(arr![2], 10);
+};
