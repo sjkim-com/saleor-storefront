@@ -8,8 +8,9 @@ import { RouteComponentProps } from "react-router";
 
 import { CheckoutReview } from "@components/organisms";
 import { statuses as dummyStatuses } from "@components/organisms/DummyPaymentGateway";
-import { useCheckout } from "@saleor/sdk";
+import { useCheckout, useAuth } from "@saleor/sdk";
 import { IFormError } from "@types";
+import { cmgtGetUserIdFromGraphqlId } from "../../../../core/utils";
 
 export interface ISubmitCheckoutData {
   id: string;
@@ -42,6 +43,7 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
   ref
 ) => {
   const { checkout, payment, cmgtCompleteCheckout } = useCheckout();
+  const { user } = useAuth();
 
   const [errors, setErrors] = useState<IFormError[]>([]);
 
@@ -86,7 +88,13 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
           new Event("submitComplete", { cancelable: true })
         );
       } else {
-        const response = await cmgtCompleteCheckout();
+        const response = await cmgtCompleteCheckout({paymentData: {
+          id: payment?.id!,
+          gateway: payment?.gateway!,
+          token: payment?.token!,
+          total: payment?.total!
+        }, userId: user === undefined || user === null ? undefined : cmgtGetUserIdFromGraphqlId(user.id)
+        });
         data = response.data;
         dataError = response.dataError;
         changeSubmitProgress(false);

@@ -11,13 +11,14 @@ import {
   adyenNotNegativeConfirmationStatusCodes,
 } from "@components/organisms";
 import { Checkout } from "@components/templates";
-import { useCart, useCheckout } from "@saleor/sdk";
+import { useCart, useCheckout, useAuth } from "@saleor/sdk";
 import { IItems } from "@saleor/sdk/lib/api/Cart/types";
 import { CHECKOUT_STEPS, CheckoutStep } from "@temp/core/config";
 import { checkoutMessages } from "@temp/intl";
 import { ITaxedMoney, ICheckoutStep, ICardData, IFormError } from "@types";
 import { parseQueryString } from "@temp/core/utils";
 import { CompleteCheckout_checkoutComplete_order } from "@saleor/sdk/lib/mutations/gqlTypes/CompleteCheckout";
+import { cmgtGetUserIdFromGraphqlId } from "../../../core/utils";
 
 import { CheckoutRouter } from "./CheckoutRouter";
 import {
@@ -100,6 +101,7 @@ const getButton = (text?: string, onClick?: () => void) => {
 const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   const location = useLocation();
   const history = useHistory();
+  const { user } = useAuth();
   const querystring = parseQueryString(location);
   const {
     loaded: cartLoaded,
@@ -321,7 +323,10 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     }
   };
   const handleSubmitPayment = async (paymentData?: object) => {
-    const response = await cmgtCompleteCheckout({ paymentData });
+    const response = await cmgtCompleteCheckout({
+      paymentData : paymentData, 
+      userId: user === undefined || user === null ? undefined : cmgtGetUserIdFromGraphqlId(user.id)
+    });
     return {
       confirmationData: response.data?.confirmationData,
       confirmationNeeded: response.data?.confirmationNeeded,
@@ -429,7 +434,8 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
         gateway: payment?.gateway!,
         token: payment?.token!,
         total: payment?.total!
-      }});
+      }, userId: user === undefined || user === null ? undefined : cmgtGetUserIdFromGraphqlId(user.id)
+      });
       const errors = dataError?.error;
       setSubmitInProgress(false);
       if (errors) {

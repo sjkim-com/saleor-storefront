@@ -52,12 +52,23 @@ export const getDBIdFromGraphqlId = (
   return parseInt(graphqlId, 10);
 };
 
+export const cmgtGetUserIdFromGraphqlId = (
+  graphqlId: string
+): number => {
+  if (isBase64(graphqlId)) {
+    let rawId = Base64.decode(graphqlId);
+    rawId = rawId.replace(/[^0-9]/g, "");
+    return parseInt(rawId,10);
+  }
+};
+
 export const cmgtGetDBIdFromGraphqlId = (
   graphqlId: string,
   schema?: string
 ): string => {
   if (isBase64(graphqlId)) {
     let rawId = Base64.decode(graphqlId);
+    
     rawId = rawId.replace(/[\[\]\"]/gi, "");
     const arr = rawId.split(", ");
     if (schema && schema !== arr![2]) {
