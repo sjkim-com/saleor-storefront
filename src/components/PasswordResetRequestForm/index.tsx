@@ -115,7 +115,7 @@ const PasswordResetRequestForm: React.FC<{ hide: () => void }> = ({ hide }) => {
     } else if (data) {
       setErrors(null);
     }
-    showSuccessNotification(data, hide , alert, intl);
+    showSuccessNotification(data, hide, alert, intl);
   };
 
   const formData = demoMode
