@@ -30,7 +30,7 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
   const { checkout } = useCheckout();
   const {
     items,
-    removeItem,
+    cmgtRemoveItem,
     subtotalPrice,
     shippingPrice,
     discount,
@@ -86,7 +86,7 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
                 <Loader full />
               ) : (
                 <>
-                  <ProductList lines={items} remove={removeItem} />
+                  <ProductList lines={items} remove={cmgtRemoveItem} />
                   <div className="cart__footer">
                     <div className="cart__footer__price">
                       <span>
