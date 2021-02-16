@@ -162,10 +162,10 @@
     "string": "Unknown payment submission error occured."
   },
   "@next_dot_components_dot_organisms_dot_CartSummary_dot_CartSummary_dot_2088494495": {
-    "string": "Cart Summary"
+    "string": "バッグの詳細"
   },
   "@next_dot_components_dot_organisms_dot_CheckoutAddress_dot_CheckoutAddress_dot_3912924864": {
-    "string": "Same as shipping address"
+    "string": "お届け先と同じ住所を指定"
   },
   "@next_dot_components_dot_organisms_dot_CheckoutPayment_dot_CheckoutPayment_dot_3382401165": {
     "string": "Do you have a gift card voucher or discount code?"
@@ -270,7 +270,7 @@
     "string": "If you don’t wish to register an account, don’t worry. You can checkout as a guest. We care about you just as much as any registered user."
   },
   "components_dot_CheckoutLogin_dot_SignInForm_dot_2856837597": {
-    "string": "Registered user"
+    "string": "ログイン"
   },
   "components_dot_LoginForm_dot_index_dot_1405865627": {
     "string": "ログイン"
@@ -319,7 +319,7 @@
     "string": "パスワードを忘れた方はこちら"
   },
   "components_dot_OverlayManager_dot_Login_dot_ForgottenPassword_dot_1781368875": {
-    "string": "ここをクリック"
+    "string": "パスワードを忘れた方はこちら"
   },
   "components_dot_OverlayManager_dot_Login_dot_RegisterForm_dot_2556234295": {
     "string": "登録"
@@ -475,7 +475,7 @@
     "string": "パスワード"
   },
   "intl_dot_commonMessages_dot_phone": {
-    "string": "電話"
+    "string": "電話番号"
   },
   "intl_dot_commonMessages_dot_phoneNumber": {
     "string": "電話番号 : {phone}"
