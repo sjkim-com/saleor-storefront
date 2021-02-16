@@ -183,16 +183,16 @@
     "string": "適用"
   },
   "@next_dot_components_dot_organisms_dot_ProductList_dot_ProductList_dot_2783099424": {
-    "string": "More +"
+    "string": "もっと見る"
   },
   "@next_dot_components_dot_organisms_dot_ProductVariantPicker_dot_ProductVariantAttributeSelect_dot_1125254976": {
-    "string": "Please select {selectLabel}"
+    "string": "選択してください {selectLabel}"
   },
   "@next_dot_components_dot_organisms_dot_ThankYou_dot_ThankYou_dot_1995277831": {
-    "string": "ありがとうございます。"
+    "string": "ご注文ありがとうございます。"
   },
   "@next_dot_components_dot_organisms_dot_ThankYou_dot_ThankYou_dot_2116351823": {
-    "string": "for your order!"
+    "string": ""
   },
   "@next_dot_components_dot_organisms_dot_ThankYou_dot_ThankYou_dot_2999163789": {
     "string": "注文番号は"
@@ -201,10 +201,10 @@
     "string": "We’ve emailed you an order confirmation, and we’ll notify you when the order has been shipped."
   },
   "@next_dot_components_dot_organisms_dot_ThankYou_dot_ThankYou_dot_3752098833": {
-    "string": "注文詳細"
+    "string": "注文履歴"
   },
   "@next_dot_components_dot_templates_dot_CartEmpty_dot_CartEmpty_dot_2488840083": {
-    "string": "looks empty"
+    "string": "バッグ内に商品がありません。"
   },
   "@next_dot_components_dot_templates_dot_CartEmpty_dot_CartEmpty_dot_2896212356": {
     "string": "Maybe you haven’t made your choices yet"
@@ -213,10 +213,10 @@
     "string": "バッグ"
   },
   "@next_dot_pages_dot_CartPage_dot_CartPage_dot_1304869656": {
-    "string": "PROCEED TO CHECKOUT"
+    "string": "チェックアウト"
   },
   "@next_dot_pages_dot_CartPage_dot_CartPage_dot_3173718889": {
-    "string": "マイ バッグ"
+    "string": "マイバッグ"
   },
   "@next_dot_pages_dot_CheckoutPage_dot_subpages_dot_CheckoutAddressSubpage_dot_2558335134": {
     "string": "Please provide billing address."
@@ -255,7 +255,7 @@
     "string": "Total Cost"
   },
   "components_dot_CartTable_dot_Table_dot_2875988277": {
-    "string": "Discount: {discountName}"
+    "string": "割引 : {discountName}"
   },
   "components_dot_CheckoutLogin_dot_CheckoutAsGuest_dot_1006283488": {
     "string": "ゲストで続ける"
@@ -294,14 +294,14 @@
     "string": "We can’t seem to find a page you are looking for!"
   },
   "components_dot_OverlayManager_dot_Cart_dot_Cart_dot_1316031908": {
-    "string": "マイ バッグ : "
+    "string": "マイバッグ : "
   },
   "components_dot_OverlayManager_dot_Cart_dot_Cart_dot_1397761112": {
-    "context": "items quantity in cart",
+    "context": "バッグ内の商品個数",
     "string": "{itemsQuantity,plural,one {{itemsQuantity} 個} other {{itemsQuantity} 個}}"
   },
   "components_dot_OverlayManager_dot_Cart_dot_Cart_dot_2426849470": {
-    "string": "マイ バッグを見る"
+    "string": "マイバッグを見る"
   },
   "components_dot_OverlayManager_dot_Cart_dot_Empty_dot_3515754810": {
     "string": "買い物を続ける"
@@ -367,7 +367,7 @@
     "string": "新しい住所を追加"
   },
   "intl_dot_checkoutMessages_dot_addressNextActionName": {
-    "string": "配送を続ける"
+    "string": "お届け先と請求先を設定"
   },
   "intl_dot_checkoutMessages_dot_billingAddress": {
     "string": "請求先住所"
@@ -379,13 +379,13 @@
     "string": "支払い方法"
   },
   "intl_dot_checkoutMessages_dot_paymentNextActionName": {
-    "string": "レビューを続ける"
+    "string": "支払い方法を設定"
   },
   "intl_dot_checkoutMessages_dot_reviewNextActionName": {
-    "string": "Place order"
+    "string": "注文を確定"
   },
   "intl_dot_checkoutMessages_dot_reviewOrder": {
-    "string": "注文確認"
+    "string": "注文内容の確認"
   },
   "intl_dot_checkoutMessages_dot_shippingAddress": {
     "string": "お届け先住所"
@@ -394,19 +394,19 @@
     "string": "配送方法"
   },
   "intl_dot_checkoutMessages_dot_shippingNextActionName": {
-    "string": "支払いを続ける"
+    "string": "配送方法を設定"
   },
   "intl_dot_checkoutMessages_dot_stepNameAddress": {
-    "string": "住所"
+    "string": "お届け先と請求先"
   },
   "intl_dot_checkoutMessages_dot_stepNamePayment": {
-    "string": "支払い"
+    "string": "支払い方法"
   },
   "intl_dot_checkoutMessages_dot_stepNameReview": {
-    "string": "レビュー"
+    "string": "注文内容の確認"
   },
   "intl_dot_checkoutMessages_dot_stepNameShipping": {
-    "string": "お届け先住所"
+    "string": "配送方法"
   },
   "intl_dot_commonMessages_dot_account": {
     "string": "会員"
@@ -445,7 +445,7 @@
     "string": "苗字 (姓)"
   },
   "intl_dot_commonMessages_dot_loading": {
-    "string": "Loading"
+    "string": "処理中です"
   },
   "intl_dot_commonMessages_dot_logOut": {
     "string": "ログアウト"
@@ -526,7 +526,7 @@
     "string": "小計"
   },
   "intl_dot_commonMessages_dot_total": {
-    "string": "合計"
+    "string": "合計金額"
   },
   "intl_dot_commonMessages_dot_totalPrice": {
     "string": "合計金額"
