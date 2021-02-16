@@ -165,17 +165,8 @@ export const productDetailsQuery = gql`
 // <----- 削除予定
 
 export const CmgtProductDetailsQuery = gql`
-  query CmgtProductDetails(
-    $storeId: String,
-    $productId: String
-  ) {
-    pms_product_connection(
-      where: {
-        product_id: { _eq: $productId },
-        store_id: { _eq: $storeId },
-        use_yn: { _eq: "Y" }
-      }
-    ) {
+  query CmgtProductDetails($storeId: String, $productId: String) {
+    pms_product_connection(where: {product_id: {_eq: $productId}, store_id: {_eq: $storeId}, use_yn: {_eq: "Y"}}) {
       edges {
         node {
           id
@@ -184,7 +175,7 @@ export const CmgtProductDetailsQuery = gql`
           category_id
           name
           sale_price
-          selling_point
+          detail
           pms_category {
             category_id
             name
@@ -221,13 +212,7 @@ export const CmgtProductDetailsQuery = gql`
         }
       }
     }
-    pms_saleproduct_connection(
-      where: {
-        product_id: { _eq: $productId },
-        store_id: { _eq: $storeId }
-      },
-      order_by: { saleproduct_id: asc }
-    ) {
+    pms_saleproduct_connection(where: {product_id: {_eq: $productId}, store_id: {_eq: $storeId}}, order_by: {saleproduct_id: asc}) {
       edges {
         node {
           id
@@ -247,26 +232,31 @@ export const CmgtProductDetailsQuery = gql`
               }
             }
           }
-          pms_saleproductoptionvalues(
-            order_by: { option_no: asc }
-          ) {
+          pms_saleproductoptionvalues(order_by: {option_no: asc}) {
             option_no
             option_value_no
           }
         }
       }
     }
-    pms_productimg_connection(
-      where: {
-        product_id: { _eq: $productId },
-        use_yn: { _eq: "Y" }
-      }
-    ) {
+    pms_productimg_connection(where: {product_id: {_eq: $productId}, use_yn: {_eq: "Y"}}) {
       edges {
         node {
           id
+          saleproduct_id
           img
           text
+        }
+      }
+    }
+    pms_productnotice_connection(where: {product_id: {_eq: $productId}}, order_by: {product_notice_field_id: asc}) {
+      edges {
+        node {
+          id
+          product_id
+          product_notice_field_id
+          product_notice_type_cd
+          detail
         }
       }
     }

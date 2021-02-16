@@ -64,17 +64,28 @@ export const createProductDetailsResponse = (
     pmsSaleProducts.length > 0
       ? pmsSaleProducts[0].node.pms_warehousestocks_connection.edges
       : null;
+  const pmsProductNotices =
+    cmgtProductDetails.pms_productnotice_connection.edges;
   const displayCategoryProduct =
     pmsProduct.dms_displaycategoryproducts_connection.edges.length > 0
       ? pmsProduct.dms_displaycategoryproducts_connection.edges[0].node.dms_displaycategory
       : null;
-  
+
   const currencyCode = "JPY";
   const productPriceGross = pmsProduct.sale_price;
   const productPriceNet = pmsProduct.sale_price;
   const productUndiscountedPriceGross = pmsProduct.sale_price;
   const productUndiscountedPriceNet = pmsProduct.sale_price;
-  const productImageUrl = null;
+
+  let productImageUrl = null;
+  if (pmsSaleProducts.length > 0) {
+    const saleProductId = pmsSaleProducts[0].node.saleproduct_id;
+    const productImages = pmsProductImages.filter(image => 
+      image.node.saleproduct_id === saleProductId
+    );
+
+    productImageUrl = productImages.length > 1 ? productImages[0].node.img : null;
+  }
 
   const thumbnail: ProductDetails_product_thumbnail = {
     __typename: "Image",
@@ -228,29 +239,33 @@ export const createProductDetailsResponse = (
     });
   });
   
+  // 商品属性(Attributes)に表示しない為、空のデータを設定
   const attributesAttribute:
     ProductDetails_product_attributes_attribute = {
       __typename: "Attribute",
-      id: "dummy: attributesAttribute id",
-      name: "dummy: attributesAttribute name",
+      id: "",
+      name: "",
     };
   
-  const attributesValues:
-    ProductDetails_product_attributes_values[] = [];
-
-  attributesValues.push({
-    __typename: "AttributeValue",
-    id: "dummy : attributesValues id",
-    name: "dummy : attributesValues name",
-  });
-
   const attributes:
     ProductDetails_product_attributes[] = [];
 
-  attributes.push({
-    __typename: "SelectedAttribute",
-    attribute: attributesAttribute,
-    values: attributesValues,  
+  pmsProductNotices.forEach(notice => {
+    const { node } = notice;
+    const attributesValues:
+      ProductDetails_product_attributes_values[] = [];
+
+    attributesValues.push({
+      __typename: "AttributeValue",
+      id: node.product_notice_field_id,
+      name: node.detail
+    });
+
+    attributes.push({
+      __typename: "SelectedAttribute",
+      attribute: attributesAttribute,
+      values: attributesValues,  
+    });
   });
   
   const variantsImages:
@@ -450,7 +465,7 @@ export const createProductDetailsResponse = (
       {
         "key": "",
         "data": {},
-        "text": pmsProduct.selling_point === null ? "" : pmsProduct.selling_point,
+        "text": pmsProduct.detail === null ? "" : pmsProduct.detail,
         "type": "unstyled",
         "depth": 0,
         "entityRanges": [],

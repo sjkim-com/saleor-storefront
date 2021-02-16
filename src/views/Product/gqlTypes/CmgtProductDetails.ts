@@ -118,9 +118,9 @@ export interface CmgtProductDetails_pms_product_connection_edges_node {
    */
   sale_price: any | null;
   /**
-   * セリングポイント
+   * 詳細な説明
    */
-  selling_point: string | null;
+  detail: string | null;
   /**
    * An object relationship
    */
@@ -219,6 +219,7 @@ export interface CmgtProductDetails_pms_saleproduct_connection {
 export interface CmgtProductDetails_pms_productimg_connection_edges_node {
   __typename: "pms_productimg";
   id: string;
+  saleproduct_id: string | null;
   /**
    * 画像||商品ID_画像番号
    */
@@ -239,6 +240,37 @@ export interface CmgtProductDetails_pms_productimg_connection {
   edges: CmgtProductDetails_pms_productimg_connection_edges[];
 }
 
+export interface CmgtProductDetails_pms_productnotice_connection_edges_node {
+  __typename: "pms_productnotice";
+  id: string;
+  /**
+   * 商品ID
+   */
+  product_id: string;
+  /**
+   * 商品告示項目ID
+   */
+  product_notice_field_id: string;
+  /**
+   * 商品告示タイプコード
+   */
+  product_notice_type_cd: string;
+  /**
+   * 内容
+   */
+  detail: string | null;
+}
+
+export interface CmgtProductDetails_pms_productnotice_connection_edges {
+  __typename: "pms_productnoticeEdge";
+  node: CmgtProductDetails_pms_productnotice_connection_edges_node;
+}
+
+export interface CmgtProductDetails_pms_productnotice_connection {
+  __typename: "pms_productnoticeConnection";
+  edges: CmgtProductDetails_pms_productnotice_connection_edges[];
+}
+
 export interface CmgtProductDetails {
   /**
    * fetch data from the table: "pms_product"
@@ -252,6 +284,10 @@ export interface CmgtProductDetails {
    * fetch data from the table: "pms_productimg"
    */
   pms_productimg_connection: CmgtProductDetails_pms_productimg_connection;
+  /**
+   * fetch data from the table: "pms_productnotice"
+   */
+  pms_productnotice_connection: CmgtProductDetails_pms_productnotice_connection;
 }
 
 export interface CmgtProductDetailsVariables {

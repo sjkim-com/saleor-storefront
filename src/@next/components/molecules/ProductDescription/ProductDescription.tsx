@@ -59,7 +59,10 @@ export const ProductDescription: React.FC<IProps> = ({
           {attributes &&
             attributes.map((attribute, index) => (
               <li key={index}>
+                {/*
                 <S.AttributeName>{attribute.attribute.name}: </S.AttributeName>{" "}
+                {attribute.values.map(value => value.name).join(", ")}
+                */}
                 {attribute.values.map(value => value.name).join(", ")}
               </li>
             ))}
