@@ -367,7 +367,7 @@
     "string": "新しい住所を追加"
   },
   "intl_dot_checkoutMessages_dot_addressNextActionName": {
-    "string": "配送を続ける"
+    "string": "お届け先と請求先を設定"
   },
   "intl_dot_checkoutMessages_dot_billingAddress": {
     "string": "請求先住所"
@@ -379,13 +379,13 @@
     "string": "支払い方法"
   },
   "intl_dot_checkoutMessages_dot_paymentNextActionName": {
-    "string": "レビューを続ける"
+    "string": "支払い方法を設定"
   },
   "intl_dot_checkoutMessages_dot_reviewNextActionName": {
-    "string": "Place order"
+    "string": "注文を確定"
   },
   "intl_dot_checkoutMessages_dot_reviewOrder": {
-    "string": "注文確認"
+    "string": "注文内容の確認"
   },
   "intl_dot_checkoutMessages_dot_shippingAddress": {
     "string": "お届け先住所"
@@ -394,19 +394,19 @@
     "string": "配送方法"
   },
   "intl_dot_checkoutMessages_dot_shippingNextActionName": {
-    "string": "支払いを続ける"
+    "string": "配送方法を設定"
   },
   "intl_dot_checkoutMessages_dot_stepNameAddress": {
-    "string": "住所"
+    "string": "お届け先と請求先"
   },
   "intl_dot_checkoutMessages_dot_stepNamePayment": {
-    "string": "支払い"
+    "string": "支払い方法"
   },
   "intl_dot_checkoutMessages_dot_stepNameReview": {
-    "string": "レビュー"
+    "string": "注文内容の確認"
   },
   "intl_dot_checkoutMessages_dot_stepNameShipping": {
-    "string": "お届け先住所"
+    "string": "配送方法"
   },
   "intl_dot_commonMessages_dot_account": {
     "string": "会員"
