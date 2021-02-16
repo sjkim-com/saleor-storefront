@@ -204,7 +204,7 @@
     "string": "注文詳細"
   },
   "@next_dot_components_dot_templates_dot_CartEmpty_dot_CartEmpty_dot_2488840083": {
-    "string": "looks empty"
+    "string": "バッグ内に商品がありません。"
   },
   "@next_dot_components_dot_templates_dot_CartEmpty_dot_CartEmpty_dot_2896212356": {
     "string": "Maybe you haven’t made your choices yet"
@@ -213,10 +213,10 @@
     "string": "バッグ"
   },
   "@next_dot_pages_dot_CartPage_dot_CartPage_dot_1304869656": {
-    "string": "PROCEED TO CHECKOUT"
+    "string": "チェックアウト"
   },
   "@next_dot_pages_dot_CartPage_dot_CartPage_dot_3173718889": {
-    "string": "マイバッグ"
+    "string": "マイ バッグ"
   },
   "@next_dot_pages_dot_CheckoutPage_dot_subpages_dot_CheckoutAddressSubpage_dot_2558335134": {
     "string": "Please provide billing address."
@@ -255,7 +255,7 @@
     "string": "Total Cost"
   },
   "components_dot_CartTable_dot_Table_dot_2875988277": {
-    "string": "Discount: {discountName}"
+    "string": "割引 : {discountName}"
   },
   "components_dot_CheckoutLogin_dot_CheckoutAsGuest_dot_1006283488": {
     "string": "ゲストで続ける"
@@ -294,7 +294,7 @@
     "string": "We can’t seem to find a page you are looking for!"
   },
   "components_dot_OverlayManager_dot_Cart_dot_Cart_dot_1316031908": {
-    "string": "マイバッグ : "
+    "string": "マイ バッグ : "
   },
   "components_dot_OverlayManager_dot_Cart_dot_Cart_dot_1397761112": {
     "context": "items quantity in cart",
@@ -445,7 +445,7 @@
     "string": "苗字 (姓)"
   },
   "intl_dot_commonMessages_dot_loading": {
-    "string": "Loading"
+    "string": "処理中です"
   },
   "intl_dot_commonMessages_dot_logOut": {
     "string": "ログアウト"
@@ -526,7 +526,7 @@
     "string": "小計"
   },
   "intl_dot_commonMessages_dot_total": {
-    "string": "合計"
+    "string": "合計金額"
   },
   "intl_dot_commonMessages_dot_totalPrice": {
     "string": "合計金額"
