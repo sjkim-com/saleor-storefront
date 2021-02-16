@@ -183,16 +183,16 @@
     "string": "適用"
   },
   "@next_dot_components_dot_organisms_dot_ProductList_dot_ProductList_dot_2783099424": {
-    "string": "More +"
+    "string": "もっと見る"
   },
   "@next_dot_components_dot_organisms_dot_ProductVariantPicker_dot_ProductVariantAttributeSelect_dot_1125254976": {
-    "string": "Please select {selectLabel}"
+    "string": "選択してください {selectLabel}"
   },
   "@next_dot_components_dot_organisms_dot_ThankYou_dot_ThankYou_dot_1995277831": {
-    "string": "ありがとうございます。"
+    "string": "ご注文ありがとうございます。"
   },
   "@next_dot_components_dot_organisms_dot_ThankYou_dot_ThankYou_dot_2116351823": {
-    "string": "for your order!"
+    "string": ""
   },
   "@next_dot_components_dot_organisms_dot_ThankYou_dot_ThankYou_dot_2999163789": {
     "string": "注文番号は"
@@ -201,7 +201,7 @@
     "string": "We’ve emailed you an order confirmation, and we’ll notify you when the order has been shipped."
   },
   "@next_dot_components_dot_organisms_dot_ThankYou_dot_ThankYou_dot_3752098833": {
-    "string": "注文詳細"
+    "string": "注文履歴"
   },
   "@next_dot_components_dot_templates_dot_CartEmpty_dot_CartEmpty_dot_2488840083": {
     "string": "バッグ内に商品がありません。"
@@ -216,7 +216,7 @@
     "string": "チェックアウト"
   },
   "@next_dot_pages_dot_CartPage_dot_CartPage_dot_3173718889": {
-    "string": "マイ バッグ"
+    "string": "マイバッグ"
   },
   "@next_dot_pages_dot_CheckoutPage_dot_subpages_dot_CheckoutAddressSubpage_dot_2558335134": {
     "string": "Please provide billing address."
@@ -294,10 +294,10 @@
     "string": "We can’t seem to find a page you are looking for!"
   },
   "components_dot_OverlayManager_dot_Cart_dot_Cart_dot_1316031908": {
-    "string": "マイ バッグ : "
+    "string": "マイバッグ : "
   },
   "components_dot_OverlayManager_dot_Cart_dot_Cart_dot_1397761112": {
-    "context": "items quantity in cart",
+    "context": "バッグ内の商品個数",
     "string": "{itemsQuantity,plural,one {{itemsQuantity} 個} other {{itemsQuantity} 個}}"
   },
   "components_dot_OverlayManager_dot_Cart_dot_Cart_dot_2426849470": {
