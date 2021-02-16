@@ -31,7 +31,7 @@ const returnTab: any = (path: string, userDetails, history) => {
       break;
     }
     case orderHistoryUrl: {
-      tabContent = <OrdersHistory {...{ history }} />;
+      tabContent = <OrdersHistory user={userDetails} {...{ history }} />;
       break;
     }
     default:

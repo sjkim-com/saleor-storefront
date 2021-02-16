@@ -1,18 +1,23 @@
-import { useOrdersByUser } from "@saleor/sdk/";
+// import { useOrdersByUser } from "@saleor/sdk/";
+import { cmgtUseOrdersByUser } from "@saleor/sdk/";
 import React from "react";
 import { FormattedMessage } from "react-intl";
 
 import { Button, Loader } from "@components/atoms";
 import { OrderTabel } from "@components/molecules";
+import { getDBIdFromGraphqlIdConverter } from "../../../core/utils";
 
 import * as S from "./styles";
 import { IProps } from "./types";
 
 const ORDERS_PER_APICALL = 5;
 
-export const OrdersHistory: React.FC<IProps> = ({ history }: IProps) => {
-  const { data, loading, loadMore } = useOrdersByUser(
+export const OrdersHistory: React.FC<IProps> = ({ user, history }: IProps) => {
+  // export const OrdersHistory: React.FC<IProps> = ({ history }: IProps) => {
+  // const { data, loading, loadMore } = useOrdersByUser(
+  const { data, loading, loadMore } = cmgtUseOrdersByUser(
     {
+      userId: getDBIdFromGraphqlIdConverter(user.id),
       perPage: ORDERS_PER_APICALL,
     },
     {

@@ -7,7 +7,11 @@ import { TaxedMoney } from "@components/containers";
 import { commonMessages, translateOrderStatus } from "@temp/intl";
 
 import { Thumbnail } from "..";
-import { generateProductUrl } from "../../../../core/utils";
+import {
+  generateProductUrl,
+  cmgtGenerateProductUrl,
+  cmgtGetDBIdFromGraphqlId,
+} from "../../../../core/utils";
 
 import * as S from "./styles";
 import { IProps } from "./types";
@@ -53,17 +57,24 @@ export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
               {orders &&
                 orders.map(order => {
                   const date = new Date(order.node.created);
+                  const number = cmgtGetDBIdFromGraphqlId(
+                    order.node.number,
+                    "order_order"
+                  );
                   return (
                     <S.Row
                       data-test="orderEntry"
-                      data-test-id={order.node.number}
-                      key={order.node.number}
+                      // data-test-id={order.node.number}
+                      // key={order.node.number}
+                      data-test-id={number}
+                      key={number}
                       onClick={evt => {
                         evt.stopPropagation();
                         history.push(`/order-history/${order.node.token}`);
                       }}
                     >
-                      <S.IndexNumber>{order.node.number}</S.IndexNumber>
+                      {/* <S.IndexNumber>{order.node.number}</S.IndexNumber> */}
+                      <S.IndexNumber>{number}</S.IndexNumber>
                       {matches ? (
                         <>
                           <S.ProductsOrdered>
@@ -75,7 +86,11 @@ export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
                                   onClick={evt => {
                                     evt.stopPropagation();
                                     history.push(
-                                      generateProductUrl(
+                                      // generateProductUrl(
+                                      //   product.variant.product.id,
+                                      //   product.variant.product.name
+                                      // )
+                                      cmgtGenerateProductUrl(
                                         product.variant.product.id,
                                         product.variant.product.name
                                       )
