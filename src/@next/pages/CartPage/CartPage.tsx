@@ -70,8 +70,8 @@ const prepareCartFooter = (
 
 const generateCart = (
   items: IItems,
-  removeItem: (variantId: string) => any,
-  updateItem: (variantId: string, quantity: number) => any
+  cmgtRemoveItem: (variantId: string) => any,
+  cmgtUpdateItem: (variantId: string, quantity: number) => any
 ) => {
   return items?.map(({ id, variant, quantity, totalPrice }, index) => (
     <CartRow
@@ -81,8 +81,8 @@ const generateCart = (
       name={variant?.product?.name || ""}
       maxQuantity={variant.quantityAvailable || quantity}
       quantity={quantity}
-      onRemove={() => removeItem(variant.id)}
-      onQuantityChange={quantity => updateItem(variant.id, quantity)}
+      onRemove={() => cmgtRemoveItem(variant.id)}
+      onQuantityChange={quantity => cmgtUpdateItem(variant.id, quantity)}
       thumbnail={{
         ...variant?.product?.thumbnail,
         alt: variant?.product?.thumbnail?.alt || "",
@@ -115,8 +115,10 @@ export const CartPage: React.FC<IProps> = ({}: IProps) => {
   const { checkout } = useCheckout();
   const {
     loaded,
-    removeItem,
-    updateItem,
+    // removeItem,
+    // updateItem,
+    cmgtRemoveItem,
+    cmgtUpdateItem,
     items,
     totalPrice,
     subtotalPrice,
@@ -148,7 +150,7 @@ export const CartPage: React.FC<IProps> = ({}: IProps) => {
           promoTaxedPrice,
           subtotalPrice
         )}
-        cart={items && generateCart(items, removeItem, updateItem)}
+        cart={items && generateCart(items, cmgtRemoveItem, cmgtUpdateItem)}
       />
     );
   }

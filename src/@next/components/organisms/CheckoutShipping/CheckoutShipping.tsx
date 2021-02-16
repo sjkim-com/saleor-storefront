@@ -53,7 +53,7 @@ const CheckoutShipping: React.FC<IProps> = ({
             >
               {shippingMethods.map(({ id, name, price }, index) => {
                 let resultPrice;
-                if(price?.net == undefined) {
+                if(price?.net === undefined) {
                   resultPrice = {
                     gross:{
                       amount: price?.amount,

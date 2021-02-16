@@ -6,7 +6,7 @@ import { Icon, IconButton } from "@components/atoms";
 import { CachedImage, TextField } from "@components/molecules";
 import { commonMessages } from "@temp/intl";
 
-import { generateProductUrl } from "../../../../core/utils";
+import { cmgtGenerateCartProductUrl } from "../../../../core/utils";
 
 import * as S from "./styles";
 import { IProps } from "./types";
@@ -96,7 +96,7 @@ export const CartRow: React.FC<IProps> = ({
       ]
     : undefined;
 
-  const productUrl = generateProductUrl(id, name);
+  const productUrl = cmgtGenerateCartProductUrl(id, name);
 
   return (
     <S.Wrapper data-test="cartRow" data-test-id={sku}>

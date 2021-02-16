@@ -104,6 +104,10 @@ export const cmgtGenerateCategoryUrl = (id: string, name: string) =>
 export const generateProductUrl = (id: string, name: string) =>
   // `/product/${slugify(name)}/${getDBIdFromGraphqlId(id, "Product")}/`;
   `/product/${slugify(name)}/${getDBIdFromGraphqlId(id, "product_product")}/`;
+  
+export const cmgtGenerateCartProductUrl = (id: string, name: string) =>
+  // `/product/${slugify(name)}/${getDBIdFromGraphqlId(id, "Product")}/`;
+  `/product/${slugify(name)}/${cmgtGetDBIdFromGraphqlId(id, "pms_product")}/`;
 
 export const generateCategoryUrl = (id: string, name: string) =>
   // `/category/${slugify(name)}/${getDBIdFromGraphqlId(id, "Category")}/`;
