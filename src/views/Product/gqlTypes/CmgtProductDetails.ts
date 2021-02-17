@@ -219,7 +219,15 @@ export interface CmgtProductDetails_pms_saleproduct_connection {
 export interface CmgtProductDetails_pms_productimg_connection_edges_node {
   __typename: "pms_productimg";
   id: string;
+  /**
+   * 商品ID
+   */
+  product_id: string | null;
   saleproduct_id: string | null;
+  /**
+   * 画像番号
+   */
+  img_no: number;
   /**
    * 画像||商品ID_画像番号
    */

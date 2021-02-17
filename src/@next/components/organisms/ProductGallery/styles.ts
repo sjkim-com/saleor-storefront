@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Thumbnail = styled.div<{ activeThumbnail: boolean }>`
-  width: 76px;
+  width: 64px;
   display: flex;
   border-width: 4px;
   border-style: solid;
@@ -18,15 +18,14 @@ export const Thumbnail = styled.div<{ activeThumbnail: boolean }>`
       ? props.theme.colors.thumbnailBorder
       : "transparent"};
   justify-content: center;
-  height: 100px;
+  height: 64px;
   overflow: hidden;
   img {
     width: 100%;
     object-fit: contain;
   }
 
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 10px 6px;
 `;
 
 export const Button = styled.div`

@@ -166,7 +166,13 @@ export const productDetailsQuery = gql`
 
 export const CmgtProductDetailsQuery = gql`
   query CmgtProductDetails($storeId: String, $productId: String) {
-    pms_product_connection(where: {product_id: {_eq: $productId}, store_id: {_eq: $storeId}, use_yn: {_eq: "Y"}}) {
+    pms_product_connection(
+      where: {
+        product_id: { _eq: $productId },
+        store_id: { _eq: $storeId },
+        use_yn: { _eq: "Y" }
+      }
+    ) {
       edges {
         node {
           id
@@ -212,7 +218,13 @@ export const CmgtProductDetailsQuery = gql`
         }
       }
     }
-    pms_saleproduct_connection(where: {product_id: {_eq: $productId}, store_id: {_eq: $storeId}}, order_by: {saleproduct_id: asc}) {
+    pms_saleproduct_connection(
+      where: {
+        product_id: { _eq: $productId },
+        store_id: { _eq: $storeId }
+      },
+      order_by: { saleproduct_id: asc }
+    ) {
       edges {
         node {
           id
@@ -232,24 +244,42 @@ export const CmgtProductDetailsQuery = gql`
               }
             }
           }
-          pms_saleproductoptionvalues(order_by: {option_no: asc}) {
+          pms_saleproductoptionvalues(
+            order_by: { option_no: asc }
+          ) {
             option_no
             option_value_no
           }
         }
       }
     }
-    pms_productimg_connection(where: {product_id: {_eq: $productId}, use_yn: {_eq: "Y"}}) {
+    pms_productimg_connection(
+      where: {
+        product_id: { _eq: $productId },
+        use_yn: { _eq: "Y" }
+      },
+      order_by: {
+        saleproduct_id: asc,
+        img_no: asc
+      }
+    ) {
       edges {
         node {
           id
+          product_id
           saleproduct_id
+          img_no
           img
           text
         }
       }
     }
-    pms_productnotice_connection(where: {product_id: {_eq: $productId}}, order_by: {product_notice_field_id: asc}) {
+    pms_productnotice_connection(
+      where: {
+        product_id: { _eq: $productId }
+      },
+      order_by: { product_notice_field_id: asc }
+    ) {
       edges {
         node {
           id
