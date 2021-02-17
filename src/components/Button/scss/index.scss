@@ -1,12 +1,13 @@
 @import "../../../globalStyles/scss/variables.scss";
 
 button.button {
-  background-color: $turquoise;
-  transform: $button-transform;
+  /* background-color: $turquoise; */
+  background-color: #36afc2;
+  /* transform: $button-transform; */
   padding: $button-padding;
   border: none;
-  box-shadow: $button-box-shadow;
-  transition: $button-transition;
+  /* box-shadow: $button-box-shadow; */
+  /* transition: $button-transition; */
   outline: none;
   font-family: $base-font-family;
   cursor: pointer;
@@ -24,7 +25,7 @@ button.button {
     text-transform: $button-text-transform;
     font-weight: $button-font-weight;
     line-height: $button-line-height;
-    transform: $button-content-transform;
+    /* transform: $button-content-transform; */
   }
 
   &:hover {

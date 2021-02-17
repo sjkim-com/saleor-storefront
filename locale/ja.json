@@ -213,7 +213,7 @@
     "string": "バッグ"
   },
   "@next_dot_pages_dot_CartPage_dot_CartPage_dot_1304869656": {
-    "string": "チェックアウト"
+    "string": "注文を確定"
   },
   "@next_dot_pages_dot_CartPage_dot_CartPage_dot_3173718889": {
     "string": "マイバッグ"
@@ -367,7 +367,7 @@
     "string": "新しい住所を追加"
   },
   "intl_dot_checkoutMessages_dot_addressNextActionName": {
-    "string": "お届け先と請求先を設定"
+    "string": "配送方法に進む"
   },
   "intl_dot_checkoutMessages_dot_billingAddress": {
     "string": "請求先住所"
@@ -379,7 +379,7 @@
     "string": "支払い方法"
   },
   "intl_dot_checkoutMessages_dot_paymentNextActionName": {
-    "string": "支払い方法を設定"
+    "string": "注文内容確認に進む"
   },
   "intl_dot_checkoutMessages_dot_reviewNextActionName": {
     "string": "注文を確定"
@@ -394,7 +394,7 @@
     "string": "配送方法"
   },
   "intl_dot_checkoutMessages_dot_shippingNextActionName": {
-    "string": "配送方法を設定"
+    "string": "支払い方法に進む"
   },
   "intl_dot_checkoutMessages_dot_stepNameAddress": {
     "string": "お届け先と請求先"
@@ -403,7 +403,7 @@
     "string": "支払い方法"
   },
   "intl_dot_checkoutMessages_dot_stepNameReview": {
-    "string": "注文内容の確認"
+    "string": "注文内容確認"
   },
   "intl_dot_checkoutMessages_dot_stepNameShipping": {
     "string": "配送方法"
@@ -421,7 +421,7 @@
     "string": "キャンセル"
   },
   "intl_dot_commonMessages_dot_checkout": {
-    "string": "支払い手続き"
+    "string": "支払い手続きに進む"
   },
   "intl_dot_commonMessages_dot_choosePaymentMethod": {
     "string": "支払い方法を選択してください。"
