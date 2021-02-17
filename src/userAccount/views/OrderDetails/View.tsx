@@ -4,7 +4,8 @@ import * as React from "react";
 import { RouteComponentProps } from "react-router";
 
 import { Loader } from "@components/atoms";
-import { useAuth, useOrderDetails } from "@saleor/sdk";
+// import { useAuth, useOrderDetails } from "@saleor/sdk";
+import { useAuth, cmgtUseOrderDetails, cmgtUseOrdersByUser } from "@saleor/sdk";
 
 import Page from "./Page";
 
@@ -13,7 +14,11 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
     params: { token },
   },
 }) => {
-  const { data: order, loading } = useOrderDetails(
+  // const { data: order, loading } = useOrderDetails(
+  //   { token },
+  //   { fetchPolicy: "cache-and-network" }
+  // );
+  const { data: order, loading } = cmgtUseOrderDetails(
     { token },
     { fetchPolicy: "cache-and-network" }
   );

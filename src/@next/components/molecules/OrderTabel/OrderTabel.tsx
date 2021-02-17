@@ -80,9 +80,9 @@ export const OrderTabel: React.FC<IProps> = ({ orders, history }: IProps) => {
                           <S.ProductsOrdered>
                             {order.node.lines
                               .slice(0, 5)
-                              .map((product: any) => (
+                              .map((product: any, index: number) => (
                                 <span
-                                  key={product.variant.product.id}
+                                  key={product.variant.product.id + index}
                                   onClick={evt => {
                                     evt.stopPropagation();
                                     history.push(

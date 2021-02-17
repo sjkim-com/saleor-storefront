@@ -7,7 +7,8 @@ import { Thumbnail } from "@components/molecules";
 import { ProductVariant } from "@saleor/sdk/lib/fragments/gqlTypes/ProductVariant";
 import { OrderByToken_orderByToken_lines_unitPrice } from "@saleor/sdk/lib/queries/gqlTypes/OrderByToken";
 
-import { generateProductUrl } from "../../core/utils";
+// import { generateProductUrl } from "../../core/utils";
+import { cmgtGenerateProductUrl } from "../../core/utils";
 
 export type ILine = Omit<
   ProductVariant,
@@ -32,7 +33,8 @@ const ProductRow: React.FC<ReadProductRowProps & EditableProductRowProps> = ({
   processing,
   line,
 }) => {
-  const productUrl = generateProductUrl(line.product.id, line.product.name);
+  // const productUrl = generateProductUrl(line.product.id, line.product.name);
+  const productUrl = cmgtGenerateProductUrl(line.product.id, line.product.name);
 
   return (
     <tr
