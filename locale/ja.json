@@ -45,7 +45,7 @@
     "string": "MY PASSWORD"
   },
   "@next_dot_components_dot_molecules_dot_AddToCartButton_dot_AddToCartButton_dot_81047562": {
-    "string": "バッグに入れる"
+    "string": "カートに入れる"
   },
   "@next_dot_components_dot_molecules_dot_AddressTile_dot_AddressTile_dot_1224809208": {
     "string": "デフォルトの住所"
@@ -162,7 +162,7 @@
     "string": "Unknown payment submission error occured."
   },
   "@next_dot_components_dot_organisms_dot_CartSummary_dot_CartSummary_dot_2088494495": {
-    "string": "バッグの詳細"
+    "string": "カートの詳細"
   },
   "@next_dot_components_dot_organisms_dot_CheckoutAddress_dot_CheckoutAddress_dot_3912924864": {
     "string": "お届け先と同じ住所を指定"
@@ -204,19 +204,19 @@
     "string": "注文履歴"
   },
   "@next_dot_components_dot_templates_dot_CartEmpty_dot_CartEmpty_dot_2488840083": {
-    "string": "バッグ内に商品がありません。"
+    "string": "カート内に商品がありません。"
   },
   "@next_dot_components_dot_templates_dot_CartEmpty_dot_CartEmpty_dot_2896212356": {
     "string": "Maybe you haven’t made your choices yet"
   },
   "@next_dot_components_dot_templates_dot_CartEmpty_dot_CartEmpty_dot_3578601618": {
-    "string": "バッグ"
+    "string": "カート"
   },
   "@next_dot_pages_dot_CartPage_dot_CartPage_dot_1304869656": {
     "string": "注文を確定"
   },
   "@next_dot_pages_dot_CartPage_dot_CartPage_dot_3173718889": {
-    "string": "マイバッグ"
+    "string": "カート"
   },
   "@next_dot_pages_dot_CheckoutPage_dot_subpages_dot_CheckoutAddressSubpage_dot_2558335134": {
     "string": "Please provide billing address."
@@ -294,14 +294,14 @@
     "string": "We can’t seem to find a page you are looking for!"
   },
   "components_dot_OverlayManager_dot_Cart_dot_Cart_dot_1316031908": {
-    "string": "マイバッグ : "
+    "string": "カート : "
   },
   "components_dot_OverlayManager_dot_Cart_dot_Cart_dot_1397761112": {
-    "context": "バッグ内の商品個数",
+    "context": "カート内の商品個数",
     "string": "{itemsQuantity,plural,one {{itemsQuantity} 個} other {{itemsQuantity} 個}}"
   },
   "components_dot_OverlayManager_dot_Cart_dot_Cart_dot_2426849470": {
-    "string": "マイバッグを見る"
+    "string": "カートを見る"
   },
   "components_dot_OverlayManager_dot_Cart_dot_Empty_dot_3515754810": {
     "string": "買い物を続ける"
@@ -310,7 +310,7 @@
     "string": "You haven’t added anything to your bag. We’re sure you’ll find something in our store"
   },
   "components_dot_OverlayManager_dot_Cart_dot_Empty_dot_966560142": {
-    "string": "バッグ内に商品がありません"
+    "string": "カート内に商品がありません"
   },
   "components_dot_OverlayManager_dot_Cart_dot_ProductList_dot_3897981513": {
     "string": "数量 : {quantity}"
