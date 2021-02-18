@@ -165,7 +165,10 @@ export const productDetailsQuery = gql`
 // <----- 削除予定
 
 export const CmgtProductDetailsQuery = gql`
-  query CmgtProductDetails($storeId: String, $productId: String) {
+  query CmgtProductDetails(
+    $storeId: String,
+    $productId: String
+  ) {
     pms_product_connection(
       where: {
         product_id: { _eq: $productId },
@@ -283,10 +286,12 @@ export const CmgtProductDetailsQuery = gql`
       edges {
         node {
           id
-          product_id
-          product_notice_field_id
-          product_notice_type_cd
           detail
+          pms_productnoticefield {
+            title
+            product_notice_field_id
+            product_notice_type_cd
+          }
         }
       }
     }

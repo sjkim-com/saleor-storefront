@@ -240,25 +240,26 @@ export const createProductDetailsResponse = (
     });
   });
 
-  // 商品属性(Attributes)に表示しない為、空のデータを設定
-  const attributesAttribute:
-    ProductDetails_product_attributes_attribute = {
-      __typename: "Attribute",
-      id: "",
-      name: "",
-    };
-  
   const attributes:
     ProductDetails_product_attributes[] = [];
 
   pmsProductNotices.forEach(notice => {
     const { node } = notice;
+    const noticeField = node.pms_productnoticefield;
     const attributesValues:
       ProductDetails_product_attributes_values[] = [];
 
+    // 商品属性(Attributes)に表示するデータを設定
+    const attributesAttribute:
+      ProductDetails_product_attributes_attribute = {
+        __typename: "Attribute",
+        id: noticeField.product_notice_field_id,
+        name: noticeField.title,
+      };
+    
     attributesValues.push({
       __typename: "AttributeValue",
-      id: node.product_notice_field_id,
+      id: noticeField.product_notice_field_id,
       name: node.detail
     });
 

@@ -248,13 +248,12 @@ export interface CmgtProductDetails_pms_productimg_connection {
   edges: CmgtProductDetails_pms_productimg_connection_edges[];
 }
 
-export interface CmgtProductDetails_pms_productnotice_connection_edges_node {
-  __typename: "pms_productnotice";
-  id: string;
+export interface CmgtProductDetails_pms_productnotice_connection_edges_node_pms_productnoticefield {
+  __typename: "pms_productnoticefield";
   /**
-   * 商品ID
+   * 題目
    */
-  product_id: string;
+  title: string | null;
   /**
    * 商品告示項目ID
    */
@@ -263,10 +262,19 @@ export interface CmgtProductDetails_pms_productnotice_connection_edges_node {
    * 商品告示タイプコード
    */
   product_notice_type_cd: string;
+}
+
+export interface CmgtProductDetails_pms_productnotice_connection_edges_node {
+  __typename: "pms_productnotice";
+  id: string;
   /**
    * 内容
    */
   detail: string | null;
+  /**
+   * An object relationship
+   */
+  pms_productnoticefield: CmgtProductDetails_pms_productnotice_connection_edges_node_pms_productnoticefield | null;
 }
 
 export interface CmgtProductDetails_pms_productnotice_connection_edges {
