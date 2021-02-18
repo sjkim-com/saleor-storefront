@@ -97,7 +97,7 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
         );
       } else {
         const selectOrderNo = await cmgtSelectLastOrderNo();
-        const gmoResult = await creditPayment_Sales(selectOrderNo.data, payment?.total?.amount!, cardInfo!);]
+        const gmoResult = await creditPayment_Sales(selectOrderNo.data, payment?.total?.amount!, cardInfo!);
 
         if(gmoResult.data){
           const response = await cmgtCompleteCheckout({
