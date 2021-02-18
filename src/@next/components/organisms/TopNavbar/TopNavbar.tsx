@@ -9,8 +9,12 @@ import { Icon, NavLink } from "@components/atoms";
 import { largeScreen, smallScreen } from "@styles/constants";
 import { maybe } from "@utils/misc";
 
-import LogoSmall from "images/logo-small.svg";
-import Logo from "images/logo.svg";
+// TODO: actus_demo
+// import LogoSmall from "images/logo-small.svg";
+// import Logo from "images/logo.svg";
+import LogoSmall from "images/actus/logo_header_Actus_s.svg";
+import Logo from "images/actus/logo_header_Actus_s.svg";
+
 
 import { Dropdown } from "./Dropdown";
 import * as S from "./styles";

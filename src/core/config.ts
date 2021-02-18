@@ -42,31 +42,40 @@ export const STATIC_PAGES = [
 export const SOCIAL_MEDIA = [
   {
     ariaLabel: "facebook",
-    href: "https://www.facebook.com/mirumeelabs/",
+    // TODO: actus_demo
+    // href: "https://www.facebook.com/mirumeelabs/",
+    href: "https://ja-jp.facebook.com/actus.interior/",
     path: require("../images/facebook-icon.svg"),
   },
   {
     ariaLabel: "instagram",
-    href: "https://www.instagram.com/mirumeelabs/",
+    // TODO: actus_demo
+    // href: "https://www.instagram.com/mirumeelabs/",
+    href: "https://www.instagram.com/actus_press/",
     path: require("../images/instagram-icon.svg"),
   },
   {
     ariaLabel: "twitter",
-    href: "https://twitter.com/getsaleor",
+    // TODO: actus_demo
+    // href: "https://twitter.com/getsaleor",
+    href: "https://twitter.com/actus_stylebook",
     path: require("../images/twitter-icon.svg"),
   },
-  {
-    ariaLabel: "youtube",
-    href: "https://www.youtube.com/channel/UCg_ptb-U75e7BprLCGS4s1g/videos",
-    path: require("../images/youtube-icon.svg"),
-  },
+  // {
+  //   ariaLabel: "youtube",
+  //   href: "https://www.youtube.com/channel/UCg_ptb-U75e7BprLCGS4s1g/videos",
+  //   path: require("../images/youtube-icon.svg"),
+  // },
 ];
 export const META_DEFAULTS = {
   custom: [],
   description:
     "Open-source PWA storefront built with Saleor's e-commerce GraphQL API. Written with React and TypeScript.",
-  image: `${window.location.origin}${require("../images/logo.svg")}`,
-  title: "Demo PWA Storefront – Saleor Commerce",
+  // TODO: actus_demo
+  // image: `${window.location.origin}${require("../images/logo.svg")}`,
+  // title: "Demo PWA Storefront – Saleor Commerce",
+  image: `${window.location.origin}${require("../images/actus/logo_header_Actus_s.svg")}`,
+  title: "ACTUS online（アクタス公式通販）| 家具・雑貨・ギフト",
   type: "website",
   url: window.location.origin,
 };

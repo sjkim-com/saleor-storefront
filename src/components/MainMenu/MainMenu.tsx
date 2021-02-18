@@ -27,7 +27,9 @@ import { TypedMainMenuQuery, TypedSubMenuQuery } from "./queries";
 import cartImg from "../../images/cart.svg";
 import hamburgerHoverImg from "../../images/hamburger-hover.svg";
 import hamburgerImg from "../../images/hamburger.svg";
-import logoImg from "../../images/logo.svg";
+// TODO: actus_demo
+// import logoImg from "../../images/logo.svg";
+import logoImg from "../../images/actus/logo_header_Actus_s.svg";
 import searchImg from "../../images/search.svg";
 import userImg from "../../images/user.svg";
 import {
