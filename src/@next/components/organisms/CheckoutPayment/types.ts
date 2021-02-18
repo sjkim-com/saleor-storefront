@@ -6,6 +6,7 @@ export interface IPromoCodeDiscount {
 
 export interface IProps {
   promoCodeErrors?: IFormError[];
+  paymentErrors?: IFormError[];
   promoCodeDiscount?: IPromoCodeDiscount;
   promoCodeDiscountFormRef?: React.RefObject<HTMLFormElement>;
   promoCodeDiscountFormId?: string;

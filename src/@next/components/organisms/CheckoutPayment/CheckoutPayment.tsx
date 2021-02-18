@@ -15,6 +15,7 @@ import { IProps } from "./types";
  */
 const CheckoutPayment: React.FC<IProps> = ({
   promoCodeErrors,
+  paymentErrors,
   promoCodeDiscountFormId,
   promoCodeDiscountFormRef,
   promoCodeDiscount,

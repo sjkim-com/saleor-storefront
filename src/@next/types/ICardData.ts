@@ -20,3 +20,11 @@ export interface ICardData {
    */
   expYear: number | null;
 }
+
+export interface ICardDataCmgt {
+  cardNo: number;
+
+  expire: number;
+
+  securityCode: number;
+}

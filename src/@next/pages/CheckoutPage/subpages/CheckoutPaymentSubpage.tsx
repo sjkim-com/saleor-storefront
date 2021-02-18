@@ -21,6 +21,7 @@ interface IProps extends RouteComponentProps<any> {
   changeSubmitProgress: (submitInProgress: boolean) => void;
   onSubmitSuccess: () => void;
   onPaymentGatewayError: (errors: IFormError[]) => void;
+  paymentError: IFormError[];
 }
 
 const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
@@ -32,6 +33,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
     changeSubmitProgress,
     onSubmitSuccess,
     onPaymentGatewayError,
+    paymentError,
     ...props
   }: IProps,
   ref
@@ -128,6 +130,7 @@ const CheckoutPaymentSubpageWithRef: RefForwardingComponent<
       removeVoucherCode={handleRemovePromoCode}
       submitUnchangedDiscount={handleSubmitUnchangedDiscount}
       promoCodeErrors={promoCodeErrors}
+      paymentErrors={paymentError}
     />
   );
 };
