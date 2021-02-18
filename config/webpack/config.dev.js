@@ -28,4 +28,11 @@ module.exports = ({ sourceDir, distDir }) => ({
     }),
     new HotModulePlugin(),
   ],
+  devServer:{
+    proxy: [{
+        context:['/payment/EntryTran.idPass', '/payment/ExecTran.idPass'],
+        target: 'https://pt01.mul-pay.jp',
+        changeOrigin: true
+    }]
+  }
 });

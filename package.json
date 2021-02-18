@@ -26,6 +26,7 @@
     "apollo-link-error": "^1.1.1",
     "apollo-link-http": "^1.5.4",
     "apollo-link-retry": "^2.2.5",
+    "axios": "^0.21.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "base-64": "^1.0.0",
     "braintree-web": "^3.38.1",

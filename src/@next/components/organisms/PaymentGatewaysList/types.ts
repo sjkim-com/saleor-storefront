@@ -1,4 +1,4 @@
-import { ICardData, IFormError, IPaymentGateway } from "@types";
+import { ICardDataCmgt, IFormError, IPaymentGateway } from "@types";
 import { CompleteCheckout_checkoutComplete_order } from "@saleor/sdk/mutations/gqlTypes/CompleteCheckout";
 
 export interface IProps {
@@ -30,13 +30,15 @@ export interface IProps {
    * Payment gateway errors.
    */
   errors?: IFormError[];
+
+  totalAmount?: number;
   /**
    * Method called after the form is submitted. Passed gateway id and token attribute will be used to create payment.
    */
   processPayment: (
     gateway: string,
     token?: string,
-    cardData?: ICardData
+    cardData?: ICardDataCmgt
   ) => void;
   submitPayment: (data: {
     confirmationData: any;

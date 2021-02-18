@@ -9,6 +9,9 @@ export const PROVIDERS = {
   BRAINTREE: {
     label: "Braintree",
   },
+  GMOCREDIT: {
+    label: "GMOCREDIT",
+  },
   DUMMY: {
     label: "Dummy",
   },

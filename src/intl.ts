@@ -129,6 +129,15 @@ export const commonMessages = defineMessages({
     // defaultMessage: "Phone",
     defaultMessage: "電話",
   },
+  cardNo: {
+    defaultMessage: "カード番号",
+  },
+  expire: {
+    defaultMessage: "満期期間",
+  },
+  securityCode: {
+    defaultMessage: "セキュリティコード",
+  },
   phoneNumber: {
     // defaultMessage: "Phone number: {phone}",
     defaultMessage: "電話番号 : {phone}",

@@ -52,6 +52,15 @@ export const getDBIdFromGraphqlId = (
   return parseInt(graphqlId, 10);
 };
 
+export const cmgtGetGmoResponseArray = (
+  data: string
+): string[] => {
+  const rawId = data.replaceAll("=", "&");
+  const result = rawId.split("&");
+
+  return result;
+};
+
 export const cmgtGetUserIdFromGraphqlId = (graphqlId: string): number => {
   if (isBase64(graphqlId)) {
     let rawId = Base64.decode(graphqlId);

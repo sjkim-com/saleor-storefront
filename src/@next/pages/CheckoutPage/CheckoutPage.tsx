@@ -15,7 +15,7 @@ import { useCart, useCheckout, useAuth } from "@saleor/sdk";
 import { IItems } from "@saleor/sdk/lib/api/Cart/types";
 import { CHECKOUT_STEPS, CheckoutStep } from "@temp/core/config";
 import { checkoutMessages } from "@temp/intl";
-import { ITaxedMoney, ICheckoutStep, ICardData, IFormError } from "@types";
+import { ITaxedMoney, ICheckoutStep, IFormError, ICardDataCmgt } from "@types";
 import { parseQueryString } from "@temp/core/utils";
 import { CompleteCheckout_checkoutComplete_order } from "@saleor/sdk/lib/mutations/gqlTypes/CompleteCheckout";
 import { cmgtGetUserIdFromGraphqlId } from "../../../core/utils";
@@ -144,6 +144,8 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   const [paymentGatewayErrors, setPaymentGatewayErrors] = useState<
     IFormError[]
   >([]);
+
+  const [cardInfo, setCardInfo] = useState<ICardDataCmgt>({cardNo: 0, expire:0, securityCode:0});
 
   useEffect(() => {
     setSelectedPaymentGateway(payment?.gateway);
@@ -279,18 +281,21 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
               handleStepSubmitSuccess(CheckoutStep.Payment)
             }
             onPaymentGatewayError={setPaymentGatewayErrors}
+            paymentError={paymentGatewayErrors}
             {...props}
           />
         )}
         renderReview={props => (
           <CheckoutReviewSubpage
             ref={checkoutReviewSubpageRef}
+            cardInfo={cardInfo}
             paymentGatewayFormRef={checkoutGatewayFormRef}
             selectedPaymentGatewayToken={selectedPaymentGatewayToken}
             changeSubmitProgress={setSubmitInProgress}
             onSubmitSuccess={data =>
               handleStepSubmitSuccess(CheckoutStep.Review, data)
             }
+            onError={handlePaymentGatewayError}
             {...props}
           />
         )}
@@ -302,7 +307,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   const handleProcessPayment = async (
     gateway: string,
     token?: string,
-    cardData?: ICardData
+    cardData?: ICardDataCmgt
   ) => {
     const paymentConfirmStepLink = CHECKOUT_STEPS.find(
       step => step.step === CheckoutStep.PaymentConfirm
@@ -310,7 +315,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     const { dataError } = await cmgtCreatePayment({
       gateway,
       token,
-      creditCard: cardData,
+      // creditCard: cardData,
       returnUrl: `${window.location.origin}${paymentConfirmStepLink}`,
     });
     const errors = dataError?.error;
@@ -318,6 +323,11 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     if (errors) {
       setPaymentGatewayErrors(errors);
     } else {
+      setCardInfo({
+        cardNo: cardData?.cardNo!,
+        expire: cardData?.expire!,
+        securityCode: cardData?.securityCode!
+      });
       setPaymentGatewayErrors([]);
       handleStepSubmitSuccess(CheckoutStep.Payment);
     }
@@ -364,6 +374,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
       submitPaymentSuccess={handleSubmitPaymentSuccess}
       formId={checkoutGatewayFormId}
       formRef={checkoutGatewayFormRef}
+      totalAmount={totalPrice?.net.amount}
       selectedPaymentGateway={selectedPaymentGateway}
       selectedPaymentGatewayToken={selectedPaymentGatewayToken}
       selectPaymentGateway={setSelectedPaymentGateway}

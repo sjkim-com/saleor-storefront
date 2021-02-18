@@ -2,8 +2,11 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 
 import { Carousel, ProductListItem } from "..";
-import { generateProductUrl, maybe } from "../../core/utils";
+// import { generateProductUrl, maybe } from "../../core/utils";
+import { cmgtGenerateProductUrl } from "../../core/utils";
 import { TypedFeaturedProductsQuery } from "./queries";
+
+import { createFeaturedProductsResponse } from "./script/cmgtFeaturedProductsConverter";
 
 import "./scss/index.scss";
 
@@ -19,9 +22,9 @@ const ProductsFeatured: React.FC<ProductsFeaturedProps> = ({ title }) => {
         //   () => data.shop.homepageCollection.products.edges,
         //   []
         // );
-        const products = maybe(
-          () => data.site_sitesettings_connection.edges[0].node.product_collection.product_collectionproducts,
-          []
+
+        const products = createFeaturedProductsResponse(
+          data.dms_displaycategory_connection
         );
 
         if (products.length) {
@@ -30,23 +33,12 @@ const ProductsFeatured: React.FC<ProductsFeaturedProps> = ({ title }) => {
               <div className="container">
                 <h3>{title}</h3>
                 <Carousel>
-                  {/* {products.map(({ node: product }) => (
+                  {products.map(({ node: product }) => (
                     <Link
-                      to={generateProductUrl(product.id, product.name)}
+                      to={cmgtGenerateProductUrl(product.id, product.name)}
                       key={product.id}
                     >
                       <ProductListItem product={product} />
-                    </Link>
-                  ))} */}
-                  {products.map(product => (
-                    <Link
-                      to={generateProductUrl(
-                        product.product_product.id.toString(),
-                        product.product_product.name
-                      )}
-                      key={product.product_product.id}
-                    >
-                      <ProductListItem product={product.product_product} />
                     </Link>
                   ))}
                 </Carousel>

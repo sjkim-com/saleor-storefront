@@ -1,0 +1,16 @@
+{
+  "development": {
+    "baseUrl": "https://pt01.mul-pay.jp",
+    "SiteID": "tsite00037666",
+    "SitePass": "hcwxf2pz",
+    "ShopID": "tshop00042824",
+    "ShopPass": "4quzqxqw"
+  },
+  "production": {
+    "baseUrl": "",
+    "SiteID": "",
+    "SitePass": "",
+    "ShopID": "",
+    "ShopPass": ""
+  }
+}

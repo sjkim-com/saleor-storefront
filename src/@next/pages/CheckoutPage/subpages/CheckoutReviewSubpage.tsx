@@ -9,8 +9,9 @@ import { RouteComponentProps } from "react-router";
 import { CheckoutReview } from "@components/organisms";
 import { statuses as dummyStatuses } from "@components/organisms/DummyPaymentGateway";
 import { useCheckout, useAuth } from "@saleor/sdk";
-import { IFormError } from "@types";
+import { IFormError, ICardDataCmgt } from "@types";
 import { cmgtGetUserIdFromGraphqlId } from "../../../../core/utils";
+import { creditPayment_Sales } from '../../../../@next/components/organisms/GmoPaymentGateway/gmoApi';
 
 export interface ISubmitCheckoutData {
   id: string;
@@ -24,9 +25,11 @@ export interface ICheckoutReviewSubpageHandles {
 
 interface IProps extends RouteComponentProps<any> {
   selectedPaymentGatewayToken?: string;
+  cardInfo?:ICardDataCmgt;
   paymentGatewayFormRef: React.RefObject<HTMLFormElement>;
   changeSubmitProgress: (submitInProgress: boolean) => void;
   onSubmitSuccess: (data: ISubmitCheckoutData) => void;
+  onError: (errors: IFormError[]) => void;
 }
 
 const CheckoutReviewSubpageWithRef: RefForwardingComponent<
@@ -35,14 +38,16 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
 > = (
   {
     selectedPaymentGatewayToken,
+    cardInfo,
     paymentGatewayFormRef,
     changeSubmitProgress,
     onSubmitSuccess,
+    onError,
     ...props
   }: IProps,
   ref
 ) => {
-  const { checkout, payment, cmgtCompleteCheckout } = useCheckout();
+  const { checkout, payment, cmgtCompleteCheckout, cmgtSelectLastOrderNo } = useCheckout();
   const { user } = useAuth();
 
   const [errors, setErrors] = useState<IFormError[]>([]);
@@ -69,6 +74,9 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
         )?.label
       }`;
     }
+    if (payment?.gateway === "mirumee.payments.gmocredit") {
+      return `Gmo Credit`;
+    }
     if (payment?.gateway === "mirumee.payments.adyen") {
       return `Adyen payments`;
     }
@@ -88,19 +96,31 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
           new Event("submitComplete", { cancelable: true })
         );
       } else {
-        const response = await cmgtCompleteCheckout({paymentData: {
-          id: payment?.id!,
-          gateway: payment?.gateway!,
-          token: payment?.token!,
-          total: payment?.total!
-        }, userId: user === undefined || user === null ? undefined : cmgtGetUserIdFromGraphqlId(user.id)
-        });
-        data = response.data;
-        dataError = response.dataError;
-        changeSubmitProgress(false);
+        const selectOrderNo = await cmgtSelectLastOrderNo();
+        const gmoResult = await creditPayment_Sales(selectOrderNo.data, payment?.total?.amount!, cardInfo!);
+
+        if(gmoResult.data){
+          const response = await cmgtCompleteCheckout({
+            paymentData: {
+              id: payment?.id!,
+              gateway: payment?.gateway!,
+              token: payment?.token!,
+              total: payment?.total!
+            }, 
+            userId: user === undefined || user === null ? undefined : cmgtGetUserIdFromGraphqlId(user.id)
+          });
+
+          data = response.data;
+          dataError = response.dataError;
+          changeSubmitProgress(false);
+        } else {
+          dataError = gmoResult.dataError;
+        }
         const errors = dataError?.error;
+
         if (errors) {
           setErrors(errors);
+          onError(errors);
         } else {
           setErrors([]);
           onSubmitSuccess({
