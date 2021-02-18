@@ -38,35 +38,37 @@
 import gql from "graphql-tag";
 
 import { TypedQuery } from "../../core/queries";
-import { FeaturedProducts } from "./gqlTypes/FeaturedProducts";
+import { CmgtFeaturedProducts } from "./gqlTypes/CmgtFeaturedProducts";
 
 export const featuredProducts = gql`
-  query FeaturedProducts {
-    site_sitesettings_connection {
+  query CmgtFeaturedProducts(
+    $storeId: String
+    $displayCategoryId: String = "actus_featured"
+  ) {
+    dms_displaycategory_connection(
+      where: {
+        store_id: { _eq: $storeId }
+        display_category_id: { _eq: $displayCategoryId }
+      }
+    ) {
       edges {
         node {
-          homepage_collection_id
-          product_collection {
+          id
+          store_id
+          display_category_id
+          name
+          dms_displaycategoryproducts {
             id
-            name
-            product_collectionproducts(limit: 20) {
+            pms_product {
               id
-              product_product {
+              product_id
+              name
+              sale_price
+              pms_productimgs {
                 id
-                name
-                product_productvariant {
-                  price_amount
-                  currency
-                }
-                category_id
-                product_category {
-                  id
-                  name
-                }
-                product_productimages {
-                  id
-                  image
-                }
+                img
+                text
+                sort_no
               }
             }
           }
@@ -76,6 +78,6 @@ export const featuredProducts = gql`
   }
 `;
 
-export const TypedFeaturedProductsQuery = TypedQuery<FeaturedProducts, {}>(
+export const TypedFeaturedProductsQuery = TypedQuery<CmgtFeaturedProducts, {}>(
   featuredProducts
 );

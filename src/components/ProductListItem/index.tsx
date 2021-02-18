@@ -9,42 +9,42 @@ import { IMoney, ITaxedMoney } from "@types";
 
 import { TaxedMoney } from "../../@next/components/containers";
 
-import { FeaturedProducts_site_sitesettings_connection_edges_node_product_collection_product_collectionproducts_product_product } from "../ProductsFeatured/gqlTypes/FeaturedProducts";
+import { FeaturedProducts_shop_homepageCollection_products_edges_node } from "../ProductsFeatured/gqlTypes/FeaturedProducts";
 
 interface ProductListItemProps {
-  product: FeaturedProducts_site_sitesettings_connection_edges_node_product_collection_product_collectionproducts_product_product;
+  product: FeaturedProducts_shop_homepageCollection_products_edges_node;
 }
 
 const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
-  // const { category } = product;
-  // const price = product.pricing?.priceRange?.start;
-  // const priceUndiscounted = product.pricing?.priceRangeUndiscounted?.start;
-  const category = product.product_category;
-  const productVariant = product?.product_productvariant;
+  const { category } = product;
+  const price = product.pricing?.priceRange?.start;
+  const priceUndiscounted = product.pricing?.priceRangeUndiscounted?.start;
+  // const category = product.product_category;
+  // const productVariant = product?.product_productvariant;
 
-  // 金額
-  const money: IMoney = {
-    // 価格
-    amount: productVariant.price_amount,
-    // 通貨コード
-    currency: productVariant.currency,
-  };
+  // // 金額
+  // const money: IMoney = {
+  //   // 価格
+  //   amount: productVariant.price_amount,
+  //   // 通貨コード
+  //   currency: productVariant.currency,
+  // };
 
-  // 割引価格
-  const price: ITaxedMoney = {
-    // 価格(税込み)
-    gross: money,
-    // 価格(税抜き)
-    net: money,
-  };
+  // // 割引価格
+  // const price: ITaxedMoney = {
+  //   // 価格(税込み)
+  //   gross: money,
+  //   // 価格(税抜き)
+  //   net: money,
+  // };
 
-  // 通常価格
-  const priceUndiscounted: ITaxedMoney = {
-    // 価格(税込み)
-    gross: money,
-    // 価格(税抜き)
-    net: money,
-  };
+  // // 通常価格
+  // const priceUndiscounted: ITaxedMoney = {
+  //   // 価格(税込み)
+  //   gross: money,
+  //   // 価格(税抜き)
+  //   net: money,
+  // };
 
   const getProductPrice = () => {
     if (isEqual(price, priceUndiscounted)) {
