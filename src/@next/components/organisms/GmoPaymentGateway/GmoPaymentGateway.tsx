@@ -4,16 +4,12 @@ import { useIntl } from "react-intl";
 import { commonMessages } from "@temp/intl";
 
 import * as S from "./styles";
-import { IProps } from "./types";
+import { IProps, IGMOPaymentInfo } from "./types";
 import { TextField } from "../../molecules/TextField";
 import errorCode from "./error-codes.json";
 // import { useGmo } from "@saleor/sdk";
 
-const cardInfo : {
-  cardNo: number;
-  expire: number;
-  securityCode: number;
-};
+const cardInfo : IGMOPaymentInfo;
 
 const GmoPaymentGateway: React.FC<IProps> = ({
   processPayment,
@@ -49,8 +45,8 @@ const GmoPaymentGateway: React.FC<IProps> = ({
       }) => (
       <S.Form id={formId} ref={formRef} onSubmit={handleSubmit} data-test="gmoPaymentGatewayForm">
 
-        {errorMessageList.map(message =>(
-          <S.Error>※ {message}</S.Error>
+        {errorMessageList.map((message,index) =>(
+          <S.Error key={index}>※ {message}</S.Error>
         ))}
         <S.Card>
           <S.CardNumberField>

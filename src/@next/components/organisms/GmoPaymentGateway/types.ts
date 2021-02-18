@@ -1,9 +1,9 @@
 import {ICardDataCmgt, IFormError} from "@types";
 
 export interface IGMOPaymentInfo {
-  cardNo?: string | null;
-  expire?: number | null;
-  securityCode?: number | null;
+  cardNo?: number;
+  expire?: number;
+  securityCode?: number;
 }
 
 export interface IGMOPaymentResult {
