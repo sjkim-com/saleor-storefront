@@ -263,7 +263,7 @@ export const CmgtProductDetailsQuery = gql`
       },
       order_by: {
         saleproduct_id: asc,
-        img_no: asc
+        sort_no: asc
       }
     ) {
       edges {

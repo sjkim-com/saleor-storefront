@@ -391,6 +391,21 @@ export const createProductDetailsResponse = (
       ProductDetails_product_variants_images[] = [];
 
     // セレクトボックスが選択されてSKUが確定した時点で表示する画像を設定
+    pmsProductImages.forEach(image => {
+      const imageNode = image.node;
+      if (node.saleproduct_id !== imageNode.saleproduct_id) {
+        return;
+      }
+      variantsImages.push({
+        __typename: "ProductImage",
+        id: `${node.saleproduct_id}-${imageNode.img_no}`,
+        url: imageNode.img,
+        alt: imageNode.text,
+      });
+
+    });
+
+    /*
     const productImage = pmsProductImages.find(image => {
       if (node.saleproduct_id === image.node.saleproduct_id) {
         return image;
@@ -405,6 +420,7 @@ export const createProductDetailsResponse = (
         alt: node.text,
       });
     }
+    */
     
     node.pms_saleproductoptionvalues.forEach(productValue => {
       if (
