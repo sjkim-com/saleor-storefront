@@ -38,9 +38,7 @@ const AccountConfirm: React.FC<RouteComponentProps> = ({ history }) => {
       variables: { email: query.email },
     })
       .then(result => {
-        console.log(result);
         // const possibleErrors = result.data.confirmAccount.errors;
-        console.log(result.data.update_account_user);
         const possibleErrors =
           result.data.update_account_user.returning.length > 0 ? [] : ["error"];
         displayConfirmationAlert(possibleErrors);
