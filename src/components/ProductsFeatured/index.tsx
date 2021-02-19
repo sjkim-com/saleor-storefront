@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 
+import { CMGT_SITE_ID } from "@temp/core/config";
 import { Carousel, ProductListItem } from "..";
 // import { generateProductUrl, maybe } from "../../core/utils";
 import { cmgtGenerateProductUrl } from "../../core/utils";
@@ -16,7 +17,12 @@ interface ProductsFeaturedProps {
 
 const ProductsFeatured: React.FC<ProductsFeaturedProps> = ({ title }) => {
   return (
-    <TypedFeaturedProductsQuery displayError={false}>
+    <TypedFeaturedProductsQuery
+      displayError={false}
+      variables={{
+        storeId: CMGT_SITE_ID,
+      }}
+    >
       {({ data }) => {
         // const products = maybe(
         //   () => data.shop.homepageCollection.products.edges,
