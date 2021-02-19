@@ -82,6 +82,36 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
             {...basicInputProps()}
           />
         </S.RowWithTwoCells>
+        <S.RowWithTwoCells>
+          <TextField
+            name="postalCode"
+            label={intl.formatMessage({ defaultMessage: "ZIP/Postal Code" })}
+            value={values!.postalCode}
+            autoComplete="postal-code"
+            errors={fieldErrors!.postalCode}
+            {...basicInputProps()}
+          />
+        </S.RowWithTwoCells>
+        <S.RowWithOneCell>
+          <TextField
+            name="countryArea"
+            label={intl.formatMessage({ defaultMessage: "State/province" })}
+            value={values!.countryArea}
+            autoComplete="address-level1"
+            errors={fieldErrors!.countryArea}
+            {...basicInputProps()}
+          />
+        </S.RowWithOneCell>
+        <S.RowWithOneCell>
+          <TextField
+            name="city"
+            label={intl.formatMessage({ defaultMessage: "City" })}
+            value={values!.city}
+            autoComplete="address-level2"
+            errors={fieldErrors!.city}
+            {...basicInputProps()}
+          />
+        </S.RowWithOneCell>
         <S.RowWithOneCell>
           <TextField
             name="streetAddress1"
@@ -102,53 +132,6 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
             {...basicInputProps()}
           />
         </S.RowWithOneCell>
-        <S.RowWithTwoCells>
-          <TextField
-            name="city"
-            label={intl.formatMessage({ defaultMessage: "City" })}
-            value={values!.city}
-            autoComplete="address-level2"
-            errors={fieldErrors!.city}
-            {...basicInputProps()}
-          />
-          <TextField
-            name="postalCode"
-            label={intl.formatMessage({ defaultMessage: "ZIP/Postal Code" })}
-            value={values!.postalCode}
-            autoComplete="postal-code"
-            errors={fieldErrors!.postalCode}
-            {...basicInputProps()}
-          />
-        </S.RowWithTwoCells>
-        <S.RowWithTwoCells>
-           {/* <InputSelect
-            defaultValue={defaultValue}
-            label={intl.formatMessage({ defaultMessage: "Country" })}
-            name="country"
-            options={countriesOptions}
-            value={
-              values!.country &&
-              countriesOptions &&
-              countriesOptions!.find(
-                option => option.code === values!.country!.code
-              )
-            }
-            onChange={(value: any, name: any) => setFieldValue(name, value)}
-            optionLabelKey="country"
-            optionValueKey="code"
-            errors={fieldErrors!.country}
-            autoComplete="country"
-          /> */}
-          
-          <TextField
-            name="countryArea"
-            label={intl.formatMessage({ defaultMessage: "State/province" })}
-            value={values!.countryArea}
-            autoComplete="address-level1"
-            errors={fieldErrors!.countryArea}
-            {...basicInputProps()}
-          />
-        </S.RowWithTwoCells>
         {includeEmail && (
           <S.RowWithTwoCells>
             <TextField
