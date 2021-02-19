@@ -45,7 +45,7 @@ const GmoPaymentGateway: React.FC<IProps> = ({
       }) => (
       <S.Form id={formId} ref={formRef} onSubmit={handleSubmit} data-test="gmoPaymentGatewayForm">
 
-        {errorMessageList.map((message,index) =>(
+        {errorMessageList.map((message:any,index:any) =>(
           <S.Error key={index}>※ {message}</S.Error>
         ))}
         <S.Card>

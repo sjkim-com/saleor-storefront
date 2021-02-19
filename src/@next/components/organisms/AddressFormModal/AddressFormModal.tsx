@@ -1,6 +1,6 @@
 import React from "react";
 
-import { cmgtUseCreateUserAddress, useUpdateUserAddress, cmgtSelectUserAddress } from "@saleor/sdk";
+import { cmgtUseCreateUserAddress, cmgtSelectUserAddress, cmgtUseUpdateUserAddress} from "@saleor/sdk";
 
 import { CountryCode } from "@saleor/sdk/lib/gqlTypes/globalTypes";
 import { AddressForm } from "../AddressForm";
@@ -23,7 +23,7 @@ export const AddressFormModal: React.FC<IProps> = ({
   let errors: any[] | undefined = [];
 
   const [
-    cmgtSetCreatUserAddress,
+    cmgtSetCreateUserAddress,
     { data: createData, error: addressCreateErrors },
   ] = cmgtUseCreateUserAddress();
 
@@ -33,9 +33,9 @@ export const AddressFormModal: React.FC<IProps> = ({
   ] = cmgtSelectUserAddress();
   
   const [
-    setUpdateUserAddress,
+    cmgtSetUpdateuserAddress,
     { data: updateData, error: addressUpdateErrors },
-  ] = useUpdateUserAddress();
+  ] = cmgtUseUpdateUserAddress();
 
   if (addressCreateErrors) {
     errors = addressCreateErrors.extraInfo.userInputErrors;
@@ -57,7 +57,7 @@ export const AddressFormModal: React.FC<IProps> = ({
     ) {
       hideModal();
     }
-  }, [selectData, updateData, addressSelectErrors, addressUpdateErrors]);
+  }, [createData, selectData, updateData, addressSelectErrors, addressUpdateErrors]);
 
   return (
     <Modal
@@ -81,7 +81,7 @@ export const AddressFormModal: React.FC<IProps> = ({
         address={address ? address.address : undefined}
         handleSubmit={data => {
           if (userId) {
-            cmgtSetCreatUserAddress({
+           cmgtSetCreateUserAddress({
               addressObject: {
                 ...data,
                 country: data?.country?.code as CountryCode,
@@ -90,19 +90,19 @@ export const AddressFormModal: React.FC<IProps> = ({
                     user_id:cmgtGetUserIdFromGraphqlId(userId)
                   }
                 }
-              },
+              }
             });
 
             cmgtSetSelectUserAddress({
               user_id:cmgtGetUserIdFromGraphqlId(userId)
             });
           } else {
-            setUpdateUserAddress({
-              id: address!.id,
-              input: {
+            cmgtSetUpdateuserAddress({
+              addressId: cmgtGetUserIdFromGraphqlId(address!.id),
+              addressObject: {
                 ...data,
                 country: data?.country?.code as CountryCode
-              },
+              }
             });
           }
         }}
