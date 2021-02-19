@@ -237,10 +237,10 @@
     "string": "Refresh"
   },
   "app_dot_Notifications_dot_1917823234": {
-    "string": "ログインしました"
+    "string": "ログインしました。"
   },
   "app_dot_Notifications_dot_2378877294": {
-    "string": "ログアウトしました"
+    "string": "ログアウトしました。"
   },
   "app_dot_Notifications_dot_795565": {
     "string": "New version is available!"
@@ -297,7 +297,7 @@
     "string": "カート : "
   },
   "components_dot_OverlayManager_dot_Cart_dot_Cart_dot_1397761112": {
-    "context": "カート内の商品個数",
+    "context": "カート内の数量",
     "string": "{itemsQuantity,plural,one {{itemsQuantity} 個} other {{itemsQuantity} 個}}"
   },
   "components_dot_OverlayManager_dot_Cart_dot_Cart_dot_2426849470": {
@@ -310,7 +310,7 @@
     "string": "You haven’t added anything to your bag. We’re sure you’ll find something in our store"
   },
   "components_dot_OverlayManager_dot_Cart_dot_Empty_dot_966560142": {
-    "string": "カート内に商品がありません"
+    "string": "カート内に商品がありません。"
   },
   "components_dot_OverlayManager_dot_Cart_dot_ProductList_dot_3897981513": {
     "string": "数量 : {quantity}"
@@ -328,7 +328,7 @@
     "string": "Please check your e-mail for further instructions"
   },
   "components_dot_OverlayManager_dot_Login_dot_RegisterForm_dot_590842025": {
-    "string": "新規会員を登録しました"
+    "string": "新規会員を登録しました。"
   },
   "components_dot_OverlayManager_dot_Login_dot_index_dot_282922692": {
     "string": "会員"
@@ -349,7 +349,7 @@
     "string": "Sorry, but we couldn’t match any search results for: {search}"
   },
   "components_dot_OverlayManager_dot_Search_dot_Search_dot_4112727608": {
-    "string": "全てを見る"
+    "string": "もっと見る"
   },
   "components_dot_PasswordResetRequestForm_dot_index_dot_1587628595": {
     "string": "Check your inbox"
@@ -427,7 +427,7 @@
     "string": "支払い方法を選択してください。"
   },
   "intl_dot_commonMessages_dot_clearFilterHeader": {
-    "string": "CLEAR FILTERS"
+    "string": "フィルターをクリア"
   },
   "intl_dot_commonMessages_dot_eMail": {
     "string": "メールアドレス"
@@ -454,7 +454,7 @@
     "string": "残り僅か"
   },
   "intl_dot_commonMessages_dot_maxQtyIs": {
-    "string": "数量の最大値は {maxQuantity} です"
+    "string": "数量の最大値は {maxQuantity} です。"
   },
   "intl_dot_commonMessages_dot_myAccount": {
     "string": "会員情報"
@@ -538,7 +538,7 @@
     "string": "You might like"
   },
   "intl_dot_orderStatusMessages_dot_canceled": {
-    "string": "キャンセルしました"
+    "string": "キャンセルしました。"
   },
   "intl_dot_orderStatusMessages_dot_draft": {
     "string": "Draft"
