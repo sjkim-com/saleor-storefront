@@ -40,8 +40,10 @@ export const AddressForm: React.FC<IProps> = ({
       initialValues={addressWithPickedFields}
       enableReinitialize
       onSubmit={(values, { setSubmitting }) => {
+        const valuesData = {...values, country: {country: "Japan", code:"JP"}}
+        
         if (handleSubmit) {
-          handleSubmit(values);
+          handleSubmit(valuesData);
         }
         setSubmitting(false);
       }}

@@ -121,7 +121,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
           />
         </S.RowWithTwoCells>
         <S.RowWithTwoCells>
-          <InputSelect
+           {/* <InputSelect
             defaultValue={defaultValue}
             label={intl.formatMessage({ defaultMessage: "Country" })}
             name="country"
@@ -138,7 +138,8 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
             optionValueKey="code"
             errors={fieldErrors!.country}
             autoComplete="country"
-          />
+          /> */}
+          
           <TextField
             name="countryArea"
             label={intl.formatMessage({ defaultMessage: "State/province" })}

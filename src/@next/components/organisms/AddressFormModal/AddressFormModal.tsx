@@ -1,13 +1,15 @@
 import React from "react";
 
-import { cmgtUseCreateUserAddress, cmgtSelectUserAddress, cmgtUseUpdateUserAddress} from "@saleor/sdk";
+// import { cmgtUseCreateUserAddress, cmgtSelectUserAddress, cmgtUseUpdateUserAddress} from "@saleor/sdk";
+
+import { useCreateUserAddress, useUpdateUserAddress } from "@saleor/sdk";
 
 import { CountryCode } from "@saleor/sdk/lib/gqlTypes/globalTypes";
 import { AddressForm } from "../AddressForm";
 import { Modal } from "../Modal";
 
 import { IProps } from "./types";
-import { cmgtGetUserIdFromGraphqlId } from "../../../../core/utils";
+// import { cmgtGetUserIdFromGraphqlId } from "../../../../core/utils";
 
 export const AddressFormModal: React.FC<IProps> = ({
   hideModal,
@@ -23,27 +25,37 @@ export const AddressFormModal: React.FC<IProps> = ({
   let errors: any[] | undefined = [];
 
   const [
-    cmgtSetCreateUserAddress,
+    setCreatUserAddress,
     { data: createData, error: addressCreateErrors },
-  ] = cmgtUseCreateUserAddress();
+  ] = useCreateUserAddress();
 
   const [
-    cmgtSetSelectUserAddress,
-    { data: selectData, error: addressSelectErrors },
-  ] = cmgtSelectUserAddress();
-  
-  const [
-    cmgtSetUpdateuserAddress,
+    setUpdateUserAddress,
     { data: updateData, error: addressUpdateErrors },
-  ] = cmgtUseUpdateUserAddress();
-
+  ] = useUpdateUserAddress();
+  
   if (addressCreateErrors) {
     errors = addressCreateErrors.extraInfo.userInputErrors;
   }
+  
+  // const [
+  //   cmgtSetCreateUserAddress,
+  //   { data: createData, error: addressCreateErrors },
+  // ] = cmgtUseCreateUserAddress();
 
-  if (addressSelectErrors) {
-    errors = addressSelectErrors.extraInfo.userInputErrors;
-  }
+  // const [
+  //   cmgtSetSelectUserAddress,
+  //   { data: selectData, error: addressSelectErrors },
+  // ] = cmgtSelectUserAddress();
+  
+  // const [
+  //   cmgtSetUpdateuserAddress,
+  //   { data: updateData, error: addressUpdateErrors },
+  // ] = cmgtUseUpdateUserAddress();
+
+  // if (addressSelectErrors) {
+  //   errors = addressSelectErrors.extraInfo.userInputErrors;
+  // }
 
   if (addressUpdateErrors) {
     errors = addressUpdateErrors.extraInfo.userInputErrors;
@@ -52,12 +64,13 @@ export const AddressFormModal: React.FC<IProps> = ({
   React.useEffect(() => {
     if (
       (createData && !addressCreateErrors) ||
-      (updateData && !addressUpdateErrors) ||
-      (selectData && !addressSelectErrors)
+      (updateData && !addressUpdateErrors) 
+      // ||(selectData && !addressSelectErrors)
     ) {
       hideModal();
     }
-  }, [createData, selectData, updateData, addressSelectErrors, addressUpdateErrors]);
+  },  [createData, updateData, addressCreateErrors, addressUpdateErrors]);
+  // [createData, selectData, updateData, addressSelectErrors, addressUpdateErrors]);
 
   return (
     <Modal
@@ -81,30 +94,46 @@ export const AddressFormModal: React.FC<IProps> = ({
         address={address ? address.address : undefined}
         handleSubmit={data => {
           if (userId) {
-           cmgtSetCreateUserAddress({
-              addressObject: {
+            setCreatUserAddress({
+              input: {
                 ...data,
                 country: data?.country?.code as CountryCode,
-                account_user_addresses: {
-                  data: {
-                    user_id:cmgtGetUserIdFromGraphqlId(userId)
-                  }
-                }
-              }
-            });
-
-            cmgtSetSelectUserAddress({
-              user_id:cmgtGetUserIdFromGraphqlId(userId)
+              },
             });
           } else {
-            cmgtSetUpdateuserAddress({
-              addressId: cmgtGetUserIdFromGraphqlId(address!.id),
-              addressObject: {
+            setUpdateUserAddress({
+              id: address!.id,
+              input: {
                 ...data,
-                country: data?.country?.code as CountryCode
-              }
+                country: data?.country?.code as CountryCode,
+              },
             });
           }
+          // if (userId) {
+          //  cmgtSetCreateUserAddress({
+          //     addressObject: {
+          //       ...data,
+          //       country: data?.country?.code as CountryCode,
+          //       account_user_addresses: {
+          //         data: {
+          //           user_id:cmgtGetUserIdFromGraphqlId(userId)
+          //         }
+          //       }
+          //     }
+          //   });
+
+          //   cmgtSetSelectUserAddress({
+          //     user_id:cmgtGetUserIdFromGraphqlId(userId)
+          //   });
+          // } else {
+          //   cmgtSetUpdateuserAddress({
+          //     addressId: cmgtGetUserIdFromGraphqlId(address!.id),
+          //     addressObject: {
+          //       ...data,
+          //       country: data?.country?.code as CountryCode
+          //     }
+          //   });
+          // }
         }}
       />
     </Modal>
