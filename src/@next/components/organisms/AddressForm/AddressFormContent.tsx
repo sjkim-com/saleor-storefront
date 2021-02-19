@@ -46,19 +46,19 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
       <S.Wrapper>
         <S.RowWithTwoCells>
           <TextField
-            name="firstName"
-            label={intl.formatMessage(commonMessages.firstName)}
-            value={values!.firstName}
-            autoComplete="given-name"
-            errors={fieldErrors!.firstName}
-            {...basicInputProps()}
-          />
-          <TextField
             name="lastName"
             label={intl.formatMessage(commonMessages.lastName)}
             value={values!.lastName}
             autoComplete="family-name"
             errors={fieldErrors!.lastName}
+            {...basicInputProps()}
+          />
+          <TextField
+            name="firstName"
+            label={intl.formatMessage(commonMessages.firstName)}
+            value={values!.firstName}
+            autoComplete="given-name"
+            errors={fieldErrors!.firstName}
             {...basicInputProps()}
           />
         </S.RowWithTwoCells>

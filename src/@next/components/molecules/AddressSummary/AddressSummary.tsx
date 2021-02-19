@@ -12,18 +12,20 @@ const AddressSummary: React.FC<IProps> = ({ address, email }: IProps) => {
   if (address) {
     return (
       <S.Wrapper data-test="addressTile">
-        <strong>{`${address.firstName} ${address.lastName}`}</strong>
-        <br />
+        <strong>{`${address.lastName} ${address.firstName} `}</strong>
+        <br /><br />
         {address.companyName && (
           <>
             {address.companyName} <br />
           </>
         )}
+        {address.postalCode},
+        <br />
+        {address.countryArea && <> {address.countryArea}</>}{" "}{address.city}
+        <br />
         {address.streetAddress1}
-        {address.streetAddress2 && <>, {address.streetAddress2}</>},{" "}
-        {address.city}, {address.postalCode}
-        {address.countryArea && <>, {address.countryArea}</>},{" "}
-        {address.country?.country}
+        {address.streetAddress2 && <>, {address.streetAddress2}</>}{" "}
+        <br />
         <br />
         {address.phone && (
           <>
@@ -40,7 +42,6 @@ const AddressSummary: React.FC<IProps> = ({ address, email }: IProps) => {
               {...commonMessages.showEmail}
               values={{ email }}
             />{" "}
-            <br /> <br />
           </>
         )}
       </S.Wrapper>
