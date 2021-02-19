@@ -54,6 +54,11 @@ export const createProductDetailsResponse = (
       cmgtProductDetails.pms_product_connection.edges.length > 0
         ? cmgtProductDetails.pms_product_connection.edges[0].node
         : null;
+
+  if (pmsProduct === null) {
+    return null;
+  }
+
   const pmsProductOptions =
     pmsProduct.pms_productoptions_connection.edges;
   const pmsSaleProducts =
