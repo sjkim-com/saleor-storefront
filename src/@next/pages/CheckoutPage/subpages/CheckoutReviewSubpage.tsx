@@ -95,7 +95,7 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
         paymentGatewayFormRef.current?.dispatchEvent(
           new Event("submitComplete", { cancelable: true })
         );
-      } else {
+      } else if(payment?.gateway === "mirumee.payments.gmocredit"){
         const selectOrderNo = await cmgtSelectLastOrderNo();
         const gmoResult = await creditPayment_Sales(selectOrderNo.data, payment?.total?.amount!, cardInfo!);
 
@@ -121,6 +121,31 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
         if (errors) {
           setErrors(errors);
           onError(errors);
+        } else {
+          setErrors([]);
+          onSubmitSuccess({
+            id: data?.order?.id,
+            orderNumber: data?.order?.number,
+            token: data?.order?.token,
+          });
+        }
+      } else {
+        const response = await cmgtCompleteCheckout({
+          paymentData: {
+            id: payment?.id!,
+            gateway: payment?.gateway!,
+            token: payment?.token!,
+            total: payment?.total!
+          }, 
+          userId: user === undefined || user === null ? undefined : cmgtGetUserIdFromGraphqlId(user.id)
+        });
+
+        data = response.data;
+        dataError = response.dataError;
+        changeSubmitProgress(false);
+        const errors = dataError?.error;
+        if (errors) {
+          setErrors(errors);
         } else {
           setErrors([]);
           onSubmitSuccess({
