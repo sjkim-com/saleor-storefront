@@ -33,12 +33,12 @@ export const FilterQuerySet = {
       // str.push(`${value}_${valueObj[value].join("_")}`);
       str.push(`${value}-${valueObj[value].join("-")}`);
     });
-    return str.join(".");
+    return str.join(":");
   },
 
   decode(strValue) {
     const obj = {};
-    const propsWithValues = strValue.split(".").filter(n => n);
+    const propsWithValues = strValue.split(":").filter(n => n);
     propsWithValues.map(value => {
       // const propWithValues = value.split("_").filter(n => n);
       const propWithValues = value.split("-").filter(n => n);
