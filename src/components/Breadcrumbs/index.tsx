@@ -25,7 +25,7 @@ export const extractBreadcrumbs = (
   const constructLink = item => ({
     link: [
       `/category`,
-      `/${slugify(item.name)}`,
+      `/${item.name}`,
       `/${cmgtGetDBIdFromGraphqlId(item.id, "dms_displaycategory")}/`,
     ].join(""),
     value: item.name,
