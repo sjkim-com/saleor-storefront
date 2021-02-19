@@ -398,7 +398,10 @@ export const categoryProductsQuery = gql`
             custom_id
             design_saleproduct_id
             vat_rate
-            pms_productimgs(where: { use_yn: { _eq: "Y" } }) {
+            pms_productimgs(
+              where: { use_yn: { _eq: "Y" } }
+              order_by: { sort_no: asc }
+            ) {
               img
               id
             }
