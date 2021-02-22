@@ -5,16 +5,20 @@ import * as React from "react";
 
 import { NavLink, OverlayContextInterface } from "..";
 // import { MainMenu_shop_navigation_main_items } from "./gqlTypes/MainMenu";
-import { SubMenu_dms_displaycategory_connection } from "./gqlTypes/SubMenu";
+import {
+  SubMenu_dms_displaycategory_connection,
+  SubMenu_dms_displaycategory_connection_edges,
+} from "./gqlTypes/SubMenu";
 import NavItem from "./NavItem";
 
 import "./scss/index.scss";
 
 class NavDropdown extends React.PureComponent<
   // MainMenu_shop_navigation_main_items & {
-    SubMenu_dms_displaycategory_connection & {
+  SubMenu_dms_displaycategory_connection & {
     overlay: OverlayContextInterface;
     showDropdown: boolean;
+    subMenu: SubMenu_dms_displaycategory_connection_edges[];
     onShowDropdown: () => void;
     onHideDropdown: () => void;
   }
