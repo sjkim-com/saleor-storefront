@@ -16,6 +16,9 @@ import {
   maybe,
 } from "../../core/utils";
 import Page from "./Page";
+
+import { OrderDirection } from "../../../gqlTypes/globalTypes";
+import { CollectionProductsVariables } from "./gqlTypes/CollectionProducts";
 import {
   TypedCollectionProductsDataQuery,
   TypedCollectionProductsQuery,
@@ -162,8 +165,22 @@ export const View: React.FC<ViewProps> = ({ match }) => {
               !!collectionData.data?.attributes?.edges &&
               !!collectionData.data?.collection?.name;
 
+            const direction = variables.sortBy[
+              Object.keys(variables.sortBy)[0]
+            ].toUpperCase();
+
+            const collectionVariables: CollectionProductsVariables = {
+              id: variables.id,
+              sortBy: {
+                direction:
+                  direction === "ASC"
+                    ? OrderDirection.ASC
+                    : OrderDirection.DESC,
+              },
+            };
+
             return (
-              <TypedCollectionProductsQuery variables={variables}>
+              <TypedCollectionProductsQuery variables={collectionVariables}>
                 {collectionProductsData => {
                   if (!canDisplayFilters && collectionProductsData.loading) {
                     return <Loader />;

@@ -8,7 +8,8 @@ import {
 } from "query-string";
 import { FetchResult } from "react-apollo";
 
-import { OrderDirection, ProductOrderField } from "../../gqlTypes/globalTypes";
+// import { OrderDirection, ProductOrderField } from "../../gqlTypes/globalTypes";
+
 import { IFilterAttributes } from "../@next/types";
 import { FormError } from "./types";
 
@@ -52,9 +53,7 @@ export const getDBIdFromGraphqlId = (
   return parseInt(graphqlId, 10);
 };
 
-export const cmgtGetGmoResponseArray = (
-  data: string
-): string[] => {
+export const cmgtGetGmoResponseArray = (data: string): string[] => {
   const rawId = data.replaceAll("=", "&");
   const result = rawId.split("&");
 
@@ -113,7 +112,7 @@ export const cmgtGenerateCategoryUrl = (id: string, name: string) =>
 export const generateProductUrl = (id: string, name: string) =>
   // `/product/${slugify(name)}/${getDBIdFromGraphqlId(id, "Product")}/`;
   `/product/${slugify(name)}/${getDBIdFromGraphqlId(id, "product_product")}/`;
-  
+
 export const cmgtGenerateCartProductUrl = (id: string, name: string) =>
   // `/product/${slugify(name)}/${getDBIdFromGraphqlId(id, "Product")}/`;
   `/product/${slugify(name)}/${cmgtGetDBIdFromGraphqlId(id, "pms_product")}/`;
