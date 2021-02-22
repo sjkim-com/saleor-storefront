@@ -11,14 +11,17 @@ import {
   adyenNotNegativeConfirmationStatusCodes,
 } from "@components/organisms";
 import { Checkout } from "@components/templates";
+
 import { useCart, useCheckout, useAuth } from "@saleor/sdk";
 import { IItems } from "@saleor/sdk/lib/api/Cart/types";
-import { CHECKOUT_STEPS, CheckoutStep } from "@temp/core/config";
-import { checkoutMessages } from "@temp/intl";
-import { ITaxedMoney, ICheckoutStep, IFormError, ICardDataCmgt } from "@types";
-import { parseQueryString } from "@temp/core/utils";
 import { CompleteCheckout_checkoutComplete_order } from "@saleor/sdk/lib/mutations/gqlTypes/CompleteCheckout";
-import { cmgtGetUserIdFromGraphqlId } from "../../../core/utils";
+
+import { CHECKOUT_STEPS, CheckoutStep } from "@temp/core/config";
+import { parseQueryString, cmgtGetUserIdFromGraphqlId } from "@temp/core/utils";
+
+import { checkoutMessages } from "@temp/intl";
+
+import { ITaxedMoney, ICheckoutStep, IFormError, ICardDataCmgt } from "@types";
 
 import { CheckoutRouter } from "./CheckoutRouter";
 import {
@@ -120,10 +123,10 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     cmgtCompleteCheckout,
   } = useCheckout();
   const intl = useIntl();
-  
+
   let checkoutLoaded = false;
-  
-  if(items){
+
+  if (items) {
     checkoutLoaded = true;
   }
 
@@ -145,7 +148,11 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
     IFormError[]
   >([]);
 
-  const [cardInfo, setCardInfo] = useState<ICardDataCmgt>({cardNo: 0, expire:0, securityCode:0});
+  const [cardInfo, setCardInfo] = useState<ICardDataCmgt>({
+    cardNo: 0,
+    expire: 0,
+    securityCode: 0,
+  });
 
   useEffect(() => {
     setSelectedPaymentGateway(payment?.gateway);
@@ -326,7 +333,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
       setCardInfo({
         cardNo: cardData?.cardNo!,
         expire: cardData?.expire!,
-        securityCode: cardData?.securityCode!
+        securityCode: cardData?.securityCode!,
       });
       setPaymentGatewayErrors([]);
       handleStepSubmitSuccess(CheckoutStep.Payment);
@@ -334,8 +341,11 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   };
   const handleSubmitPayment = async (paymentData?: object) => {
     const response = await cmgtCompleteCheckout({
-      paymentData : paymentData, 
-      userId: user === undefined || user === null ? undefined : cmgtGetUserIdFromGraphqlId(user.id)
+      paymentData,
+      userId:
+        user === undefined || user === null
+          ? undefined
+          : cmgtGetUserIdFromGraphqlId(user.id),
     });
     return {
       confirmationData: response.data?.confirmationData,
@@ -440,12 +450,17 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
         querystring.resultCode as string
       )
     ) {
-      const { data, dataError } = await cmgtCompleteCheckout({paymentData: {
-        id: payment?.id!,
-        gateway: payment?.gateway!,
-        token: payment?.token!,
-        total: payment?.total!
-      }, userId: user === undefined || user === null ? undefined : cmgtGetUserIdFromGraphqlId(user.id)
+      const { data, dataError } = await cmgtCompleteCheckout({
+        paymentData: {
+          id: payment?.id!,
+          gateway: payment?.gateway!,
+          token: payment?.token!,
+          total: payment?.total!,
+        },
+        userId:
+          user === undefined || user === null
+            ? undefined
+            : cmgtGetUserIdFromGraphqlId(user.id),
       });
       const errors = dataError?.error;
       setSubmitInProgress(false);

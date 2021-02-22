@@ -4,11 +4,11 @@ import { ErrorMessage, Radio } from "@components/atoms";
 import { PROVIDERS } from "@temp/core/config";
 
 import {
-  BraintreePaymentGateway,
+  // BraintreePaymentGateway,
   DummyPaymentGateway,
   GmoPaymentGateway,
-  StripePaymentGateway,
-  AdyenPaymentGateway,
+  // StripePaymentGateway,
+  // AdyenPaymentGateway,
 } from "..";
 import * as S from "./styles";
 import { IProps } from "./types";
@@ -36,7 +36,6 @@ const PaymentGatewaysList: React.FC<IProps> = ({
         const checked = selectedPaymentGateway === id;
 
         switch (name) {
-
           case PROVIDERS.DUMMY.label:
             return (
               <div key={index}>
@@ -66,37 +65,39 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                 )}
               </div>
             );
-            
-            case PROVIDERS.GMOCREDIT.label:
-              return (
-                <div key={index}>
-                  <S.Tile checked={checked}>
-                    <Radio
-                      data-test="checkoutPaymentGatewayDummyInput"
-                      name="payment-method"
-                      value="dummy"
-                      checked={checked}
-                      onChange={() =>
-                        selectPaymentGateway && selectPaymentGateway(id)
-                      }
-                      customLabel
-                    >
-                      <span data-test="checkoutPaymentGatewayDummyName">
-                        {name}
-                      </span>
-                    </Radio>
-                  </S.Tile>
-                  {checked && (
-                    <GmoPaymentGateway
-                      formRef={formRef}
-                      formId={formId}
-                      totalAmount={totalAmount}
-                      processPayment={(token, cardData) => processPayment(id, token, cardData)}
-                      errors={errors}
-                    />
-                  )}
-                </div>
-              );
+
+          case PROVIDERS.GMOCREDIT.label:
+            return (
+              <div key={index}>
+                <S.Tile checked={checked}>
+                  <Radio
+                    data-test="checkoutPaymentGatewayDummyInput"
+                    name="payment-method"
+                    value="dummy"
+                    checked={checked}
+                    onChange={() =>
+                      selectPaymentGateway && selectPaymentGateway(id)
+                    }
+                    customLabel
+                  >
+                    <span data-test="checkoutPaymentGatewayDummyName">
+                      {name}
+                    </span>
+                  </Radio>
+                </S.Tile>
+                {checked && (
+                  <GmoPaymentGateway
+                    formRef={formRef}
+                    formId={formId}
+                    totalAmount={totalAmount}
+                    processPayment={(token, cardData) =>
+                      processPayment(id, token, cardData)
+                    }
+                    errors={errors}
+                  />
+                )}
+              </div>
+            );
 
           // case PROVIDERS.BRAINTREE.label:
           //   return (
@@ -165,7 +166,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
           //       )}
           //     </div>
           //   );
-              
+
           // case PROVIDERS.ADYEN.label:
           //   return (
           //     <div key={index}>
