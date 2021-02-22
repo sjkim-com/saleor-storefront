@@ -7,7 +7,7 @@ import { Carousel, ProductListItem } from "..";
 import { cmgtGenerateProductUrl } from "../../core/utils";
 import { TypedFeaturedProductsQuery } from "./queries";
 
-import { createFeaturedProductsResponse } from "./script/cmgtFeaturedProductsConverter";
+import { createFeaturedProductsResponse } from "./script/CmgtFeaturedProductsConverter";
 
 import "./scss/index.scss";
 
