@@ -22,9 +22,11 @@ const ThankYou: React.FC<IProps> = ({
         <S.ThankYouHeader>
           <FormattedMessage defaultMessage="Thank you" />
           <br />
+          {/*
           <span>
             <FormattedMessage defaultMessage="for your order!" />
           </span>
+          */}
         </S.ThankYouHeader>
         <S.Paragraph>
           <FormattedMessage defaultMessage="Your order number is" />{" "}

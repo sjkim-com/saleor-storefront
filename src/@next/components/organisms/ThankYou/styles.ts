@@ -8,8 +8,28 @@ export const Wrapper = styled.div`
   `}
 `;
 
+/*
 export const ThankYouHeader = styled.p`
   font-size: ${props => props.theme.typography.ultraBigFontSize};
+  margin: 0;
+  line-height: 110%;
+  span {
+    font-weight: ${props => props.theme.typography.boldFontWeight};
+  }
+  padding-bottom: 40px;
+  border-bottom: 1px solid
+    ${props => props.theme.colors.baseFontColorTransparent};
+  margin-bottom: 40px;
+
+  ${media.smallScreen`
+    font-size: ${(props: { theme: DefaultTheme }) =>
+      props.theme.typography.h1FontSize};
+  `}
+`;
+*/
+
+export const ThankYouHeader = styled.p`
+  font-size: 3rem;
   margin: 0;
   line-height: 110%;
   span {

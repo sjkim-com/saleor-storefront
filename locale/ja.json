@@ -63,7 +63,7 @@
     "string": "デフォルトのお届け先住所"
   },
   "@next_dot_components_dot_molecules_dot_AttributeValuesChecklist_dot_AttributeValuesChecklist_dot_2029012727": {
-    "string": "VIEW ALL OPTIONS"
+    "string": "全てのオプションを見る"
   },
   "@next_dot_components_dot_molecules_dot_OrderTabel_dot_OrderTabel_dot_1148029984": {
     "string": "値"
@@ -195,13 +195,13 @@
     "string": ""
   },
   "@next_dot_components_dot_organisms_dot_ThankYou_dot_ThankYou_dot_2999163789": {
-    "string": "注文番号は"
+    "string": "注文番号 : "
   },
   "@next_dot_components_dot_organisms_dot_ThankYou_dot_ThankYou_dot_3364990704": {
     "string": "We’ve emailed you an order confirmation, and we’ll notify you when the order has been shipped."
   },
   "@next_dot_components_dot_organisms_dot_ThankYou_dot_ThankYou_dot_3752098833": {
-    "string": "注文履歴"
+    "string": "注文履歴を見る"
   },
   "@next_dot_components_dot_templates_dot_CartEmpty_dot_CartEmpty_dot_2488840083": {
     "string": "カート内に商品がありません。"
@@ -252,7 +252,7 @@
     "string": "送料"
   },
   "components_dot_CartTable_dot_Table_dot_2179891060": {
-    "string": "Total Cost"
+    "string": "合計金額"
   },
   "components_dot_CartTable_dot_Table_dot_2875988277": {
     "string": "割引 : {discountName}"
@@ -508,7 +508,7 @@
     "string": "検索"
   },
   "intl_dot_commonMessages_dot_shipping": {
-    "string": "お届け先住所"
+    "string": "配送料"
   },
   "intl_dot_commonMessages_dot_shortEmail": {
     "string": "メールアドレス"
