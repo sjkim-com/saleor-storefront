@@ -10,6 +10,7 @@
 export interface CmgtAccountConfirm_update_account_user_returning {
   __typename: "account_user";
   email: string;
+  id: string;
 }
 
 export interface CmgtAccountConfirm_update_account_user {

@@ -26,13 +26,14 @@ import {
 // >(accountConfirmMutation);
 
 const cmgtAccountConfirmMutation = gql`
-  mutation CmgtAccountConfirm($email: String = "songc@ui2.co.jp") {
+  mutation CmgtAccountConfirm($email: String) {
     update_account_user(
       _set: { is_active: true }
       where: { email: { _eq: $email } }
     ) {
       returning {
         email
+        id
       }
     }
   }
