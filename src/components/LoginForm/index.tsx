@@ -4,10 +4,11 @@ import * as React from "react";
 import { useIntl } from "react-intl";
 
 import { useAuth } from "@saleor/sdk";
-import { demoMode } from "@temp/constants";
+import { demoMode, eciDebug } from "@temp/constants";
 import { commonMessages } from "@temp/intl";
 
 import { Button, Form, TextField } from "..";
+import { getDBIdFromGraphqlIdConverter } from "../../core/utils";
 
 interface ILoginForm {
   hide?: () => void;
@@ -26,6 +27,28 @@ const LoginForm: React.FC<ILoginForm> = ({ hide }) => {
     if (dataError?.error) {
       setErrors(dataError.error);
     } else if (data && hide) {
+      // EC Intelligence 会員情報アップデート
+      const memberId = getDBIdFromGraphqlIdConverter(data.id);
+
+      window._scq.push(["_setDebug", eciDebug]);
+      window._scq.push([
+        "_updateMember",
+        memberId,
+        data.defaultShippingAddress !== null
+          ? data.defaultShippingAddress.countryArea
+          : "",
+        "不明",
+        "",
+        "WELCOME",
+        data.email,
+        data.lastName,
+        data.firstName,
+        0,
+        "",
+      ]);
+
+      window._scq.push(["_setCustomVar", memberId, "0", "WELCOME"]);
+      window._scq.push(["_trackPageview"]);
       setErrors(null);
       hide();
     }

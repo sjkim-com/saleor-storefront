@@ -217,6 +217,9 @@ $ touch .env
 $ vi .env
 
 API_URI=https://cmgt-graphql-engine.herokuapp.com/v1beta1/relay
+ECI_ACCOUNT=ui2-1
+ECI_HOST=ui2.scinable.net
+ECI_DEBUG=true
 ```
 
 call : hasura front

@@ -4,10 +4,12 @@ import { useAlert } from "react-alert";
 import { StringParam, useQueryParams } from "use-query-params";
 
 import { RouteComponentProps } from "react-router";
+import { eciDebug } from "@temp/constants";
 import { BASE_URL } from "../../core/config";
 
 // import { TypedAccountConfirmMutation } from "./queries";
 import { TypedCmgtAccountConfirmMutation } from "./queries";
+import { getDBIdFromGraphqlId } from "../../core/utils";
 
 import "./scss/index.scss";
 
@@ -42,6 +44,27 @@ const AccountConfirm: React.FC<RouteComponentProps> = ({ history }) => {
         const possibleErrors =
           result.data.update_account_user.returning.length > 0 ? [] : ["error"];
         displayConfirmationAlert(possibleErrors);
+
+        // EC Intelligence 会員追加
+        if (possibleErrors.length === 0) {
+          const memberId = getDBIdFromGraphqlId(
+            result.data.update_account_user.returning[0].id
+          );
+          window._scq.push(["_setDebug", eciDebug]);
+          window._scq.push([
+            "_addMember",
+            memberId, // 会員ID
+            "", // 住所
+            "不明", // 性別
+            "", // 生年月日
+            "WELCOME", // 会員ランク
+            result.data.update_account_user.returning[0].email, // Email
+            "", // 姓
+            "", // 名
+            "0", // メールマガ受信可否
+          ]);
+          window._scq.push(["_trackPageview"]);
+        }
       })
       .catch(() => {
         const errors = [

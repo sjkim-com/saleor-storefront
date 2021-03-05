@@ -23,13 +23,15 @@
     <div id="root"></div>
     <div id="modal-root"></div>
     <script>
+      // EC Intelligence 初期設定
       var _scq = _scq || [];
 
-      _scq.push(["_setAccount", "ui2-1"]);
+      _scq.push(["_setAccount", "${htmlWebpackPlugin.options.ECI_ACCOUNT}"]);
 
+      _scq.push(["_setDebug", `${htmlWebpackPlugin.options.ECI_DEBUG}`]);
       _scq.push(["_trackPageview"]);
 
-      var _host = "ui2.scinable.net";
+      var _host = "${htmlWebpackPlugin.options.ECI_HOST}";
       (function () {
         var sc = document.createElement("script");
         sc.type = "text/javascript";

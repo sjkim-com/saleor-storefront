@@ -93,6 +93,9 @@ module.exports = ({ sourceDir, distDir }) => ({
     }),
     new HtmlWebpackPlugin({
       API_URI: process.env.API_URI,
+      ECI_ACCOUNT: process.env.ECI_ACCOUNT,
+      ECI_HOST: process.env.ECI_HOST,
+      ECI_DEBUG: process.env.ECI_DEBUG,
       filename: `${distDir}/index.html`,
       template: `${sourceDir}/index.html`,
     }),
@@ -119,6 +122,9 @@ module.exports = ({ sourceDir, distDir }) => ({
       GTM_ID: undefined,
       SENTRY_APM: "0",
       SENTRY_DSN: null,
+      ECI_ACCOUNT: null,
+      ECI_HOST: null,
+      ECI_DEBUG: false,
     }),
   ],
   resolve: {
