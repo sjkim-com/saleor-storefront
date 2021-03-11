@@ -247,6 +247,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
       ]);
 
       const orderProducts: String[] = [];
+      const orderProductsSku: String[] = [];
       items?.map((item, index) => {
         window._scq.push([
           "_addItem",
@@ -261,12 +262,21 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
           item.totalPrice?.gross.amount, // 注文価格
           item.totalPrice?.gross.amount, // 注文原価
         ]);
-        orderProducts.push(item.variant.id);
+        orderProductsSku.push(item.variant.id);
+        orderProducts.push(item.variant.product?.id || "");
       });
 
       window._scq.push([
         "_trackCart",
-        { action: "delete", items: [...orderProducts] },
+        { action: "delete", items: [...orderProductsSku] },
+      ]);
+
+      window._scq.push([
+        "_trackRecommend",
+        {
+          index: 2,
+          items: [...orderProducts],
+        },
       ]);
 
       window._scq.push(["_trackPageview"]);
