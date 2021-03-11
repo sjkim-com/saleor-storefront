@@ -47,7 +47,7 @@ const LoginForm: React.FC<ILoginForm> = ({ hide }) => {
         "",
       ]);
 
-      window._scq.push(["_setCustomVar", memberId, "0", "WELCOME"]);
+      window._scq.push(["_setCustomVar", memberId, "", "0", "WELCOME"]);
       window._scq.push(["_trackPageview"]);
       setErrors(null);
       hide();
