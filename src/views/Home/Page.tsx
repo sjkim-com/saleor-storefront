@@ -49,7 +49,7 @@ const Page: React.FC<{
     htmlTagId: "include_recommend_sample",
     // EC Intelligence側で、SKUにレコメンドが登録されていない為、ProductIdを指定。
     itemIds: ["223-ACTUS_001001_001"],
-    recommendLimitCount: 3,
+    recommendLimitCount: 5,
   };
 
   return (

@@ -23,7 +23,7 @@ import {
   RecommendType,
   IRecommendRequest,
   Recommend,
-} from "./../../components/Recommend";
+} from "../../components/Recommend";
 
 import { structuredData } from "../../core/SEO/Product/structuredData";
 import { IProps } from "./types";
@@ -56,7 +56,7 @@ const Page: React.FC<
     htmlTagId: "include_recommend",
     // EC Intelligence側で、SKUにレコメンドが登録されていない為、ProductIdを指定。
     itemIds: [product.id],
-    recommendLimitCount: 3,
+    recommendLimitCount: 5,
   };
 
   React.useEffect(() => {
