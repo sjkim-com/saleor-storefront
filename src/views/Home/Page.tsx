@@ -3,8 +3,7 @@ import "./scss/index.scss";
 import classNames from "classnames";
 import * as React from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { Link } from "react-router-dom";
-
+import { Link, useHistory } from "react-router-dom";
 import { Button, Loader, ProductsFeatured } from "../../components";
 // import { generateCategoryUrl } from "../../core/utils";
 
@@ -27,6 +26,8 @@ import {
 
 // import noPhotoImg from "../../images/no-photo.svg";
 
+console.log("----- <Home> Page -----");
+
 const Page: React.FC<{
   loading: boolean;
   // categories: ProductsList_categories;
@@ -41,6 +42,16 @@ const Page: React.FC<{
   };
   const intl = useIntl();
   const collection = shop?.product_collection;
+
+  console.log("----- _trackPageview -----");
+
+  window._scq.push([
+    "_setPage",
+    {
+      url: "/",
+    },
+  ]);
+  window._scq.push(["_trackPageview"]);
 
   // EC Intelligence : Recommendサンプル用
   const recommendRequest: IRecommendRequest = {
