@@ -13,6 +13,7 @@ import ReactSVG from "react-svg";
 
 import { commonMessages } from "@temp/intl";
 
+import { eciDebug } from "@temp/constants";
 import {
   Button,
   Loader,
@@ -47,6 +48,15 @@ class Search extends React.Component<SearchProps, SearchState> {
 
   submitBtnRef = React.createRef<HTMLButtonElement>();
 
+  inputRef = React.createRef<HTMLInputElement>();
+
+  componentDidMount() {
+    // EC Intelligence サジェスト設定
+    window._scq.push(["_setDebug", eciDebug]);
+    window._scq.push(["_suggest", { input: "suggest", item: true }]);
+    window._scq.push(["_trackPageview"]);
+  }
+
   componentDidUpdate(_prevProps: SearchProps, prevState: SearchState) {
     if (
       !!prevState.search.length &&
@@ -72,7 +82,9 @@ class Search extends React.Component<SearchProps, SearchState> {
     maybe(() => !!data.products.edges.length);
 
   handleSubmit = (evt: React.FormEvent) => {
-    if (this.hasSearchPhrase && this.submitBtnRef.current) {
+    this.state.search = this.inputRef.current.value;
+    // if (this.hasSearchPhrase && this.submitBtnRef.current) {
+    if (this.hasSearchPhrase) {
       this.props.overlay.hide();
       this.props.history.push(`${searchUrl}?${this.searchQs}`);
     }
@@ -111,13 +123,18 @@ class Search extends React.Component<SearchProps, SearchState> {
                   className="search__input__close-btn"
                 />
               }
-              iconRight={<ReactSVG path={searchImg} />}
+              iconRight={
+                <ReactSVG path={searchImg} onClick={this.handleSubmit} />
+              }
               autoFocus
               placeholder={this.props.intl.formatMessage(commonMessages.search)}
               onBlur={this.handleInputBlur}
+              id="suggest"
+              name="suggest"
+              inputRef={this.inputRef}
             />
           </div>
-          <div
+          {/* <div
             className={classNames({
               search__products: true,
               "search__products--expanded": this.hasSearchPhrase,
@@ -178,7 +195,7 @@ class Search extends React.Component<SearchProps, SearchState> {
                 return null;
               }}
             </NetworkStatus>
-          </div>
+          </div> */}
         </form>
       </Overlay>
     );

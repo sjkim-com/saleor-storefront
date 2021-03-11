@@ -281,3 +281,19 @@ export const getDBIdFromGraphqlIdConverter = (graphqlId: string): number => {
   const arr = regexp.exec(rawId);
   return parseInt(arr![2], 10);
 };
+
+export const eciCallApi = async (url: string): Promise<any> => {
+  const response = await fetch(url, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json; charset=utf-8",
+    },
+  });
+
+  const result = await response.json().then(data => {
+    return data;
+  });
+
+  return result;
+};

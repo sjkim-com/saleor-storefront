@@ -25,7 +25,11 @@ const checkIfAttributeIsChecked = (
   //   return false;
   // }
   if (filters!.attributes && filters.attributes.hasOwnProperty(attributeId)) {
-    if (filters.attributes[attributeId].find(filter => filter === slattributeValue)) {
+    if (
+      filters.attributes[attributeId].find(
+        filter => filter === slattributeValue
+      )
+    ) {
       return true;
     }
     return false;

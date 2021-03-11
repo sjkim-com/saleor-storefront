@@ -77,7 +77,9 @@ export const META_DEFAULTS = {
   // TODO: actus_demo
   // image: `${window.location.origin}${require("../images/logo.svg")}`,
   // title: "Demo PWA Storefront – Saleor Commerce",
-  image: `${window.location.origin}${require("../images/actus/logo_header_Actus_s.svg")}`,
+  image: `${
+    window.location.origin
+  }${require("../images/actus/logo_header_Actus_s.svg")}`,
   title: "ACTUS online（アクタス公式通販）| 家具・雑貨・ギフト",
   type: "website",
   url: window.location.origin,
@@ -133,3 +135,11 @@ export const CHECKOUT_STEPS = [
 ];
 
 export const CMGT_SITE_ID = "00D2w000003Nwc9EAC";
+
+export const SEARCH_FILTER = {
+  string1: "ブランド",
+  string2: "カラー",
+  string3: "サイズ",
+  string4: "重量",
+  price: "価格",
+};

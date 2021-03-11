@@ -23,6 +23,7 @@ import { checkoutMessages } from "@temp/intl";
 
 import { ITaxedMoney, ICheckoutStep, IFormError, ICardDataCmgt } from "@types";
 
+import { eciDebug } from "@temp/constants";
 import { CheckoutRouter } from "./CheckoutRouter";
 import {
   CheckoutAddressSubpage,
@@ -231,6 +232,45 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
   ) => {
     const activeStepIndex = getActiveStepIndex();
     if (currentStep === CheckoutStep.Review) {
+      // EC Intelligence 注文登録
+      window._scq.push(["_setDebug", eciDebug]);
+      window._scq.push([
+        "_addTrans",
+        data?.orderNumber, // 注文ID
+        "", // ショップID
+        payment?.token, // "カード", // 決済方法
+        totalPrice?.gross.amount, // "3000", // 商品価格合計
+        totalPrice?.gross.amount, // "1500", // 商品原価合計
+        totalPrice?.gross.amount, // "3500", // 総注文金額
+        cmgtGetUserIdFromGraphqlId(user.id), // 会員ID
+        checkout?.shippingAddress?.countryArea || null, // 住所
+      ]);
+
+      const orderProducts: String[] = [];
+      items?.map((item, index) => {
+        window._scq.push([
+          "_addItem",
+          index, // 明細ID
+          item.variant.id, // 商品ID
+          item.variant.product?.name, // 商品名
+          "", // カテゴリ
+          "", // 商品ショップID
+          item.quantity, // 個数
+          item.variant.pricing?.price?.gross.amount, // 単価
+          item.variant.pricing?.price?.gross.amount, // 原価
+          item.totalPrice?.gross.amount, // 注文価格
+          item.totalPrice?.gross.amount, // 注文原価
+        ]);
+        orderProducts.push(item.variant.id);
+      });
+
+      window._scq.push([
+        "_trackCart",
+        { action: "delete", items: [...orderProducts] },
+      ]);
+
+      window._scq.push(["_trackPageview"]);
+
       history.push({
         pathname: "/order-finalized",
         state: data,

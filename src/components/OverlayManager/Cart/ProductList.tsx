@@ -7,6 +7,7 @@ import ReactSVG from "react-svg";
 import { TaxedMoney } from "@components/containers";
 import { Thumbnail } from "@components/molecules";
 
+import { eciDebug } from "@temp/constants";
 import { cmgtGenerateProductUrl } from "../../../core/utils";
 import removeImg from "../../../images/garbage.svg";
 
@@ -52,7 +53,12 @@ const ProductList: React.SFC<{
               path={removeImg}
               className="cart__list__item__details__delete-icon"
               data-test="deleteButton"
-              onClick={() => remove(line.variant.id)}
+              onClick={() => {
+                // EC Intelligence カート削除
+                window._scq.push(["_setDebug", eciDebug]);
+                window._scq.push(["_trackCart", "delete", line.variant.sku]);
+                remove(line.variant.id);
+              }}
             />
           </div>
         </li>
