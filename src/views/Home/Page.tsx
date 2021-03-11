@@ -18,6 +18,13 @@ import {
 
 import { structuredData } from "../../core/SEO/Homepage/structuredData";
 
+// EC Intelligence : Recommendサンプル用
+import {
+  RecommendType,
+  IRecommendRequest,
+  Recommend,
+} from "../../components/Recommend";
+
 // import noPhotoImg from "../../images/no-photo.svg";
 
 const Page: React.FC<{
@@ -35,8 +42,25 @@ const Page: React.FC<{
   const intl = useIntl();
   const collection = shop?.product_collection;
 
+  // EC Intelligence : Recommendサンプル用
+  const recommendRequest: IRecommendRequest = {
+    recommendType: RecommendType.VIEW,
+    htmlTemplateId: "1",
+    htmlTagId: "include_recommend_sample",
+    // EC Intelligence側で、SKUにレコメンドが登録されていない為、ProductIdを指定。
+    itemIds: ["223-ACTUS_001001_001"],
+    recommendLimitCount: 3,
+  };
+
   return (
     <>
+      {/* EC Intelligence : [接客]テンプレートサンプル */}
+      <div id="include_toppage_top_banner_01" />
+      <div id="include_toppage_banner_01" />
+
+      {/* EC Intelligence : Recommendサンプル */}
+      <Recommend request={recommendRequest} />
+
       <script className="structured-data-list" type="application/ld+json">
         {structuredData(shop)}
       </script>
