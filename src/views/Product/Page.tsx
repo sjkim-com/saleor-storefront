@@ -19,6 +19,11 @@ import {
 } from "../../core/utils";
 import GalleryCarousel from "./GalleryCarousel";
 import OtherProducts from "./Other";
+import {
+  RecommendType,
+  IRecommendRequest,
+  Recommend,
+} from "./../../components/Recommend";
 
 import { structuredData } from "../../core/SEO/Product/structuredData";
 import { IProps } from "./types";
@@ -43,6 +48,16 @@ const Page: React.FC<
   const overlayContext = React.useContext(OverlayContext);
   const productGallery: React.RefObject<HTMLDivElement> = React.useRef();
   const [variantId, setVariantId] = React.useState("");
+
+  // EC Intelligence : Recommendサンプル用
+  const recommendRequest: IRecommendRequest = {
+    recommendType: RecommendType.VIEW,
+    htmlTemplateId: "1",
+    htmlTagId: "include_recommend",
+    // EC Intelligence側で、SKUにレコメンドが登録されていない為、ProductIdを指定。
+    itemIds: [product.id],
+    recommendLimitCount: 3,
+  };
 
   React.useEffect(() => {
     // EC Intelligence 閲覧レコメンド
@@ -150,6 +165,9 @@ const Page: React.FC<
           />
         </div>
       </div>
+      {/* EC Intelligence : Recommend */}
+      <Recommend request={recommendRequest} />
+
       <OtherProducts products={product.category.products.edges} />
     </div>
   );
