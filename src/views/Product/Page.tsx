@@ -4,6 +4,7 @@ import Media from "react-media";
 import { ProductDescription } from "@components/molecules";
 import { ProductGallery } from "@components/organisms";
 import AddToCartSection from "@components/organisms/AddToCartSection";
+import { eciDebug } from "@temp/constants";
 import { smallScreen } from "../../globalStyles/scss/variables.scss";
 
 import {
@@ -43,6 +44,18 @@ const Page: React.FC<
   const productGallery: React.RefObject<HTMLDivElement> = React.useRef();
   const [variantId, setVariantId] = React.useState("");
 
+  React.useEffect(() => {
+    // EC Intelligence 閲覧レコメンド
+    window._scq.push(["_setDebug", eciDebug]);
+    window._scq.push([
+      "_trackRecommend",
+      {
+        index: 1,
+        items: [product.id],
+      },
+    ]);
+  }, []);
+
   const getImages = () => {
     if (product.variants && variantId) {
       const variant = product.variants.find(
@@ -61,6 +74,10 @@ const Page: React.FC<
     console.log("<Product : Page.tsx> handleAddToCart");
     console.log(`  variantId : '${variantId}'`);
     console.log(`  quantity : '${quantity}'`);
+
+    // EC Intelligence カート登録
+    window._scq.push(["_setDebug", eciDebug]);
+    window._scq.push(["_trackCart", "add", variantId]);
 
     add(variantId, quantity);
     overlayContext.show(OverlayType.cart, OverlayTheme.right);
