@@ -8,10 +8,14 @@ export interface INoveltyRequest {
 let noveltyData = null;
 
 const Novelty: React.FC<{ request: INoveltyRequest }> = ({ request }) => {
+  console.log("----- <Novelty> -----");
+
   React.useEffect(() => {
     // ノベルティ商品情報を取得
     const fetchNovelty = () => {
       return new Promise(resolve => {
+        console.log(`  request.productId : '${request.productId}'`);
+
         const params = {
           host: eciHost,
           type: "search",
@@ -22,6 +26,9 @@ const Novelty: React.FC<{ request: INoveltyRequest }> = ({ request }) => {
         // productIdに紐づく商品情報を取得
         window._eciUtils.fetchJsonData(params).then(data => {
           const noveltySku = data?.index?.asp?.facetList?.string5?.list[0];
+
+          console.log(`  noveltySku : '${noveltySku}'`);
+
           if (noveltySku === undefined) {
             resolve(null);
           }
@@ -35,6 +42,9 @@ const Novelty: React.FC<{ request: INoveltyRequest }> = ({ request }) => {
 
           // ノベルティ商品のSKUに紐づくノベルティ商品情報を取得
           window._eciUtils.fetchJsonData(params).then(data => {
+            console.log("----- novelty item ----");
+            console.log(JSON.stringify(data));
+
             resolve(data);
           });
         });
@@ -45,7 +55,7 @@ const Novelty: React.FC<{ request: INoveltyRequest }> = ({ request }) => {
     fetchNovelty().then(data => {
       noveltyData = data;
     });
-  }, []);
+  }, [request.productId]);
 
   if (noveltyData === null) {
     return <div />;
