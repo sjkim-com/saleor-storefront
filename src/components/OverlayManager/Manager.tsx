@@ -7,7 +7,8 @@ import MobileNav from "./MobileNav";
 import Modal from "./Modal";
 import Notification from "./Notification";
 import Password from "./Password";
-import Search from "./Search";
+// import Search from "./Search";
+import EciSearch from "./EciSearch";
 
 const OverlayManager: React.FC = () => (
   <OverlayContext.Consumer>
@@ -23,7 +24,8 @@ const OverlayManager: React.FC = () => (
           return <Cart overlay={overlay} />;
 
         case OverlayType.search:
-          return <Search overlay={overlay} />;
+          // return <Search overlay={overlay} />;
+          return <EciSearch overlay={overlay} />;
 
         case OverlayType.login:
           return <Login overlay={overlay} />;

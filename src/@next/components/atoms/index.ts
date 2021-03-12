@@ -11,6 +11,7 @@ export * from "./CreditCardIcon";
 export * from "./DemoBanner";
 export * from "./DropdownMenu";
 export * from "./DropdownSelect";
+export * from "./DropdownPriceSelect";
 export * from "./ErrorMessage";
 export * from "./Icon";
 export * from "./IconButton";

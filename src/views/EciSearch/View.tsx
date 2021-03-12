@@ -3,7 +3,7 @@ import { useIntl } from "react-intl";
 import { RouteComponentProps } from "react-router";
 
 import { prodListHeaderCommonMsg } from "@temp/intl";
-import { IFilters } from "@types";
+import { ISearchFilters } from "@types";
 import { StringParam, useQueryParam } from "use-query-params";
 import { eciHost, eciAccount, eciDebug } from "@temp/constants";
 import { Loader } from "@components/atoms";
@@ -18,6 +18,7 @@ import {
   eciCallApi,
 } from "../../core/utils";
 import Page from "./Page";
+import { DH_CHECK_P_NOT_SAFE_PRIME } from "constants";
 
 type ViewProps = RouteComponentProps<{
   id: string;
@@ -47,6 +48,7 @@ export const FilterQuerySet = {
 
 export const View: React.FC<ViewProps> = ({ match }) => {
   const [sort, setSort] = useQueryParam("sortBy", StringParam);
+  const [price, setPrice] = useQueryParam("price", StringParam);
   const [search, setSearch] = useQueryParam("q", StringParam);
   const [attributeFilters, setAttributeFilters] = useQueryParam(
     "filters",
@@ -84,23 +86,24 @@ export const View: React.FC<ViewProps> = ({ match }) => {
     init: false,
   };
 
-  const filters: IFilters = {
+  const filters: ISearchFilters = {
     attributes: attributeFilters,
     pageSize: PRODUCTS_PER_PAGE,
     priceGte: null,
     priceLte: null,
     sortBy: sort || null,
+    price: price || null,
   };
 
-  const variables = {
-    ...filters,
-    attributes: filters.attributes
-      ? convertToAttributeScalar(filters.attributes)
-      : {},
-    id: getGraphqlIdFromDBId(match.params.id, "Category"),
-    query: search || null,
-    sortBy: convertSortByFromString(filters.sortBy),
-  };
+  // const variables = {
+  //   ...filters,
+  //   attributes: filters.attributes
+  //     ? convertToAttributeScalar(filters.attributes)
+  //     : {},
+  //   id: getGraphqlIdFromDBId(match.params.id, "Category"),
+  //   query: search || null,
+  //   sortBy: convertSortByFromString(filters.sortBy),
+  // };
 
   const sortOptions = [
     {
@@ -149,6 +152,13 @@ export const View: React.FC<ViewProps> = ({ match }) => {
     // },
   ];
 
+  const priceOptions = [
+    {
+      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsClear),
+      value: null,
+    },
+  ];
+
   const callApi = async (page = 1, more = false) => {
     setLoading(true);
     let url = `//${eciHost}/search?aid=${eciAccount}&t=json`;
@@ -167,8 +177,12 @@ export const View: React.FC<ViewProps> = ({ match }) => {
     }
 
     const allData = await eciCallApi(url);
-
     setAllSearchData(allData);
+
+    if (price) {
+      const priceValues = price.split("-");
+      url += `&min=${priceValues[0]}&max=${priceValues[1]}`;
+    }
 
     if (attributeFilters) {
       Object.keys(attributeFilters).forEach(key => {
@@ -233,12 +247,34 @@ export const View: React.FC<ViewProps> = ({ match }) => {
     const allAsp = allSearchData?.index.asp || {};
 
     const { itemList, pageNavi } = asp;
-    const { facetList } = allAsp;
+    const { facetList, categoryList } = allAsp;
+
+    if (categoryList.root.list.length > 0) {
+      const categoryObj = {
+        node: {
+          attribute_id: "category",
+          id: "category",
+          name: SEARCH_FILTER.category,
+          pms_attributevalues: [],
+        },
+      };
+      categoryList.root.list.map((category, index) => {
+        if (index % 3 === 0) {
+          const value = {
+            attribute_id: "category",
+            attribute_value: category,
+            name: category,
+          };
+          categoryObj.node.pms_attributevalues.push(value);
+        }
+      });
+      data.attributes.edges.push(categoryObj);
+    }
 
     // オプション生成
     Object.keys(facetList).forEach(key => {
       const { list } = facetList[key];
-      if (list.length > 0) {
+      if (list.length > 0 && SEARCH_FILTER[key]) {
         const obj = {
           node: {
             attribute_id: key,
@@ -258,6 +294,18 @@ export const View: React.FC<ViewProps> = ({ match }) => {
           }
         });
         data.attributes.edges.push(obj);
+      }
+
+      if (key === "price" && priceOptions.length <= 1) {
+        list.map((option, index) => {
+          if (index % 2 === 0) {
+            const obj = {
+              label: option,
+              value: option,
+            };
+            priceOptions.push(obj);
+          }
+        });
       }
     });
 
@@ -308,9 +356,11 @@ export const View: React.FC<ViewProps> = ({ match }) => {
                     false
                   )}
                   sortOptions={sortOptions}
+                  priceOptions={priceOptions}
                   setSearch={setSearch}
                   search={search}
                   activeSortOption={filters.sortBy}
+                  activePriceOption={filters.price}
                   filters={filters}
                   products={data.products}
                   onAttributeFiltersChange={onFiltersChange}
@@ -320,7 +370,11 @@ export const View: React.FC<ViewProps> = ({ match }) => {
                       ? Object.keys(filters!.attributes).length
                       : 0
                   }
-                  onOrder={value => {
+                  onOrder={(value, tag) => {
+                    if (tag === "price") {
+                      setPrice(value.value);
+                      return;
+                    }
                     setSort(value.value);
                   }}
                 />

@@ -145,9 +145,9 @@ export const CHECKOUT_STEPS = [
 export const CMGT_SITE_ID = "00D2w000003Nwc9EAC";
 
 export const SEARCH_FILTER = {
+  category: "カテゴリー",
   string1: "ブランド",
   string2: "カラー",
   string3: "サイズ",
   string4: "重量",
-  price: "価格",
 };

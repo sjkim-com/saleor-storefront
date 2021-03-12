@@ -4,7 +4,7 @@ import * as React from "react";
 import { useIntl } from "react-intl";
 
 import { commonMessages } from "@temp/intl";
-import { IFilterAttributes, IFilters } from "@types";
+import { IFilterAttributes, ISearchFilters } from "@types";
 import { DebounceChange, ProductsFeatured, TextField } from "../../components";
 
 import { ProductListHeader } from "../../@next/components/molecules";
@@ -19,13 +19,15 @@ interface SortItem {
 }
 
 interface SortOptions extends Array<SortItem> {}
+interface priceOptions extends Array<SortItem> {}
 
 interface PageProps {
   activeFilters: number;
   attributes: IFilterAttributes[];
   activeSortOption: string;
+  activePriceOption: string;
   displayLoader: boolean;
-  filters: IFilters;
+  filters: ISearchFilters;
   hasNextPage: boolean;
   search?: string;
   setSearch?: (
@@ -34,14 +36,16 @@ interface PageProps {
   ) => void;
   products: any;
   sortOptions: SortOptions;
+  priceOptions: priceOptions;
   clearFilters: () => void;
   onLoadMore: () => void;
   onAttributeFiltersChange: (attributeSlug: string, value: string) => void;
-  onOrder: (order: { value?: string; label: string }) => void;
+  onOrder: (order: { value?: string; label: string }, tag) => void;
 }
 
 const Page: React.FC<PageProps> = ({
   activeFilters,
+  activePriceOption,
   activeSortOption,
   attributes,
   search,
@@ -54,6 +58,7 @@ const Page: React.FC<PageProps> = ({
   filters,
   onOrder,
   sortOptions,
+  priceOptions,
   onAttributeFiltersChange,
 }) => {
   const canDisplayProducts = maybe(
@@ -65,6 +70,7 @@ const Page: React.FC<PageProps> = ({
   const intl = useIntl();
 
   const getAttribute = (attributeId: string, attributeValue: string) => {
+    console.log(attributeId, attributeValue);
     if (attributes.length > 0) {
       return {
         attributeId,
@@ -130,12 +136,14 @@ const Page: React.FC<PageProps> = ({
         />
         <ProductListHeader
           activeSortOption={activeSortOption}
+          activePriceOption={activePriceOption}
           openFiltersMenu={() => setShowFilters(true)}
           numberOfProducts={products ? products.totalCount : 0}
           activeFilters={activeFilters}
           activeFiltersAttributes={activeFiltersAttributes}
           clearFilters={clearFilters}
           sortOptions={sortOptions}
+          priceOptions={priceOptions}
           onChange={onOrder}
           onCloseFilterAttribute={onAttributeFiltersChange}
         />
