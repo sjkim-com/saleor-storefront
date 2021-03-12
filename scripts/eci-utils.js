@@ -3,6 +3,8 @@ const _eciUtils = {};
 
 _eciUtils.includeHTML = (sourceId, destinationId) => {
   console.log("----- <eci-utils.js> includeHTML ------");
+  console.log(`  sourceId : '${sourceId}'`);
+  console.log(`  destinationId : '${destinationId}'`);
 
   let includeIntervaCount = 0;
   const includeInterval = 100;
@@ -45,6 +47,8 @@ _eciUtils.includeHTML = (sourceId, destinationId) => {
 };
 
 _eciUtils.fetchJsonData = async params => {
+  console.log("----- <eci-utils.js> fetchJsonData ------");
+
   const queryString =
     params.queries.length < 1 ? "" : `&${params.queries.join("&")}`;
 
@@ -64,3 +68,5 @@ _eciUtils.fetchJsonData = async params => {
 
   return data;
 };
+
+window._eciUtils = _eciUtils;

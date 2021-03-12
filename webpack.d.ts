@@ -16,6 +16,7 @@ declare interface Window {
   Cypress?: any;
   AdyenCheckout: any;
   _scq: any;
+  _eciUtils: any;
 }
 
 declare interface Navigator {
