@@ -150,4 +150,6 @@ export const SEARCH_FILTER = {
   string2: "カラー",
   string3: "サイズ",
   string4: "重量",
+  string8: "無料配送",
+  string9: "新商品",
 };
