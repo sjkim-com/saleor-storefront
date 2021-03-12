@@ -19,11 +19,16 @@ import {
 } from "../../core/utils";
 import GalleryCarousel from "./GalleryCarousel";
 import OtherProducts from "./Other";
+
+// EC Intelligence : Recommend用
 import {
   RecommendType,
   IRecommendRequest,
   Recommend,
 } from "../../components/Recommend";
+
+// EC Intelligence : Novelty用
+import { INoveltyRequest, Novelty } from "../../components/Novelty";
 
 import { structuredData } from "../../core/SEO/Product/structuredData";
 import { IProps } from "./types";
@@ -49,7 +54,12 @@ const Page: React.FC<
   const productGallery: React.RefObject<HTMLDivElement> = React.useRef();
   const [variantId, setVariantId] = React.useState("");
 
-  // EC Intelligence : Recommendサンプル用
+  // EC Intelligence : Movelty用
+  const noveltyRequest: INoveltyRequest = {
+    productId: "223-ACTUS_003001_002",
+  };
+
+  // EC Intelligence : Recommend用
   const recommendRequest: IRecommendRequest = {
     recommendType: RecommendType.VIEW,
     htmlTemplateId: "1",
@@ -165,6 +175,10 @@ const Page: React.FC<
           />
         </div>
       </div>
+
+      {/* EC Intelligence : Novelty */}
+      <Novelty request={noveltyRequest} />
+
       {/* EC Intelligence : Recommend */}
       <Recommend request={recommendRequest} />
 
