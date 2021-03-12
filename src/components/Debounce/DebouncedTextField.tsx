@@ -16,6 +16,7 @@ const DebouncedTextField: React.FC<DebouncedTextFieldProps> = props => {
     value: originalValue,
     onChange,
     inputRef,
+    setValue,
     ...textFieldProps
   } = props;
   return (
@@ -31,6 +32,7 @@ const DebouncedTextField: React.FC<DebouncedTextFieldProps> = props => {
           value={value}
           onChange={change}
           inputRef={inputRef}
+          setValue={setValue}
         />
       )}
     </DebounceChange>

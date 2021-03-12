@@ -17,11 +17,13 @@ interface ActiveFiltersAttribute {
 
 export interface IProps {
   activeSortOption?: string;
+  activePriceOption?: string;
   activeFilters: number;
   activeFiltersAttributes: ActiveFiltersAttribute[];
   numberOfProducts: number;
   sortOptions: SortOptions[];
-  onChange: (order: { value?: string; label: string }) => void;
+  priceOptions: SortOptions[];
+  onChange: (order: { value?: string; label: string }, tag: string) => void;
   onCloseFilterAttribute: (attributeSlug: string, valueSlug: string) => void;
   openFiltersMenu: () => void;
   clearFilters: () => void;

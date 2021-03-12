@@ -1,7 +1,12 @@
 import React from "react";
 import { FormattedMessage } from "react-intl";
 
-import { Chip, DropdownSelect, Icon } from "@components/atoms";
+import {
+  Chip,
+  DropdownSelect,
+  Icon,
+  DropdownPriceSelect,
+} from "@components/atoms";
 import { commonMessages } from "@temp/intl";
 
 import * as S from "./styles";
@@ -12,9 +17,11 @@ export const ProductListHeader: React.FC<IProps> = ({
   openFiltersMenu,
   clearFilters,
   activeSortOption,
+  activePriceOption,
   activeFilters = 0,
   activeFiltersAttributes = [],
   sortOptions,
+  priceOptions = [],
   onChange,
   onCloseFilterAttribute,
 }: IProps) => {
@@ -58,6 +65,19 @@ export const ProductListHeader: React.FC<IProps> = ({
               />
             </S.Sort>
           </S.Element>
+          {priceOptions.length > 0 && (
+            <S.Element>
+              <S.Sort>
+                <DropdownPriceSelect
+                  onChange={onChange}
+                  options={priceOptions}
+                  value={priceOptions.find(
+                    option => option.value === activePriceOption
+                  )}
+                />
+              </S.Sort>
+            </S.Element>
+          )}
         </S.RightSide>
       </S.Bar>
       <S.FiltersChipsWrapper>
@@ -67,7 +87,9 @@ export const ProductListHeader: React.FC<IProps> = ({
             <Chip
               // onClose={() => onCloseFilterAttribute(attributeSlug, valueSlug)}
               key={attributeValue}
-              onClose={() => onCloseFilterAttribute(attributeId, attributeValue)}
+              onClose={() =>
+                onCloseFilterAttribute(attributeId, attributeValue)
+              }
             >
               {valueName}
             </Chip>
