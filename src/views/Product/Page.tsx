@@ -54,9 +54,9 @@ const Page: React.FC<
   const productGallery: React.RefObject<HTMLDivElement> = React.useRef();
   const [variantId, setVariantId] = React.useState("");
 
-  // EC Intelligence : Movelty用
+  // EC Intelligence : Novelty用
   const noveltyRequest: INoveltyRequest = {
-    productId: "223-ACTUS_003001_002",
+    productId: product.id,
   };
 
   // EC Intelligence : Recommend用
