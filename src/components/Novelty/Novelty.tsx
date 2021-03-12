@@ -31,6 +31,7 @@ const Novelty: React.FC<{ request: INoveltyRequest }> = ({ request }) => {
 
           if (noveltySku === undefined) {
             resolve(null);
+            return;
           }
 
           const params = {
@@ -42,9 +43,6 @@ const Novelty: React.FC<{ request: INoveltyRequest }> = ({ request }) => {
 
           // ノベルティ商品のSKUに紐づくノベルティ商品情報を取得
           window._eciUtils.fetchJsonData(params).then(data => {
-            console.log("----- novelty item ----");
-            console.log(JSON.stringify(data));
-
             resolve(data);
           });
         });
