@@ -47,21 +47,27 @@ export const SOCIAL_MEDIA = [
     ariaLabel: "facebook",
     // TODO: actus_demo
     // href: "https://www.facebook.com/mirumeelabs/",
-    href: "https://ja-jp.facebook.com/actus.interior/",
+    // href: "https://ja-jp.facebook.com/actus.interior/",
+    // sampleImage
+    href: "https://ja-jp.facebook.com",
     path: require("../images/facebook-icon.svg"),
   },
   {
     ariaLabel: "instagram",
     // TODO: actus_demo
     // href: "https://www.instagram.com/mirumeelabs/",
-    href: "https://www.instagram.com/actus_press/",
+    // href: "https://www.instagram.com/actus_press/",
+    // sampleImage
+    href: "https://www.instagram.com",
     path: require("../images/instagram-icon.svg"),
   },
   {
     ariaLabel: "twitter",
     // TODO: actus_demo
     // href: "https://twitter.com/getsaleor",
-    href: "https://twitter.com/actus_stylebook",
+    // href: "https://twitter.com/actus_stylebook",
+    // sampleImage
+    href: "https://twitter.com",
     path: require("../images/twitter-icon.svg"),
   },
   // {
@@ -77,9 +83,11 @@ export const META_DEFAULTS = {
   // TODO: actus_demo
   // image: `${window.location.origin}${require("../images/logo.svg")}`,
   // title: "Demo PWA Storefront – Saleor Commerce",
-  image: `${
-    window.location.origin
-  }${require("../images/actus/logo_header_Actus_s.svg")}`,
+  // image: `${
+  //   window.location.origin
+  // }${require("../images/actus/logo_header_Actus_s.svg")}`,
+  // sampleImage
+  image: `${window.location.origin}${require("../images/sample/logo.svg")}`,
   title: "ACTUS online（アクタス公式通販）| 家具・雑貨・ギフト",
   type: "website",
   url: window.location.origin,

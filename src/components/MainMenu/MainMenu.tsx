@@ -29,7 +29,9 @@ import hamburgerHoverImg from "../../images/hamburger-hover.svg";
 import hamburgerImg from "../../images/hamburger.svg";
 // TODO: actus_demo
 // import logoImg from "../../images/logo.svg";
-import logoImg from "../../images/actus/logo_header_Actus_s.svg";
+// import logoImg from "../../images/actus/logo_header_Actus_s.svg";
+// sampleImage
+import logoImg from "../../images/sample/logo.svg";
 import searchImg from "../../images/search.svg";
 import userImg from "../../images/user.svg";
 import {

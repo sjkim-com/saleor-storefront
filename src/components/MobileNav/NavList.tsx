@@ -12,7 +12,9 @@ import NavItem, { INavItem } from "./NavItem";
 import backImg from "../../images/arrow-back.svg";
 // TODO: actus_demo
 // import logoImg from "../../images/logo.svg";
-import logoImg from "../../images/actus/logo_header_Actus_s.svg";
+// import logoImg from "../../images/actus/logo_header_Actus_s.svg";
+// sampleImage
+import logoImg from "../../images/sample/logo.svg";
 
 interface NavListProps {
   items: INavItem[];

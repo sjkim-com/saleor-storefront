@@ -26,6 +26,9 @@ import {
 
 // import noPhotoImg from "../../images/no-photo.svg";
 
+// sampleImage
+import noImg from "../../images/sample/placeholder540x540.png";
+
 console.log("----- <Home> Page -----");
 
 const Page: React.FC<{
@@ -86,8 +89,9 @@ const Page: React.FC<{
           style={
             collection.background_image
               ? {
-                  // backgroundImage: `url(${collection.background_image})`
-                  backgroundImage: `url('http://ui2-actus-demo.s3-website-ap-northeast-1.amazonaws.com/images/top.jpg')`,
+                  // sampleImage
+                  backgroundImage: `url(${noImg})`,
+                  // backgroundImage: `url('http://ui2-actus-demo.s3-website-ap-northeast-1.amazonaws.com/images/top.jpg')`,
                 }
               : null
           }
@@ -145,7 +149,9 @@ const Page: React.FC<{
                   <div
                     className={classNames("home-page__categories__list__image")}
                     style={{
-                      backgroundImage: `url('http://ui2-actus-demo.s3-website-ap-northeast-1.amazonaws.com/images/shop_contents_headline_group_member_2024.jpg')`,
+                      // sampleImage
+                      // backgroundImage: `url('http://ui2-actus-demo.s3-website-ap-northeast-1.amazonaws.com/images/shop_contents_headline_group_member_2024.jpg')`,
+                      backgroundImage: `url(${noImg})`,
                     }}
                   />
                   <h3>ACTUS 2021 Srping-Summer</h3>
@@ -156,7 +162,9 @@ const Page: React.FC<{
                   <div
                     className={classNames("home-page__categories__list__image")}
                     style={{
-                      backgroundImage: `url('http://ui2-actus-demo.s3-website-ap-northeast-1.amazonaws.com/images/shop_contents_headline_group_member_2051.jpg')`,
+                      // sampleImage
+                      // backgroundImage: `url('http://ui2-actus-demo.s3-website-ap-northeast-1.amazonaws.com/images/shop_contents_headline_group_member_2051.jpg')`,
+                      backgroundImage: `url(${noImg})`,
                     }}
                   />
                   <h3>enjoy STUDY</h3>
@@ -167,7 +175,9 @@ const Page: React.FC<{
                   <div
                     className={classNames("home-page__categories__list__image")}
                     style={{
-                      backgroundImage: `url('http://ui2-actus-demo.s3-website-ap-northeast-1.amazonaws.com/images/shop_contents_headline_group_member_1999.jpg')`,
+                      // sampleImage
+                      // backgroundImage: `url('http://ui2-actus-demo.s3-website-ap-northeast-1.amazonaws.com/images/shop_contents_headline_group_member_1999.jpg')`,
+                      backgroundImage: `url(${noImg})`,
                     }}
                   />
                   <h3>Byers selection ACTUS Olympics</h3>
