@@ -25,6 +25,9 @@ import {
   Recommend,
 } from "../../components/Recommend";
 
+// EC Intelligence : TimeSaleサンプル用
+import { ITimeSaleRequest, TimeSale } from "../../components/TimeSale";
+
 // import noPhotoImg from "../../images/no-photo.svg";
 
 // sampleImage
@@ -64,6 +67,14 @@ const Page: React.FC<{
     recommendLimitCount: 5,
   };
 
+  // EC Intelligence : TimeSaleサンプル用
+  const timeSaleRequest: ITimeSaleRequest = {
+    startDate: "2021-03-12 00:00:00",
+    endDate: "2021-03-31 23:59:59",
+    timeSaleLimitCount: 8,
+    pageIndex: 1,
+  };
+
   return (
     <>
       {/* EC Intelligence : [接客]テンプレートサンプル */}
@@ -72,6 +83,9 @@ const Page: React.FC<{
 
       {/* EC Intelligence : Recommendサンプル */}
       <Recommend request={recommendRequest} />
+
+      {/* EC Intelligence : TimeSaleサンプル */}
+      <TimeSale request={timeSaleRequest} />
 
       <script className="structured-data-list" type="application/ld+json">
         {structuredData(shop)}
