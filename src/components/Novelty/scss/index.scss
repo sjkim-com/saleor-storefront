@@ -1,0 +1,39 @@
+.novelty {
+  padding-bottom: 5rem;
+  &__title {
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 2rem;
+  }
+  &__items {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2rem;
+    &-item {
+      background: #f1f5f5;
+      padding: 2.5rem;
+      text-align: center;
+      max-height: 30rem;
+      -webkit-transition: 0.3s;
+      transition: 0.3s;
+      &__title {
+        text-transform: uppercase;
+        font-weight: normal;
+        font-size: 1rem;
+        margin: 0 0 0.5rem 0;
+        text-align: left;
+      }
+      &__price {
+        font-size: 1rem;
+        margin: 0 0 0.5rem 0;
+        text-align: left;
+      }
+      &__img,
+      &__img img {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+      }
+    }
+  }
+}

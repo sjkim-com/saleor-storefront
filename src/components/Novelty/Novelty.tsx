@@ -1,5 +1,6 @@
 import * as React from "react";
 import { eciHost, eciAccount } from "@temp/constants";
+import "./scss/index.scss";
 
 export interface INoveltyRequest {
   productId: string;
@@ -65,12 +66,18 @@ const Novelty: React.FC<{ request: INoveltyRequest }> = ({ request }) => {
   }
 
   return (
-    <div>
-      <p>対象ノベルティ商品</p>
-      <div>
-        <img src={noveltyDetail.img_url} width="56px;" alt="" />
-        <p>{noveltyDetail.title}</p>
-        <p>&yen;{noveltyDetail.price}</p>
+    <div className="novelty">
+      <h4 className="novelty__title">対象ノベルティ商品</h4>
+      <div className="novelty__items">
+        <div className="novelty__items-item">
+          <h4 className="novelty__items-item__title">{noveltyDetail.title}</h4>
+          <p className="novelty__items-item__price">
+            &yen;{noveltyDetail.price}
+          </p>
+          <div className="novelty__items-item__img">
+            <img src={noveltyDetail.img_url} alt="" />
+          </div>
+        </div>
       </div>
     </div>
   );

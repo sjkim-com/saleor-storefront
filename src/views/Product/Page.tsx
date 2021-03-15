@@ -168,6 +168,10 @@ const Page: React.FC<
         </div>
       </div>
       <div className="container">
+        {/* EC Intelligence : Novelty */}
+        <Novelty request={noveltyRequest} />
+      </div>
+      <div className="container">
         <div className="product-page__product__description">
           <ProductDescription
             descriptionJson={product.descriptionJson}
@@ -175,12 +179,10 @@ const Page: React.FC<
           />
         </div>
       </div>
-
-      {/* EC Intelligence : Novelty */}
-      <Novelty request={noveltyRequest} />
-
-      {/* EC Intelligence : Recommend */}
-      <Recommend request={recommendRequest} />
+      <div className="container">
+        {/* EC Intelligence : Recommend */}
+        <Recommend request={recommendRequest} />
+      </div>
 
       <OtherProducts products={product.category.products.edges} />
     </div>
