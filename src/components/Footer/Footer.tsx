@@ -8,6 +8,9 @@ import Nav from "./Nav";
 
 const Footer: React.FC = () => (
   <div className="footer" id="footer">
+    {/* EC Intelligence template */}
+    <div id="include_footer_01" />
+
     <div className="footer__favicons container">
       {SOCIAL_MEDIA.map(medium => (
         <SocialMediaIcon medium={medium} key={medium.ariaLabel} />

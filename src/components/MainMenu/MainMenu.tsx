@@ -87,6 +87,9 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
         "header-with-dropdown": !!activeDropdown,
       })}
     >
+      {/* EC Intelligence : [接客]テンプレートサンプル */}
+      <div id="include_header_01" />
+
       {demoMode && <DemoBanner />}
       <nav className="main-menu" id="header">
         <div className="main-menu__left">
