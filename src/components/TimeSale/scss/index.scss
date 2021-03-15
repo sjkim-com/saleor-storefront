@@ -1,0 +1,44 @@
+@import "../../../globalStyles/scss/variables.scss";
+
+.timesale-product-list {
+  display: inline-block;
+
+  &__demo_title {
+    color: #ffffff;
+    background-color: #4488dd;
+    font-size: 1rem;
+    font-weight: normal;
+    padding: 8px;
+  }
+}
+
+.timesale-product-list-item {
+  font-size: 11px;
+  font-weight: normal;
+  width: 300px;
+  margin: 4px;
+  text-align: center;
+
+  &__title {
+    font-size: 1rem;
+    font-weight: normal;
+  }
+
+  &__price {
+    font-size: 1rem;
+    font-weight: normal;
+    text-align: center;
+  }
+
+  &__image {
+    width: 100%;
+
+    img {
+      max-width: 100%;
+    }
+
+    @media (max-width: $small-screen) {
+      height: 210px;
+    }
+  }
+}
