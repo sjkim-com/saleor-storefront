@@ -24,3 +24,7 @@ export const ProceedButton = styled.div`
   text-align: right;
   margin-top: 40px;
 `;
+export const Recommend = styled.div`
+  margin-top: 20px;
+  margin-bottom: 10px;
+`;
