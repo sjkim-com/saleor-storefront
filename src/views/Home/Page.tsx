@@ -4,6 +4,7 @@ import classNames from "classnames";
 import * as React from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Link, useHistory } from "react-router-dom";
+import { eciDebug } from "@temp/constants";
 import { Button, Loader, ProductsFeatured } from "../../components";
 // import { generateCategoryUrl } from "../../core/utils";
 
@@ -46,15 +47,17 @@ const Page: React.FC<{
   const intl = useIntl();
   const collection = shop?.product_collection;
 
-  console.log("----- _trackPageview -----");
-
-  window._scq.push([
-    "_setPage",
-    {
-      url: "/",
-    },
-  ]);
-  window._scq.push(["_trackPageview"]);
+  React.useEffect(() => {
+    console.log("----- _trackPageview -----");
+    window._scq.push(["_setDebug", eciDebug]);
+    window._scq.push([
+      "_setPage",
+      {
+        url: "/",
+      },
+    ]);
+    window._scq.push(["_trackPageview"]);
+  }, []);
 
   // EC Intelligence : Recommendサンプル用
   const recommendRequest: IRecommendRequest = {
