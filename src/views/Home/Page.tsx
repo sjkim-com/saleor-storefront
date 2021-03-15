@@ -18,6 +18,13 @@ import {
 
 import { structuredData } from "../../core/SEO/Homepage/structuredData";
 
+// EC Intelligence : Rankingサンプル用
+import {
+  RankingType,
+  IRankingRequest,
+  Ranking,
+} from "../../components/Ranking";
+
 // EC Intelligence : Recommendサンプル用
 import {
   RecommendType,
@@ -60,12 +67,24 @@ const Page: React.FC<{
     window._scq.push(["_trackPageview"]);
   }, []);
 
+  // EC Intelligence : Rankingサンプル用
+  const rankingRequest: IRankingRequest = {
+    rankingType: RankingType.VIEW,
+    htmlTemplateId: "2",
+    htmlTagId: "include_ranking_sample",
+    // yyyyMMddHH形式
+    fromDate: "2021031500",
+    // yyyyMMddHH形式
+    toDate: "2021031523",
+    rankingLimitCount: 5,
+  };
+
   // EC Intelligence : Recommendサンプル用
   const recommendRequest: IRecommendRequest = {
     recommendType: RecommendType.VIEW,
     htmlTemplateId: "1",
     htmlTagId: "include_recommend_sample",
-    // EC Intelligence側で、SKUにレコメンドが登録されていない為、ProductIdを指定。
+    // ProductIdを指定。
     itemIds: ["223-ACTUS_001001_001"],
     recommendLimitCount: 5,
   };
@@ -89,6 +108,9 @@ const Page: React.FC<{
       {/* EC Intelligence : [接客]テンプレートサンプル */}
       <div id="include_toppage_top_banner_01" />
       <div id="include_toppage_banner_01" />
+
+      {/* EC Intelligence : Rankingサンプル */}
+      <Ranking request={rankingRequest} />
 
       {/* EC Intelligence : Recommendサンプル */}
       <Recommend request={recommendRequest} />
