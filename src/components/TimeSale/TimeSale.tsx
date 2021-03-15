@@ -82,8 +82,10 @@ const TimeSale: React.FC<{ request: ITimeSaleRequest }> = ({ request }) => {
       <p className="timesale-product-list__demo_title">タイムセール商品</p>
       <ul>
         {timeSaleDetails.map(timeSaleDetail => {
+          const key = `time-sale-${timeSaleDetail.id}`;
+
           return (
-            <li className="timesale-product-list">
+            <li key={key} className="timesale-product-list">
               <div className="timesale-product-list-item">
                 <a href={timeSaleDetail.url}>
                   <img
