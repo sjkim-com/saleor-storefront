@@ -7,6 +7,7 @@ import Media from "react-media";
 import { Link } from "react-router-dom";
 import ReactSVG from "react-svg";
 
+import { eciDebug } from "@temp/constants";
 import { DemoBanner } from "@components/atoms";
 import classNames from "classnames";
 import { CMGT_SITE_ID } from "@temp/core/config";
@@ -68,6 +69,12 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
       overlayContext.hide();
     }
   }, [activeDropdown]);
+
+  useEffect(() => {
+    window._scq.push(["_setDebug", eciDebug]);
+    window._scq.push(["_setCustomField", 1, "Header"]);
+    window._scq.push(["_trackPageview"]);
+  }, []);
 
   const showDropdownHandler = (itemId: string, hasSubNavigation: boolean) => {
     if (hasSubNavigation) {

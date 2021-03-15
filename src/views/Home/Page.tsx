@@ -50,12 +50,7 @@ const Page: React.FC<{
   React.useEffect(() => {
     console.log("----- _trackPageview -----");
     window._scq.push(["_setDebug", eciDebug]);
-    window._scq.push([
-      "_setPage",
-      {
-        url: "/",
-      },
-    ]);
+    window._scq.push(["_setCustomField", 1, "Home"]);
     window._scq.push(["_trackPageview"]);
   }, []);
 
