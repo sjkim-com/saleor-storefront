@@ -28,6 +28,9 @@ import {
 // EC Intelligence : TimeSaleサンプル用
 import { ITimeSaleRequest, TimeSale } from "../../components/TimeSale";
 
+// EC Intelligence : NewProductサンプル用
+import { INewProductRequest, NewProduct } from "../../components/NewProduct";
+
 // import noPhotoImg from "../../images/no-photo.svg";
 
 // sampleImage
@@ -75,6 +78,12 @@ const Page: React.FC<{
     pageIndex: 1,
   };
 
+  // EC Intelligence : NewProductサンプル用
+  const newProductRequest: INewProductRequest = {
+    newProductLimitCount: 8,
+    pageIndex: 1,
+  };
+
   return (
     <>
       {/* EC Intelligence : [接客]テンプレートサンプル */}
@@ -86,6 +95,9 @@ const Page: React.FC<{
 
       {/* EC Intelligence : TimeSaleサンプル */}
       <TimeSale request={timeSaleRequest} />
+
+      {/* EC Intelligence : NewProductサンプル */}
+      <NewProduct request={newProductRequest} />
 
       <script className="structured-data-list" type="application/ld+json">
         {structuredData(shop)}
