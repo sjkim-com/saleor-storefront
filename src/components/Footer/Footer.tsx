@@ -3,6 +3,9 @@ import "./scss/index.scss";
 import * as React from "react";
 import { eciDebug } from "@temp/constants";
 
+// EC Intelligence Include HTML
+import { ECIincludeHtml } from "../ECIincludeHtml";
+
 import { SocialMediaIcon } from "..";
 import { SOCIAL_MEDIA } from "../../core/config";
 import Nav from "./Nav";
@@ -15,8 +18,8 @@ const Footer: React.FC = () => {
   }, []);
   return (
     <div className="footer" id="footer">
-      {/* EC Intelligence template */}
-      <div id="include_footer_01" />
+      {/* EC Intelligence : [接客]テンプレートサンプル */}
+      <ECIincludeHtml templateId="footer_template_01" />
 
       <div className="footer__favicons container">
         {SOCIAL_MEDIA.map(medium => (

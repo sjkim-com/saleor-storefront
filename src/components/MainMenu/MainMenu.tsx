@@ -7,7 +7,6 @@ import Media from "react-media";
 import { Link } from "react-router-dom";
 import ReactSVG from "react-svg";
 
-import { eciDebug } from "@temp/constants";
 import { DemoBanner } from "@components/atoms";
 import classNames from "classnames";
 import { CMGT_SITE_ID } from "@temp/core/config";
@@ -41,6 +40,9 @@ import {
 } from "../../globalStyles/scss/variables.scss";
 import "./scss/index.scss";
 
+// EC Intelligence Include HTML
+import { ECIincludeHtml } from "../ECIincludeHtml";
+
 interface MainMenuProps {
   demoMode: boolean;
 }
@@ -70,12 +72,6 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
     }
   }, [activeDropdown]);
 
-  useEffect(() => {
-    window._scq.push(["_setDebug", eciDebug]);
-    window._scq.push(["_setCustomField", 1, "Header"]);
-    window._scq.push(["_trackPageview"]);
-  }, []);
-
   const showDropdownHandler = (itemId: string, hasSubNavigation: boolean) => {
     if (hasSubNavigation) {
       setActiveDropdown(itemId);
@@ -95,7 +91,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
       })}
     >
       {/* EC Intelligence : [接客]テンプレートサンプル */}
-      <div id="include_header_01" />
+      <ECIincludeHtml templateId="header_template_01" />
 
       {demoMode && <DemoBanner />}
       <nav className="main-menu" id="header">

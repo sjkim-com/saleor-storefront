@@ -25,6 +25,9 @@ import {
   Ranking,
 } from "../../components/Ranking";
 
+// EC Intelligence : ECIincludeHtmlサンプル用
+import { ECIincludeHtml } from "../../components/ECIincludeHtml";
+
 // EC Intelligence : Recommendサンプル用
 import {
   RecommendType,
@@ -59,13 +62,6 @@ const Page: React.FC<{
   };
   const intl = useIntl();
   const collection = shop?.product_collection;
-
-  React.useEffect(() => {
-    console.log("----- _trackPageview -----");
-    window._scq.push(["_setDebug", eciDebug]);
-    window._scq.push(["_setCustomField", 1, "Home"]);
-    window._scq.push(["_trackPageview"]);
-  }, []);
 
   // EC Intelligence : Rankingサンプル用
   const rankingRequest: IRankingRequest = {
@@ -106,8 +102,8 @@ const Page: React.FC<{
   return (
     <>
       {/* EC Intelligence : [接客]テンプレートサンプル */}
-      <div id="include_toppage_top_banner_01" />
-      <div id="include_toppage_banner_01" />
+      <ECIincludeHtml templateId="toppage_top_banner_template_01" />
+      <ECIincludeHtml templateId="toppage_banner_template_01" />
 
       {/* EC Intelligence : Rankingサンプル */}
       <Ranking request={rankingRequest} />
