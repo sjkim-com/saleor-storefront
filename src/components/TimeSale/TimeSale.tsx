@@ -19,8 +19,6 @@ export interface ITimeSaleRequest {
 let timeSaleDetails = null;
 
 const TimeSale: React.FC<{ request: ITimeSaleRequest }> = ({ request }) => {
-  console.log("----- <TimeSale> -----");
-
   React.useEffect(() => {
     // タイムセール商品情報を取得
     const fetchTimeSale = () => {

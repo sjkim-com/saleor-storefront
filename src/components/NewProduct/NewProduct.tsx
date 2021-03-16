@@ -11,8 +11,6 @@ export interface INewProductRequest {
 let newProductDetails = null;
 
 const NewProduct: React.FC<{ request: INewProductRequest }> = ({ request }) => {
-  console.log("----- <NewProduct> -----");
-
   React.useEffect(() => {
     // 新商品情報を取得
     const fetchTimeSale = () => {
