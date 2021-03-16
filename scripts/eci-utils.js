@@ -1,48 +1,67 @@
 /* eslint-disable no-undef */
 const _eciUtils = {};
 
-_eciUtils.includeHTML = (sourceId, destinationId) => {
+_eciUtils.includeHTML = templateId => {
   console.log("----- <eci-utils.js> includeHTML ------");
-  console.log(`  sourceId : '${sourceId}'`);
-  console.log(`  destinationId : '${destinationId}'`);
 
-  let includeIntervaCount = 0;
+  const includeAreaId = `include_${templateId}`;
+
+  console.log(`  includeAreaId : '${includeAreaId}'`);
+  console.log(`  templateId : '${templateId}'`);
+
+  window._scq.push(["_setCustomField", 1, "template_id_001"]);
+  window._scq.push(["_trackPageview"]);
+
+  let intervaCount = 0;
   const includeInterval = 100;
-  const includeIntervalId = setInterval(() => {
-    if (includeIntervaCount >= 10) {
-      clearInterval(includeIntervalId);
+  const templateIntervalId = setInterval(() => {
+    if (intervaCount >= 10) {
+      clearInterval(templateIntervalId);
       return;
     }
 
-    const destinationElement = window.document.getElementById(destinationId);
-    if (destinationElement) {
-      clearInterval(includeIntervalId);
+    const templateElement = window.document.getElementById(templateId);
+    if (templateElement) {
+      intervaCount = 0;
+      clearInterval(templateIntervalId);
 
-      // const bodyElement = window.document.getElementsByTagName("body")[0];
-      // const bodyPosition = bodyElement.style.position;
-      // bodyElement.style.position = "fixed";
+      const includeAreaIntervalId = setInterval(() => {
+        const includeAreaElement = window.document.getElementById(
+          includeAreaId
+        );
+        if (includeAreaElement) {
+          intervaCount = 0;
+          clearInterval(includeAreaIntervalId);
 
-      const sourceElement = window.document.getElementById(sourceId);
-      window.document.getElementById(sourceId).parentNode.remove();
+          const removedElementIntervalId = setInterval(() => {
+            if (intervaCount >= 10) {
+              clearInterval(removedElementIntervalId);
+              return;
+            }
 
-      let removeIntervaCount = 0;
-      const removedIntervalId = setInterval(() => {
-        if (removeIntervaCount >= 10) {
-          clearInterval(removedIntervalId);
-          return;
+            const removeElement = window.document.getElementById(templateId);
+            if (removeElement) {
+              removeElement.parentNode.remove();
+            } else {
+              clearInterval(removedElementIntervalId);
+
+              let { outerHTML } = templateElement.parentNode;
+              outerHTML = outerHTML.replace(
+                "display: none;",
+                "display: block;"
+              );
+              includeAreaElement.outerHTML = outerHTML;
+            }
+
+            intervaCount++;
+          }, includeInterval);
         }
-        if (window.document.getElementById(sourceId) === null) {
-          clearInterval(removedIntervalId);
 
-          let { outerHTML } = sourceElement.parentNode;
-          outerHTML = outerHTML.replace("display: none;", "display: block;");
-          destinationElement.outerHTML = outerHTML;
-          // bodyElement.style.position = bodyPosition;
-        }
-        removeIntervaCount++;
+        intervaCount++;
       }, includeInterval);
     }
-    includeIntervaCount++;
+
+    intervaCount++;
   }, includeInterval);
 };
 
