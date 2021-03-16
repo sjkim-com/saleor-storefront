@@ -88,7 +88,8 @@ export const META_DEFAULTS = {
   // }${require("../images/actus/logo_header_Actus_s.svg")}`,
   // sampleImage
   image: `${window.location.origin}${require("../images/sample/logo.svg")}`,
-  title: "ACTUS online（アクタス公式通販）| 家具・雑貨・ギフト",
+  // title: "ACTUS online（アクタス公式通販）| 家具・雑貨・ギフト",
+  title: "家具・雑貨・ギフト",
   type: "website",
   url: window.location.origin,
 };
