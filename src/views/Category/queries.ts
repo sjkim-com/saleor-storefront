@@ -207,9 +207,10 @@ export const categoryProductsDataQuery = gql`
               }
             }
           }
-          dms_displaycategories {
+          dms_displaycategories(where: { display_yn: { _eq: "Y" } }) {
             display_category_id
             name
+            display_yn
             dms_displaycategoryproducts_aggregate {
               aggregate {
                 count

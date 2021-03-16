@@ -21,7 +21,7 @@ export interface TextFieldProps
   iconRight?: React.ReactNode;
   styleType?: Style;
   inputRef?: React.RefObject<HTMLInputElement>;
-  setValue?: any;
+  setvalue?: any;
 }
 
 const generateClassName = ({ errors, iconLeft, styleType }: IClassNameArgs) => {
@@ -42,8 +42,8 @@ const TextField: React.FC<TextFieldProps> = ({
   inputRef,
   ...rest
 }) => {
-  if (rest.setValue) {
-    rest.value = rest.setValue;
+  if (rest.setvalue) {
+    rest.value = rest.setvalue;
   }
   return (
     <div className="input">

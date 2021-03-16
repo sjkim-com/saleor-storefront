@@ -22,7 +22,7 @@ export interface IProps {
   activeFiltersAttributes: ActiveFiltersAttribute[];
   numberOfProducts: number;
   sortOptions: SortOptions[];
-  priceOptions: SortOptions[];
+  priceOptions?: SortOptions[];
   onChange: (order: { value?: string; label: string }, tag: string) => void;
   onCloseFilterAttribute: (attributeSlug: string, valueSlug: string) => void;
   openFiltersMenu: () => void;

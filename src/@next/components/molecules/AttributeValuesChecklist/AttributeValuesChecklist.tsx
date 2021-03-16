@@ -22,7 +22,7 @@ export const AttributeValuesChecklist: React.FC<IProps> = ({
       {values &&
         values.map((value, index) => {
           if (!viewAllOptions && index > valuesShowLimitNumber - 1) {
-            return <></>;
+            return <React.Fragment key={index} />;
           }
           return (
             <Checkbox

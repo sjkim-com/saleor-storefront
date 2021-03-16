@@ -211,7 +211,7 @@ class Search extends React.Component<SearchProps, SearchState> {
               inputRef={this.inputRef}
               id="suggest"
               name="suggest"
-              setValue={this.suggestValue}
+              setvalue={this.suggestValue}
             />
           </div>
           <div
