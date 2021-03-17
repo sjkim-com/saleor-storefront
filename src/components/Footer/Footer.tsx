@@ -11,11 +11,6 @@ import { SOCIAL_MEDIA } from "../../core/config";
 import Nav from "./Nav";
 
 const Footer: React.FC = () => {
-  React.useEffect(() => {
-    window._scq.push(["_setDebug", eciDebug]);
-    window._scq.push(["_setCustomField", 1, "Footer"]);
-    window._scq.push(["_trackPageview"]);
-  }, []);
   return (
     <div className="footer" id="footer">
       {/* EC Intelligence : [接客]テンプレートサンプル */}
