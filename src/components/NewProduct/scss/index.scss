@@ -1,39 +1,58 @@
 @import "../../../globalStyles/scss/variables.scss";
 
 .new-product-list {
-  display: inline-block;
+    box-sizing: border-box;
+    display: inline-block;
+    list-style-type: none;
+    margin: auto 0px;
+    vertical-align: top;
+    width: 270px;
 
-  &__demo_title {
-    color: #ffffff;
-    background-color: #4488dd;
-    font-size: 1rem;
-    font-weight: normal;
-    padding: 8px;
-  }
-}
+    a {
+      color: #323232;
+      display: inline-block;
+      max-width: 255px;
+      text-decoration: none;
+    }
+  };
 
 .new-product-list-item {
-  font-size: 11px;
-  font-weight: normal;
-  width: 300px;
-  margin: 4px;
   text-align: center;
+  margin-bottom: 40px;
 
   &__title {
-    font-size: 1rem;
-    font-weight: normal;
+    text-transform: $product-item-title-text-transform;
+    font-weight: $product-item-title-font-weight;
+    margin-top: $spacer;
+    text-align: left;
+  }
+
+  &__undiscounted_price {
+    text-decoration: line-through;
+    color: $gray;
+    font-size: $small-font-size;
+    font-weight: regular;
+  }
+
+  &__category {
+    color: $product-item-category-color;
+    text-align: left;
   }
 
   &__price {
-    font-size: 1rem;
-    font-weight: normal;
-    text-align: center;
+    font-weight: $product-item-price-font-weight;
+    margin: $product-item-price-margin;
+    text-align: left;
   }
 
   &__image {
-    width: 100%;
+    background-color: $turquoise-light;
+    display: flex;
+    height: 350px;
+    justify-content: center;
 
     img {
+      object-fit: contain;
       max-width: 100%;
     }
 
