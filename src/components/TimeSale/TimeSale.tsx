@@ -76,33 +76,38 @@ const TimeSale: React.FC<{ request: ITimeSaleRequest }> = ({ request }) => {
   }
 
   return (
-    <div>
-      <p className="timesale-product-list__demo_title">タイムセール商品</p>
-      <ul>
-        {timeSaleDetails.map(timeSaleDetail => {
-          const key = `time-sale-${timeSaleDetail.id}`;
+    <div className="products-featured">
+      <div className="container">
+        <h3 className="time-sale-product-list__demo_title">タイムセール商品</h3>
+        <ul>
+          {timeSaleDetails.map(timeSaleDetail => {
+            const key = `time-sale-${timeSaleDetail.id}`;
 
-          return (
-            <li key={key} className="timesale-product-list">
-              <div className="timesale-product-list-item">
+            return (
+              <li key={key} className="time-sale-list">
                 <a href={timeSaleDetail.url}>
-                  <img
-                    className="timesale-product-list-item__image"
-                    src={timeSaleDetail.img_url}
-                    alt={timeSaleDetail.title}
-                  />
-                  <p className="timesale-product-list-item__title">
-                    {timeSaleDetail.title}
-                  </p>
-                  <p className="timesale-product-list-item__price">
-                    &yen;{Number(timeSaleDetail.price).toLocaleString()}
-                  </p>
+                  <div className="time-sale-list-item">
+                    <div className="time-sale-list-item__image">
+                      <img
+                        src={timeSaleDetail.img_url}
+                        alt={timeSaleDetail.title}
+                      />
+                    </div>
+                    <h4 className="time-sale-list-item__title">
+                      {timeSaleDetail.title}
+                    </h4>
+                    <p className="time-sale-list-item__price">
+                      <span>
+                        &yen;{Number(timeSaleDetail.price).toLocaleString()}
+                      </span>
+                    </p>
+                  </div>
                 </a>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 };
