@@ -71,6 +71,7 @@ _eciUtils.fetchJsonData = async params => {
   const queryString =
     params.queries.length < 1 ? "" : `&${params.queries.join("&")}`;
 
+  // Don't encodeURI
   const url = `//${params.host}/${params.type}?aid=${params.account}&t=json${queryString}`;
 
   const data = await fetch(url, {
@@ -86,6 +87,17 @@ _eciUtils.fetchJsonData = async params => {
     .then(data => data);
 
   return data;
+};
+
+_eciUtils.fetchTimeSaleItems = async (startDate, toDate) => {
+  const params = {
+    host: "ui2.scinable.net",
+    type: "search",
+    account: "ui2-1",
+    queries: [`string6=${startDate}`, `string7=${toDate}`],
+  };
+
+  return _eciUtils.fetchJsonData(params).then(data => data);
 };
 
 window._eciUtils = _eciUtils;
