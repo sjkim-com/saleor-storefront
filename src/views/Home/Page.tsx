@@ -112,7 +112,8 @@ const Page: React.FC<{
       <Recommend request={recommendRequest} />
 
       {/* EC Intelligence : TimeSaleサンプル */}
-      <TimeSale request={timeSaleRequest} />
+      {/* <TimeSale request={timeSaleRequest} /> */}
+      <ECIincludeHtml templateId="template_time_sale_01" />
 
       {/* EC Intelligence : NewProductサンプル */}
       <NewProduct request={newProductRequest} />
@@ -182,6 +183,7 @@ const Page: React.FC<{
       {categoriesExist() && (
         <div className="home-page__categories">
           <div className="container">
+            {/*
             <h3>
               <FormattedMessage defaultMessage="Recommend" />
             </h3>
@@ -225,7 +227,6 @@ const Page: React.FC<{
                   <h3>Byers selection ACTUS Olympics</h3>
                 </Link>
               </div>
-              {/*
               {categories.edges.map(({ node: category }) => (
                 <div key={category.id}>
                   <Link
@@ -251,8 +252,8 @@ const Page: React.FC<{
                   </Link>
                 </div>
               ))}
-              */}
             </div>
+            */}
           </div>
         </div>
       )}
