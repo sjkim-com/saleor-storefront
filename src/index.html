@@ -22,6 +22,7 @@
   <body>
     <div id="root"></div>
     <div id="modal-root"></div>
+    <script type="text/javascript" src="/scripts/jquery-3.6.0.min.js"></script>
     <!-- EC Intelligence library -->
     <script type="text/javascript" src="/scripts/eci-utils.js"></script>
     <script>
@@ -29,7 +30,6 @@
       var _scq = _scq || [];
 
       _scq.push(["_setAccount", "${htmlWebpackPlugin.options.ECI_ACCOUNT}"]);
-
       _scq.push(["_setDebug", `${htmlWebpackPlugin.options.ECI_DEBUG}`]);
       _scq.push(["_setLanguage", "jp"]);
 
