@@ -56,22 +56,22 @@ const NewProduct: React.FC<{ request: INewProductRequest }> = ({ request }) => {
         <h3 className="new-product-list__demo_title">新商品</h3>
         <ul>
           {newProductDetails.map(newProductDetail => {
-            const key = `time-sale-${newProductDetail.id}`;
+            const key = `new-product-${newProductDetail.id}`;
 
             return (
-              <li key={key} className="time-sale-list">
+              <li key={key} className="new-product-list">
                 <a href={newProductDetail.url}>
-                  <div className="time-sale-list-item">
-                    <div className="time-sale-list-item__image">
+                  <div className="new-product-list-item">
+                    <div className="new-product-list-item__image">
                       <img
                         src={newProductDetail.img_url}
                         alt={newProductDetail.title}
                       />
                     </div>
-                    <h4 className="time-sale-list-item__title">
+                    <h4 className="new-product-list-item__title">
                       {newProductDetail.title}
                     </h4>
-                    <p className="time-sale-list-item__price">
+                    <p className="new-product-list-item__price">
                       <span>
                         &yen;{Number(newProductDetail.price).toLocaleString()}
                       </span>
