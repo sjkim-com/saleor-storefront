@@ -73,10 +73,9 @@ _eciUtils.fetchJsonData = async params => {
   const queryString =
     params.queries.length < 1 ? "" : `&${params.queries.join("&")}`;
 
-  // Don't encodeURI
   const url = `//${params.host}/${params.type}?aid=${params.account}&t=json${queryString}`;
 
-  const data = await fetch(url, {
+  const data = await fetch(encodeURI(url), {
     method: "GET",
     mode: "cors",
     cache: "no-cache",

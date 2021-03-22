@@ -20,7 +20,7 @@ const NewProduct: React.FC<{ request: INewProductRequest }> = ({ request }) => {
           type: "search",
           account: eciAccount,
           queries: [
-            `string9=${encodeURI("新商品")}`,
+            `string9=新商品`,
             `p=${request.pageIndex}`,
             `pl=${request.newProductLimitCount}`,
           ],
