@@ -43,9 +43,6 @@ import { INewProductRequest, NewProduct } from "../../components/NewProduct";
 
 // import noPhotoImg from "../../images/no-photo.svg";
 
-// sampleImage
-import noImg from "../../images/sample/placeholder540x540.png";
-
 console.log("----- <Home> Page -----");
 
 const Page: React.FC<{
@@ -101,26 +98,12 @@ const Page: React.FC<{
 
   return (
     <>
-      {/* EC Intelligence : [接客]テンプレートサンプル */}
+      {/* EC Intelligence : トップバナー */}
       <ECIincludeHtml templateId="toppage_top_banner_template_01" />
-      <ECIincludeHtml templateId="toppage_banner_template_01" />
 
-      {/* EC Intelligence : Rankingサンプル */}
-      <Ranking request={rankingRequest} />
-
-      {/* EC Intelligence : Recommendサンプル */}
-      <Recommend request={recommendRequest} />
-
-      {/* EC Intelligence : TimeSaleサンプル */}
-      {/* <TimeSale request={timeSaleRequest} /> */}
-      <ECIincludeHtml templateId="template_time_sale_01" />
-
-      {/* EC Intelligence : NewProductサンプル */}
-      <NewProduct request={newProductRequest} />
-
-      <script className="structured-data-list" type="application/ld+json">
+      {/* <script className="structured-data-list" type="application/ld+json">
         {structuredData(shop)}
-      </script>
+      </script> */}
       <Link to="/category/新入荷/actus_000/">
         <div
           className="home-page__hero"
@@ -132,9 +115,7 @@ const Page: React.FC<{
           style={
             collection.background_image
               ? {
-                  // sampleImage
-                  backgroundImage: `url(${noImg})`,
-                  // backgroundImage: `url('http://ui2-actus-demo.s3-website-ap-northeast-1.amazonaws.com/images/top.jpg')`,
+                  backgroundImage: `url('http://ui2-actus-demo.s3-website-ap-northeast-1.amazonaws.com/images/top.jpg')`,
                 }
               : null
           }
@@ -180,10 +161,26 @@ const Page: React.FC<{
       <ProductsFeatured
         title={intl.formatMessage({ defaultMessage: "Featured" })}
       />
-      {categoriesExist() && (
+
+      {/* EC Intelligence : [接客]テンプレートサンプル */}
+      <ECIincludeHtml templateId="toppage_banner_template_01" />
+
+      {/* EC Intelligence : NewProductサンプル */}
+      <NewProduct request={newProductRequest} />
+
+      {/* EC Intelligence : Rankingサンプル */}
+      <Ranking request={rankingRequest} />
+
+      {/* EC Intelligence : Recommendサンプル */}
+      <Recommend request={recommendRequest} />
+
+      {/* EC Intelligence : TimeSaleサンプル */}
+      {/* <TimeSale request={timeSaleRequest} /> */}
+      <ECIincludeHtml templateId="template_time_sale_01" />
+
+      {/* {categoriesExist() && (
         <div className="home-page__categories">
           <div className="container">
-            {/*
             <h3>
               <FormattedMessage defaultMessage="Recommend" />
             </h3>
@@ -193,9 +190,7 @@ const Page: React.FC<{
                   <div
                     className={classNames("home-page__categories__list__image")}
                     style={{
-                      // sampleImage
-                      // backgroundImage: `url('http://ui2-actus-demo.s3-website-ap-northeast-1.amazonaws.com/images/shop_contents_headline_group_member_2024.jpg')`,
-                      backgroundImage: `url(${noImg})`,
+                      backgroundImage: `url('http://ui2-actus-demo.s3-website-ap-northeast-1.amazonaws.com/images/shop_contents_headline_group_member_2024.jpg')`,
                     }}
                   />
                   <h3>ACTUS 2021 Srping-Summer</h3>
@@ -206,9 +201,7 @@ const Page: React.FC<{
                   <div
                     className={classNames("home-page__categories__list__image")}
                     style={{
-                      // sampleImage
-                      // backgroundImage: `url('http://ui2-actus-demo.s3-website-ap-northeast-1.amazonaws.com/images/shop_contents_headline_group_member_2051.jpg')`,
-                      backgroundImage: `url(${noImg})`,
+                      backgroundImage: `url('http://ui2-actus-demo.s3-website-ap-northeast-1.amazonaws.com/images/shop_contents_headline_group_member_2051.jpg')`,
                     }}
                   />
                   <h3>enjoy STUDY</h3>
@@ -219,9 +212,7 @@ const Page: React.FC<{
                   <div
                     className={classNames("home-page__categories__list__image")}
                     style={{
-                      // sampleImage
-                      // backgroundImage: `url('http://ui2-actus-demo.s3-website-ap-northeast-1.amazonaws.com/images/shop_contents_headline_group_member_1999.jpg')`,
-                      backgroundImage: `url(${noImg})`,
+                      backgroundImage: `url('http://ui2-actus-demo.s3-website-ap-northeast-1.amazonaws.com/images/shop_contents_headline_group_member_1999.jpg')`,
                     }}
                   />
                   <h3>Byers selection ACTUS Olympics</h3>
@@ -253,10 +244,9 @@ const Page: React.FC<{
                 </div>
               ))}
             </div>
-            */}
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 };

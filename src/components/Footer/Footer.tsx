@@ -6,8 +6,8 @@ import { eciDebug } from "@temp/constants";
 // EC Intelligence Include HTML
 import { ECIincludeHtml } from "../ECIincludeHtml";
 
-import { SocialMediaIcon } from "..";
-import { SOCIAL_MEDIA } from "../../core/config";
+// import { SocialMediaIcon } from "..";
+// import { SOCIAL_MEDIA } from "../../core/config";
 import Nav from "./Nav";
 
 const Footer: React.FC = () => {
@@ -16,11 +16,13 @@ const Footer: React.FC = () => {
       {/* EC Intelligence : [接客]テンプレートサンプル */}
       <ECIincludeHtml templateId="footer_template_01" />
 
-      <div className="footer__favicons container">
+      <ECIincludeHtml templateId="footer_template_SNS" />
+
+      {/* <div className="footer__favicons container">
         {SOCIAL_MEDIA.map(medium => (
           <SocialMediaIcon medium={medium} key={medium.ariaLabel} />
         ))}
-      </div>
+      </div> */}
       <Nav />
     </div>
   );

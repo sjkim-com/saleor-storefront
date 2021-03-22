@@ -6,9 +6,6 @@ import NoPhoto from "images/no-photo.svg";
 
 import { IImage } from "@types";
 
-// sampleImage
-import noImg from "../../../../images/sample/placeholder255x255.png";
-
 export const CachedImage: React.FC<IImage> = ({
   url,
   url2x,
@@ -51,9 +48,8 @@ export const CachedImage: React.FC<IImage> = ({
   return (
     <img
       {...props}
-      src={noImg}
-      // sampleImage
-      // srcSet={url2x ? `${url} 1x, ${url2x} 2x` : `${url} 1x`}
+      src={url}
+      srcSet={url2x ? `${url} 1x, ${url2x} 2x` : `${url} 1x`}
       alt={alt}
       // navigator.onLine is not always accurate
       onError={() => setUnavailable(true)}
