@@ -45,12 +45,14 @@ _eciUtils.includeHTML = templateId => {
             } else {
               clearInterval(removedElementIntervalId);
 
-              let { outerHTML } = templateElement.parentNode;
-              outerHTML = outerHTML.replace(
-                "display: none;",
-                "display: block;"
-              );
-              includeAreaElement.outerHTML = outerHTML;
+              if (templateElement.innerHTML.replace(/\n/g, "").length > 0) {
+                let { outerHTML } = templateElement.parentNode;
+                outerHTML = outerHTML.replace(
+                  "display: none;",
+                  "display: block;"
+                );
+                includeAreaElement.outerHTML = outerHTML;
+              }
             }
 
             intervaCount++;
